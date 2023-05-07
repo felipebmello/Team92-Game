@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +28,22 @@ public class PlayerMovement : MonoBehaviour
         movementInput = inputValue.Get<Vector2>();
     }
 
-    private void FixedUpdate() 
+    private void FixedUpdate()
+    {
+        LookAtMouseWorldPosition();
+        MovePlayer();
+    }
+
+    private void LookAtMouseWorldPosition()
+    {
+        /*Vector3 position = MouseWorld.;
+        if (this.transform.position.x < Input.mousePosition.x)
+        {
+
+        }*/
+    }
+
+    private void MovePlayer()
     {
         smoothedMovementInput = Vector2.SmoothDamp(
             smoothedMovementInput,
