@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float smoothTime = 0.1f;
 
 
-    [Header("Looking Settings")]
-    [SerializeField] private float lookSpeed = 5f;
+    /*[Header("Looking Settings")]
+    [SerializeField] private float lookSpeed = 5f;*/
     
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
