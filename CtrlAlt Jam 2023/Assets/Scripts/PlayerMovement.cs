@@ -11,6 +11,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float movementSpeed;
     [Range(0.05f, 0.2f)]
     [SerializeField] private float smoothTime = 0.1f;
+
+
+    [Header("Looking Settings")]
+    [SerializeField] private float lookSpeed = 5f;
     
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
@@ -36,11 +40,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void LookAtMouseWorldPosition()
     {
-        /*Vector3 position = MouseWorld.;
-        if (this.transform.position.x < Input.mousePosition.x)
+        Vector3 targetPosition = MouseWorld.GetPosition();
+        if (this.transform.position.x <= Input.mousePosition.x)
         {
+            //Olhar para a direita
 
-        }*/
+        }
+        else
+        {
+            //Olhar para a esquerda
+        }
+        //Vector3 lookDir = (targetPosition - this.transform.position).normalized;
+        
     }
 
     private void MovePlayer()
