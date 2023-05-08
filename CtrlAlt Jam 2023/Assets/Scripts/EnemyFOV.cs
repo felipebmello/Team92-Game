@@ -19,7 +19,7 @@ public class EnemyFOV : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.tag.Equals("Player"))
+        if (other.tag.Equals("Player") && !other.TryGetComponent<Bullet>(out Bullet bullet))
         {
             OnSeeingTarget?.Invoke(this, other.transform);
         }
@@ -27,6 +27,9 @@ public class EnemyFOV : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) 
     {
-        OnLosingTarget?.Invoke(this, EventArgs.Empty);
+        if (other.tag.Equals("Player") && !other.TryGetComponent<Bullet>(out Bullet bullet))
+        {
+            OnLosingTarget?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4158979706666153451}
   - component: {fileID: 8530881241662087552}
   - component: {fileID: 165236706698964531}
-  - component: {fileID: 6620223286211032361}
+  - component: {fileID: 5351937155115815058}
   - component: {fileID: 7290700779012213872}
   - component: {fileID: 6804204024323978904}
   - component: {fileID: 5216321369100769282}
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sightRange: 10
---- !u!114 &6620223286211032361
+--- !u!114 &5351937155115815058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,13 +159,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3224210759110562239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c0140e2e12ca8d48b6bcd924f19b756, type: 3}
+  m_Script: {fileID: 11500000, guid: fd83d45d9f68cfe4daef61f95d086aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpawnPoint: {fileID: 1535266670134459432}
-  bulletPrefab: {fileID: 6301440259512995250, guid: 619fc9a5c7890a9428900bbe2cbb6b90, type: 3}
-  fireRate: 0.5
-  holdToShoot: 0
+  bulletPrefab: {fileID: 6301440259512995250, guid: 0b8ccdf65b1c6c642a1a0f3ad79d70bc, type: 3}
+  fireRate: 0.8
 --- !u!114 &7290700779012213872
 MonoBehaviour:
   m_ObjectHideFlags: 0

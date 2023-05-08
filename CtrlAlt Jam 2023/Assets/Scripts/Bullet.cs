@@ -16,13 +16,17 @@ public class Bullet : MonoBehaviour
     public void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-        direction = (MouseWorld.GetPosition() - this.transform.position).normalized;
         Destroy(gameObject, lifetime);
     }
 
     private void FixedUpdate() 
     {
         myRigidbody.velocity = direction * speed;
+    }
+
+    public void SetTarget(Vector3 targetDirection)
+    {
+        this.direction = targetDirection;
     }
 
     private void OnCollisionEnter2D(Collision2D other) 

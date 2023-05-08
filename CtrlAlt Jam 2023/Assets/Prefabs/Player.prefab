@@ -246,9 +246,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7490528283976452912}
   - component: {fileID: 8269667297746645554}
+  - component: {fileID: 1141660574}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,6 +321,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1141660574
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3998617042325330180}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.19972825}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.6005435}
+  m_EdgeRadius: 0
 --- !u!1 &4370077228468701293
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,13 +556,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7483515285896351670}
   - component: {fileID: 4411767637979528351}
-  - component: {fileID: 410568096173690740}
+  - component: {fileID: 5751986997891405681}
+  - component: {fileID: 5976367205915100416}
   - component: {fileID: 3487053834638212549}
   - component: {fileID: 1308036293}
   - component: {fileID: 1308036294}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -571,7 +599,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 10
   smoothTime: 0.1
---- !u!114 &410568096173690740
+--- !u!114 &5751986997891405681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274186843921918946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5733faf8b718df42842477099c81797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5976367205915100416
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -586,7 +626,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 5414240876701828725}
   bulletPrefab: {fileID: 6301440259512995250, guid: 619fc9a5c7890a9428900bbe2cbb6b90, type: 3}
   fireRate: 0.5
-  holdToShoot: 0
+  holdToShoot: 1
 --- !u!114 &3487053834638212549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,6 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30a97d8d43232c408539225b71651bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
 --- !u!50 &1308036293
 Rigidbody2D:
   serializedVersion: 4
