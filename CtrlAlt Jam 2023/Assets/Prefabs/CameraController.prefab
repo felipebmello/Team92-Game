@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cinemachineVirtualCamera: {fileID: 0}
   offsetThreshold: {x: 2, y: 2}
-  offsetRadius: 7
-  smoothTime: 4
+  offsetRadius: {x: 6, y: 3}
+  smoothTime: 3

@@ -27,9 +27,9 @@ public class PlayerMovement : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
     }
     
-    public void OnMovement(InputValue inputValue) 
+    public void OnMovement(InputValue value) 
     {
-        movementInput = inputValue.Get<Vector2>();
+        movementInput = value.Get<Vector2>();
     }
 
     private void FixedUpdate()

@@ -13,7 +13,6 @@ public class CameraController : MonoBehaviour
     {
         Vector3 playerPosition = cinemachineVirtualCamera.Follow.transform.position;
         Vector3 targetPosition = MouseWorld.GetPosition();
-        Debug.Log(Mathf.Abs(Vector3.Distance(playerPosition, targetPosition)));
         //Se o mouse estiver dentro dos limites, não é aplicado o offset na camera
         if (Mathf.Abs(playerPosition.x - targetPosition.x) < offsetRadius.x)
         {
