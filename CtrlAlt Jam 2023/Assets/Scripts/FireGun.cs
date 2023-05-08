@@ -27,7 +27,8 @@ public class FireGun : MonoBehaviour
     {
         if (fireTimer <= 0f)
         {
-            Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            Transform bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            bullet.tag = this.tag;
             fireTimer = fireRate;
         }
     }

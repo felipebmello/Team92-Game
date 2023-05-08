@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     [Header("Bullet Settings")]
     [Range(1f, 15f)]
     [SerializeField] private float speed;
+    [SerializeField] private float damageAmount = 100f;
     [Range(1f, 10f)]
     [SerializeField] private float lifetime;
 
@@ -15,12 +16,24 @@ public class Bullet : MonoBehaviour
     public void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-        direction = (MouseWorld.GetPosition()-this.transform.position).normalized;
+        direction = (MouseWorld.GetPosition() - this.transform.position).normalized;
         Destroy(gameObject, lifetime);
     }
 
     private void FixedUpdate() 
     {
         myRigidbody.velocity = direction * speed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+        if (other.gameObject.tag != this.tag)
+        {
+            if (other.gameObject.TryGetComponent<HealthSystem>(out HealthSystem healthSystem))
+            {
+                healthSystem.Damage(damageAmount);
+            }
+            Destroy(gameObject);
+        }
     }
 }
