@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseSkill : MonoBehaviour
+public class BaseSkill : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Skill Settings")]
+    [SerializeField] private new string name;
+    [SerializeField] private PlayerSkillset.PlayerState state;
+    [Header("Movement Settings")]
+    [SerializeField] private Sprite newSprite;
+    [SerializeField] private float newMovementSpeed;
+    [Header("Shooting Settings")]
+    [SerializeField] private Transform newBulletPrefab;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private bool newHoldToShoot;
+    [SerializeField] private float newFireRate;
+
+    public string Name { get => name; set => name = value; }
+    public PlayerSkillset.PlayerState State { get => state; set => state = value; }
+    public Sprite NewSprite { get => newSprite; set => newSprite = value; }
+    public float NewMovementSpeed { get => newMovementSpeed; set => newMovementSpeed = value; }
+    public Transform NewBulletPrefab { get => newBulletPrefab; set => newBulletPrefab = value; }
+    public bool NewHoldToShoot { get => newHoldToShoot; set => newHoldToShoot = value; }
+    public float NewFireRate { get => newFireRate; set => newFireRate = value; }
+
+    public virtual void Use() 
     {
-        
+
     }
 }

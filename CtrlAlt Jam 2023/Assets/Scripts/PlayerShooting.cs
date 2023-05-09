@@ -30,4 +30,17 @@ public class PlayerShooting : ShootProjectile
         targetDirection = (MouseWorld.GetPosition() - this.transform.position).normalized;
         base.FireBullet();
     }
+
+    public void SetBulletPrefab (Transform bulletPrefab)
+    {
+        this.bulletPrefab = bulletPrefab;
+    }
+    public void SetHoldToShoot (bool holdToShoot)
+    {
+        this.holdToShoot = holdToShoot;
+    }
+    public void SetFireRate (float fireRate)
+    {
+        this.fireRate = fireRate;
+    }
 }

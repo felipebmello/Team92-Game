@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class ShootProjectile : MonoBehaviour
 {
     [Header("Shooting Settings")]
-    [SerializeField] private Transform bulletSpawnPoint;
-    [SerializeField] private Transform bulletPrefab;
+    [SerializeField] protected Transform bulletSpawnPoint;
+    [SerializeField] protected Transform bulletPrefab;
     [Range(0.1f, 1f)]
     [SerializeField] protected float fireRate = 0.5f;
     protected Vector3 targetDirection;
