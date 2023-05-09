@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 smoothedMovementInput;
     private Vector2 movementInputCurrentVelocity;
     private Rigidbody2D myRigidbody;
-    private float speedModifier = 1f;
+    [SerializeField] private float speedModifier = 1f;
 
     private void Awake() 
     {
@@ -65,8 +65,8 @@ public class PlayerMovement : MonoBehaviour
         myRigidbody.velocity = smoothedMovementInput * movementSpeed * speedModifier;
     }
 
-    public void SetSpeedModifier(float speedModifier)
+    public void SetSpeedModifier(float speedPowerUpValue)
     {
-        this.speedModifier = speedModifier;
+        this.speedModifier = speedPowerUpValue;
     }
 }

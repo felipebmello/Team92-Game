@@ -17,7 +17,7 @@ public class ShootProjectile : MonoBehaviour
     {
         fireTimer -= Time.deltaTime;
     }
-    protected virtual void FireProjectile()
+    protected virtual void FireBullet()
     {
         if (fireTimer <= 0f)
         {

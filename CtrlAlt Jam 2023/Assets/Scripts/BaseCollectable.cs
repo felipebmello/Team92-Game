@@ -12,14 +12,15 @@ public abstract class BaseCollectable : MonoBehaviour
     {
         collectableCollider = GetComponent<CircleCollider2D>();
     }
-    protected virtual void OnTriggerEnter2D(Collider other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag.Equals("Player") && other.TryGetComponent<Bullet>(out Bullet bullet))
+        if (other.tag.Equals("Player") && !other.TryGetComponent<Bullet>(out Bullet bullet))
         {
-            OnPickUp(other.transform);
+            Debug.Log(other.name);
+            PickUp(other.gameObject);
             Destroy(gameObject);
         }
     }
 
-    protected abstract void OnPickUp(Transform playerTransform);
+    protected abstract void PickUp(GameObject player);
 }

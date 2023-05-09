@@ -26,7 +26,7 @@ public class EnemyShooting : ShootProjectile
         if (target != null) 
         {
             targetDirection = (target.position - this.transform.position).normalized;
-            base.FireProjectile();
+            base.FireBullet();
         }
     }
     private void EnemyFOV_OnSeeingTarget(object sender, Transform target)

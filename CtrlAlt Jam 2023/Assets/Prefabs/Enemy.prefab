@@ -308,6 +308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1274075159721608830}
+  - component: {fileID: 1353568486719034282}
   m_Layer: 0
   m_Name: Corpo
   m_TagString: Untagged
@@ -333,6 +334,17 @@ Transform:
   m_Father: {fileID: 4158979706666153451}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &1353568486719034282
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720047073197980014}
+  m_Enabled: 1
+  m_SortingLayerID: -603992083
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1 &6905049154335849442
 GameObject:
   m_ObjectHideFlags: 0

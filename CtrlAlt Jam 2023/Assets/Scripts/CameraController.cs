@@ -2,23 +2,71 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+
+
 //Script para que a camera acompanhe a posição do Mouse. 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController Instance {get; private set; }
+    public enum CameraControllerType
+    {
+        FollowTargetObject,
+        FollowPlayerOffset
+    }
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
+    [SerializeField] private CinemachineConfiner2D cinemachineConfiner2D;
+    [SerializeField] private CameraControllerType cameraType = CameraControllerType.FollowPlayerOffset;
     [SerializeField] private Vector2 offsetThreshold;
     [SerializeField] private Vector2 offsetRadius;
     [SerializeField] private float smoothTime;
+    [SerializeField] private float threshold;
+
+    private Transform playerTransform;
+    
+    private void Awake() 
+    {
+        if (Instance != null)
+        {
+            Debug.LogError("There's more than one CameraController on the Level! "+ transform + " - " + Instance);
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
+    private void Start()
+    {
+        playerTransform = cinemachineVirtualCamera.Follow.transform;
+    }
+
     void FixedUpdate()
     {
-        Vector3 playerPosition = cinemachineVirtualCamera.Follow.transform.position;
+        switch (cameraType)
+        {
+            case CameraControllerType.FollowPlayerOffset:
+                cinemachineVirtualCamera.Follow = playerTransform;
+                FollowPlayerOffset();
+                return;
+            case CameraControllerType.FollowTargetObject:
+                cinemachineVirtualCamera.Follow = this.transform;
+                FollowTargetObject();
+                return;
+            default:
+                break;
+        }
+
+    }
+
+    private void FollowPlayerOffset()
+    {
+        Vector3 playerPosition = playerTransform.position;
         Vector3 targetPosition = MouseWorld.GetPosition();
         //Se o mouse estiver dentro dos limites, não é aplicado o offset na camera
         if (Mathf.Abs(playerPosition.x - targetPosition.x) < offsetRadius.x)
         {
             targetPosition.x = playerPosition.x;
         }
-        else 
+        else
         {
             targetPosition.x = Mathf.Clamp(targetPosition.x, playerPosition.x - offsetThreshold.x, playerPosition.x + offsetThreshold.x);
         }
@@ -26,7 +74,7 @@ public class CameraController : MonoBehaviour
         {
             targetPosition.y = playerPosition.y;
         }
-        else 
+        else
         {
             targetPosition.y = Mathf.Clamp(targetPosition.y, playerPosition.y - offsetThreshold.y, playerPosition.y + offsetThreshold.y);
         }
@@ -37,6 +85,27 @@ public class CameraController : MonoBehaviour
             cinemachineVirtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset,
             targetPosition - playerPosition,
             Time.fixedDeltaTime * smoothTime);
-        
     }
+
+    private void FollowTargetObject()
+    {
+        cinemachineVirtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = Vector3.zero;
+
+        Vector3 playerPosition = playerTransform.position;
+        Vector3 mousePosition = MouseWorld.GetPosition();
+        Vector3 targetPosition = (playerPosition + mousePosition) / 2f;
+
+        targetPosition.x = Mathf.Clamp(targetPosition.x, playerPosition.x - threshold, playerPosition.x + threshold);
+        targetPosition.y = Mathf.Clamp(targetPosition.y, playerPosition.y - threshold, playerPosition.y + threshold);
+
+        this.transform.position = Vector3.Lerp(this.transform.position, targetPosition, Time.fixedDeltaTime * smoothTime);
+
+    }
+
+    public void SetRoomBounds(PolygonCollider2D roomBounds)
+    {
+        cinemachineConfiner2D.m_BoundingShape2D = roomBounds;
+        cinemachineConfiner2D.InvalidateCache();
+    }
+
 }
