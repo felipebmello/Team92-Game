@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer sprite;
     [Header("Movement Settings")]
     [Range(5f, 20f)]
     [SerializeField] private float movementSpeed;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 smoothedMovementInput;
     private Vector2 movementInputCurrentVelocity;
     private Rigidbody2D myRigidbody;
+    private bool facingRight = true;
     [SerializeField] private float speedModifier = 1f;
 
     private void Awake() 
@@ -42,14 +44,19 @@ public class PlayerMovement : MonoBehaviour
     private void LookAtMouseWorldPosition()
     {
         Vector3 targetPosition = MouseWorld.GetPosition();
-        if (this.transform.position.x <= Input.mousePosition.x)
+        if (this.transform.position.x <= targetPosition.x && !facingRight)
         {
             //Olhar para a direita
+            sprite.gameObject.transform.Rotate(new Vector3 (0, 180, 0));
+            facingRight = true;
 
         }
-        else
+        else if (this.transform.position.x > targetPosition.x && facingRight)
         {
             //Olhar para a esquerda
+            sprite.gameObject.transform.Rotate(new Vector3 (0, 180, 0));
+            facingRight = false;
+
         }
         //Vector3 lookDir = (targetPosition - this.transform.position).normalized;
         
