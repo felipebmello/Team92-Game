@@ -37,11 +37,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        LookAtMouseWorldPosition();
+        FlipToMouseWorldPosition();
         MovePlayer();
     }
 
-    private void LookAtMouseWorldPosition()
+    private void FlipToMouseWorldPosition()
     {
         Vector3 targetPosition = MouseWorld.GetPosition();
         if (this.transform.position.x <= targetPosition.x && !facingRight)

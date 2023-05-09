@@ -10,18 +10,19 @@ public class PlayerShooting : ShootProjectile
 
     //Bug detectado, 
     protected void OnFire(InputValue value)
-    {   
-        if (!holdToShoot && value.isPressed) FireBullet();
-        else
-        {
-            buttonPressed = value.isPressed;
-        }
+    {
+        Debug.Log("Fire called"+value.GetType()+value.isPressed);
+        buttonPressed = value.isPressed;
     }
 
     protected override void Update() 
     {
         base.Update();
-        if (holdToShoot && buttonPressed) FireBullet();
+        if (buttonPressed) 
+        {
+            FireBullet();
+            if (!holdToShoot) buttonPressed = false;
+        }
     }
 
     protected override void FireBullet()

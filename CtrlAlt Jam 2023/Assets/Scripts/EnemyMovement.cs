@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer sprite;
+    [Header("Movement Settings")]
+    [Range(2f, 5f)]
     [SerializeField] float movementSpeed = 2;
+    [Range(0f, 5f)]
     [SerializeField] float stoppingDistance = 2;
     private EnemyFOV enemyFOV;
     private Transform target;
     private Rigidbody2D myRigidbody;
+    private bool facingRight = true;
     void Start()
     {
         enemyFOV = GetComponent<EnemyFOV>();
@@ -37,7 +42,30 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        FlipToTargetPosition();
         MoveEnemy();
+    }
+
+    private void FlipToTargetPosition()
+    {
+        if(target != null)
+        {
+            Vector3 targetPosition = target.position;
+            {
+                if (this.transform.position.x <= targetPosition.x && !facingRight)
+                {
+                    //Olhar para a direita
+                    sprite.gameObject.transform.Rotate(new Vector3 (0, 180, 0));
+                    facingRight = true;
+                }
+                else if (this.transform.position.x > targetPosition.x && facingRight)
+                {
+                    //Olhar para a esquerda
+                    sprite.gameObject.transform.Rotate(new Vector3 (0, 180, 0));
+                    facingRight = false;
+                }
+            }
+        }
     }
 
     private void MoveEnemy()
