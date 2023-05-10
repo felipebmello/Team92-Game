@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6804204024323978904}
   - component: {fileID: 5216321369100769282}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyBase
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpawnPoint: {fileID: 1535266670134459432}
-  bulletPrefab: {fileID: 6301440259512995250, guid: 0b8ccdf65b1c6c642a1a0f3ad79d70bc, type: 3}
+  bulletPrefab: {fileID: 6301440259512995250, guid: df00fc5ef803d26409ef2d75ec44bd33, type: 3}
   fireRate: 0.8
 --- !u!114 &7290700779012213872
 MonoBehaviour:
@@ -206,15 +206,15 @@ SpriteRenderer:
   m_SortingLayerID: -603992083
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0987c7f778e20a7458794bc39e97932f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 3.4133334, y: 3.4133334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!70 &8637843110616800973
