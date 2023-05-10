@@ -8,7 +8,7 @@ public class ShootProjectile : MonoBehaviour
     [Header("Shooting Settings")]
     [SerializeField] protected Transform bulletSpawnPoint;
     [SerializeField] protected Transform bulletPrefab;
-    [Range(0.1f, 1f)]
+    [Range(0.1f, 2f)]
     [SerializeField] protected float fireRate = 0.5f;
     protected Vector3 targetDirection;
     protected float fireTimer = 0f;

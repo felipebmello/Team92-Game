@@ -64,8 +64,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5351937155115815058, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351937155115815058, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 3291505396767566556, guid: 3ba739f69bc2a0e44aba3c6344fcd397, type: 3}
+    - target: {fileID: 7290700779012213872, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
+      propertyPath: health
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}

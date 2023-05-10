@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 352749764906185185}
   - component: {fileID: 2107683364971825784}
-  - component: {fileID: 5885369765720469939}
+  - component: {fileID: 2420231427273239409}
   m_Layer: 0
-  m_Name: SpeedPowerUp
+  m_Name: HealthPack
   m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.75
---- !u!114 &5885369765720469939
+--- !u!114 &2420231427273239409
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,10 +59,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 868023126189511769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24393f452625a7d4dbae97037b295632, type: 3}
+  m_Script: {fileID: 11500000, guid: 756af68eee5979b4a926836b38433132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedModifier: 1.25
 --- !u!1 &5997739677239256800
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +88,7 @@ Transform:
   m_GameObject: {fileID: 5997739677239256800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 352749764906185185}
@@ -136,8 +135,8 @@ SpriteRenderer:
   m_SortingLayerID: -603992083
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 119f93d0bcbf1e743bf5fcf237507d39, type: 3}
-  m_Color: {r: 0.6942958, g: 1, b: 0.3443396, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4593fb3c2b9cc0a4e869a814584738d9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
