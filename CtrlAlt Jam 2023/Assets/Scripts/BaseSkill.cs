@@ -8,7 +8,7 @@ public class BaseSkill : ScriptableObject
     [SerializeField] private new string name;
     [SerializeField] private string effect;
     [TextArea(14,10)] [SerializeField] private string description;
-    [SerializeField] private PlayerSkillset.PlayerState state;
+    [SerializeField] private PlayerController.PlayerState state;
     [Header("Movement Settings")]
     [SerializeField] private Sprite newSprite;
     [SerializeField] private float newMovementSpeed;
@@ -19,7 +19,7 @@ public class BaseSkill : ScriptableObject
     [SerializeField] private float newFireRate;
 
     public string Name { get => name; set => name = value; }
-    public PlayerSkillset.PlayerState State { get => state; set => state = value; }
+    public PlayerController.PlayerState State { get => state; set => state = value; }
     public Sprite NewSprite { get => newSprite; set => newSprite = value; }
     public float NewMovementSpeed { get => newMovementSpeed; set => newMovementSpeed = value; }
     public Transform NewBulletPrefab { get => newBulletPrefab; set => newBulletPrefab = value; }

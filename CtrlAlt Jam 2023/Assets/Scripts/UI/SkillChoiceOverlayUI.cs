@@ -10,6 +10,7 @@ public class SkillChoiceOverlayUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] skillEffect;
     [SerializeField] private TextMeshProUGUI[] skillDescription;
     [SerializeField] private Image[] skillImage;
+    [SerializeField] private Outline[] skillOutline;
 
     private BaseSkill[] skills;
 
@@ -29,6 +30,8 @@ public class SkillChoiceOverlayUI : MonoBehaviour
             skillEffect[i].text = skills[i].Effect;
             skillDescription[i].text = skills[i].Description;
             skillImage[i].sprite = skills[i].NewSprite;
+            if ((int) skills[i].State >= 2) skillOutline[i].effectColor = Color.blue;
+            else skillOutline[i].effectColor = Color.red;
         }
     }
 

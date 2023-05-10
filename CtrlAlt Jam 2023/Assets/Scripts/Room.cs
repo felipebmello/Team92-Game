@@ -6,6 +6,7 @@ using Cinemachine;
 
 public class Room : MonoBehaviour
 {
+    [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
     private PolygonCollider2D myRoomBounds;
 
     public event EventHandler<PolygonCollider2D> OnPlayerEnteringRoom;
@@ -17,7 +18,9 @@ public class Room : MonoBehaviour
     {
         if (other.tag.Equals("Player") && !other.TryGetComponent<Bullet>(out Bullet bullet))
         {
-            CameraController.Instance.SetRoomBounds(myRoomBounds);
+
+            CameraController.Instance.SetActiveCinemachineCamera(cinemachineVirtualCamera, other.transform);
+            //CameraController.Instance.SetRoomBounds(myRoomBounds);
         }
         
     }

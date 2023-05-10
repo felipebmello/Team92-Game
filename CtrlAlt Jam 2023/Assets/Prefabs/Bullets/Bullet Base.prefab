@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6339707410529258999}
   - component: {fileID: 1098685370141903136}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -603992083
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 4312159474548839168}
   - component: {fileID: 4211083534142812804}
   - component: {fileID: 3288953535711077507}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Bullet Base
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: InnocentSkill
   m_EditorClassIdentifier: 
   name: Innocent Skill
+  effect: Innocence
+  description: Innocent description
   state: 2
-  newSprite: {fileID: 21300000, guid: 527212517c5de574896858ae3d64a8b4, type: 3}
+  newSprite: {fileID: 21300000, guid: b80941b099f5cab4e8ea49a41c150764, type: 3}
   newMovementSpeed: 10
   newBulletPrefab: {fileID: 3291505396767566556, guid: ac781869f443e4d4aaef13d89b7f3450, type: 3}
   newHoldToShoot: 0

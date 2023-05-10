@@ -36,24 +36,28 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        playerTransform = cinemachineVirtualCamera.Follow.transform;
     }
 
     void FixedUpdate()
     {
-        switch (cameraType)
+        if (cinemachineVirtualCamera != null)
         {
-            case CameraControllerType.FollowPlayerOffset:
-                cinemachineVirtualCamera.Follow = playerTransform;
-                FollowPlayerOffset();
-                return;
-            case CameraControllerType.FollowTargetObject:
-                cinemachineVirtualCamera.Follow = this.transform;
-                FollowTargetObject();
-                return;
-            default:
-                break;
+            switch (cameraType)
+            {
+                case CameraControllerType.FollowPlayerOffset:
+                    cinemachineVirtualCamera.Follow = playerTransform;
+                    FollowPlayerOffset();
+                    return;
+                case CameraControllerType.FollowTargetObject:
+                    cinemachineVirtualCamera.Follow = this.transform;
+                    FollowTargetObject();
+                    return;
+                default:
+                    break;
+            }
+
         }
+        
 
     }
 
@@ -106,6 +110,19 @@ public class CameraController : MonoBehaviour
     {
         cinemachineConfiner2D.m_BoundingShape2D = roomBounds;
         cinemachineConfiner2D.InvalidateCache();
+    }
+
+    public void SetActiveCinemachineCamera (CinemachineVirtualCamera newCinemachineVirtualCamera, Transform transform)
+    {
+        if (cinemachineVirtualCamera != null)
+        {
+            cinemachineVirtualCamera.gameObject.SetActive(false);
+        }
+        this.cinemachineVirtualCamera = newCinemachineVirtualCamera;
+        this.playerTransform = transform;
+        cinemachineVirtualCamera.Follow = playerTransform;
+        cinemachineVirtualCamera.LookAt = playerTransform;
+        cinemachineVirtualCamera.gameObject.SetActive(true);
     }
 
 }
