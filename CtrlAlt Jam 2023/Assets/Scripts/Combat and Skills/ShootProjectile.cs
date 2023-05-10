@@ -8,8 +8,7 @@ public class ShootProjectile : MonoBehaviour
     [Header("Shooting Settings")]
     [SerializeField] protected Transform bulletSpawnPoint;
     [SerializeField] protected Transform bulletPrefab;
-    [Range(0.1f, 1f)]
-    [SerializeField] protected float fireRate = 0.5f;
+    protected float fireRate;
     protected Vector3 targetDirection;
     protected float fireTimer = 0f;
 
@@ -24,8 +23,7 @@ public class ShootProjectile : MonoBehaviour
             
             float angleInRadians = Mathf.Atan2(targetDirection.y, targetDirection.x);
             float angleInDegrees = angleInRadians * Mathf.Rad2Deg;
-            Debug.Log(angleInDegrees);
-            Debug.Log("Instantiate Bullet from "+gameObject.name);
+            Debug.Log(bulletPrefab);
             Transform bulletTransform = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
             bulletTransform.tag = this.tag;
             bulletTransform.Rotate(0, 0, angleInDegrees);
@@ -33,5 +31,15 @@ public class ShootProjectile : MonoBehaviour
             bullet.SetTarget(targetDirection);
             fireTimer = fireRate;
         }
+    }
+
+    public void SetBulletPrefab (Transform bulletPrefab)
+    {
+        this.bulletPrefab = bulletPrefab;
+    }
+    
+    public void SetFireRate (float fireRate)
+    {
+        this.fireRate = fireRate;
     }
 }

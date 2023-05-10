@@ -16,7 +16,6 @@ public class PlayerShooting : ShootProjectile
     //Bug detectado, 
     protected void OnFire(InputValue value)
     {
-        Debug.Log("Fire called"+value.GetType()+value.isPressed);
         buttonPressed = value.isPressed;
     }
 
@@ -35,17 +34,8 @@ public class PlayerShooting : ShootProjectile
         targetDirection = (MouseWorld.GetPosition() - this.transform.position).normalized;
         base.FireBullet();
     }
-
-    public void SetBulletPrefab (Transform bulletPrefab)
-    {
-        this.bulletPrefab = bulletPrefab;
-    }
     public void SetHoldToShoot (bool holdToShoot)
     {
         this.holdToShoot = holdToShoot;
-    }
-    public void SetFireRate (float fireRate)
-    {
-        this.fireRate = fireRate;
     }
 }

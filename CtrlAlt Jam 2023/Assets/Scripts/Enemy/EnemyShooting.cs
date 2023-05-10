@@ -7,9 +7,12 @@ public class EnemyShooting : ShootProjectile
 {
     private EnemyFOV enemyFOV;
     private Transform target;
-    void Start()
+    void Awake()
     {
         enemyFOV = GetComponent<EnemyFOV>();
+    }
+    void OnEnable()
+    {
         enemyFOV.OnSeeingTarget += EnemyFOV_OnSeeingTarget;
         enemyFOV.OnLosingTarget += EnemyFOV_OnLosingTarget;
     }

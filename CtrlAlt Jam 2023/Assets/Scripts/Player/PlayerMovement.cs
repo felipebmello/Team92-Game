@@ -8,8 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer mySpriteRenderer;
     [Header("Movement Settings")]
-    [Range(5f, 20f)]
-    [SerializeField] private float movementSpeed;
+    private float movementSpeed;
     [Range(0.05f, 0.2f)]
     [SerializeField] private float smoothTime = 0.1f;
 

@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63ef5992960b31d44b01d856d6d680de, type: 3}
-  m_Name: GoodSkill
+  m_Name: "Altru\xEDsmoSkill"
   m_EditorClassIdentifier: 
   name: "Altru\xEDsmo"
-  effect: Tiro triplo
-  description: "O triplo* de proj\xE9teis s\xE3o lan\xE7ados com um dano menor."
+  effect: <i>Tiro Triplo</i>
+  description: "O <b>triplo de proj\xE9teis</b> s\xE3o lan\xE7ados, <b>com um dano
+    menor</b>."
   state: 3
   newSprite: {fileID: 21300000, guid: 6ac3d7cd15fe86b439e0adf72cf719e9, type: 3}
   newMovementSpeed: 10

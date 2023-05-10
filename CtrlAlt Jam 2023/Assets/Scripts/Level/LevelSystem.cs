@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelSystem : MonoBehaviour
 {
     public static LevelSystem Instance { get; private set; }
     public event EventHandler<BaseSkill[]> OnSkillsOverlay;
     public event EventHandler<BaseSkill> OnChoosedSkill;
+    public event EventHandler<BaseSkill> OnNotChosenSkill;
+    public event EventHandler OnPlayerDeath;
     private void Awake() 
     {
         if (Instance != null)
@@ -27,5 +30,20 @@ public class LevelSystem : MonoBehaviour
     public void ChoosedSkill(BaseSkill skill)
     {
         OnChoosedSkill?.Invoke(this, skill);
+    }
+    
+    public void SkillNotChosen(BaseSkill skill)
+    {
+        OnNotChosenSkill?.Invoke(this, skill);
+    }
+
+    public void PlayerKilled()
+    {
+        OnPlayerDeath?.Invoke(this, EventArgs.Empty);
+    }
+    
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

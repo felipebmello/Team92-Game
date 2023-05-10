@@ -20,4 +20,5 @@ MonoBehaviour:
   newMovementSpeed: 10
   newBulletPrefab: {fileID: 3291505396767566556, guid: ac781869f443e4d4aaef13d89b7f3450, type: 3}
   newHoldToShoot: 0
-  newFireRate: 0.5
+  newFireRate: 0.9
+  healthModifier: 0.5

@@ -39,6 +39,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.38
       objectReference: {fileID: 0}
+    - target: {fileID: 2625827711563887949, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2625827711563887949, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
+      propertyPath: currentSkill
+      value: 
+      objectReference: {fileID: 11400000, guid: d53ddfbf60aa2554ba1b492b276bb9f8, type: 2}
     - target: {fileID: 3224210759110562239, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: m_Name
       value: EnemyInnocent
@@ -98,7 +106,7 @@ PrefabInstance:
     - target: {fileID: 5351937155115815058, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 3291505396767566556, guid: ac781869f443e4d4aaef13d89b7f3450, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8530881241662087552, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: movementSpeed
       value: 3

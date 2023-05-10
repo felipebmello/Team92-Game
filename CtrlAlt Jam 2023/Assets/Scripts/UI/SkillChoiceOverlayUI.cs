@@ -24,13 +24,14 @@ public class SkillChoiceOverlayUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         this.skills = skills;
+        int numberOfSkillStates = System.Enum.GetValues(typeof(SkillsetController.SkillState)).Length / 2;
         for (int i = 0; i < skills.Length; i++)
         {
             skillName[i].text = skills[i].Name;
             skillEffect[i].text = skills[i].Effect;
             skillDescription[i].text = skills[i].Description;
             skillImage[i].sprite = skills[i].NewSprite;
-            if ((int) skills[i].State >= 2) skillOutline[i].effectColor = Color.blue;
+            if ((int) skills[i].State >=  numberOfSkillStates) skillOutline[i].effectColor = Color.blue;
             else skillOutline[i].effectColor = Color.red;
         }
     }
@@ -38,11 +39,13 @@ public class SkillChoiceOverlayUI : MonoBehaviour
     public void OnSkillButton1Clicked()
     {        
         LevelSystem.Instance.ChoosedSkill(skills[0]);
+        LevelSystem.Instance.SkillNotChosen(skills[1]);
         gameObject.SetActive(false);
     }
     
     public void OnSkillButton2Clicked()
     {
+        LevelSystem.Instance.SkillNotChosen(skills[0]);
         LevelSystem.Instance.ChoosedSkill(skills[1]);
         gameObject.SetActive(false);
     }

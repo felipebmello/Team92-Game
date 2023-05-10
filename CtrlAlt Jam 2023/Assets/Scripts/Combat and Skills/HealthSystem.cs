@@ -6,7 +6,7 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     public event EventHandler OnDead;
-    public event EventHandler OnDamaged;
+    public event EventHandler<Transform> OnDamaged;
     [SerializeField] private float health = 100;
     private float healthMax;
     
@@ -15,7 +15,13 @@ public class HealthSystem : MonoBehaviour
         healthMax = health;
     }
 
-    public void Damage (float damageAmount)
+    public void ApplyHealthModifier(float healthModifier)
+    {
+        healthMax *= healthModifier;
+        health = healthMax;
+    }
+
+    public void Damage (float damageAmount, Transform other)
     {
         health -= damageAmount;
         if (health < 0)
@@ -27,12 +33,11 @@ public class HealthSystem : MonoBehaviour
         {
             Die();
         }
-        OnDamaged?.Invoke(this, EventArgs.Empty);
+        OnDamaged?.Invoke(this, other);
     }
     
     private void Die() 
     {
         OnDead?.Invoke(this, EventArgs.Empty);
-        Destroy(gameObject);
     }
 }

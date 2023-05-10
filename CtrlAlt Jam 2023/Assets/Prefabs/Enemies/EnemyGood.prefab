@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &9115367737147552010
+--- !u!1001 &9196979679879244146
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,30 +10,22 @@ PrefabInstance:
     - target: {fileID: 945187006360491067, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0987c7f778e20a7458794bc39e97932f, type: 3}
+      objectReference: {fileID: 21300000, guid: 6ac3d7cd15fe86b439e0adf72cf719e9, type: 3}
     - target: {fileID: 945187006360491067, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1535266670134459432, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 1535266670134459432, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.47
-      objectReference: {fileID: 0}
     - target: {fileID: 2625827711563887949, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: currentSkill
       value: 
-      objectReference: {fileID: 11400000, guid: 6a8a97359bb547741a715c3f1637f664, type: 2}
+      objectReference: {fileID: 11400000, guid: b1d307a62914de941aa28589afa0e0e5, type: 2}
     - target: {fileID: 2625827711563887949, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: currentState
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3224210759110562239, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: m_Name
-      value: EnemyCorrupted
+      value: EnemyGood
       objectReference: {fileID: 0}
     - target: {fileID: 4158979706666153451, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: m_RootOrder
@@ -79,21 +71,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5216321369100769282, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 5351937155115815058, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7290700779012213872, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8637843110616800973, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.71
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3291505396767566556, guid: cf5e5da6e502ee147b37df8ca2ba7dce, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}

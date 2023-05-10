@@ -5,20 +5,23 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private SpriteRenderer mySpriteRenderer;
     [Header("Movement Settings")]
-    [Range(2f, 5f)]
-    [SerializeField] float movementSpeed = 2;
     [Range(0f, 5f)]
     [SerializeField] float stoppingDistance = 2;
+    private float movementSpeed = 2;
+    [SerializeField] private float damageAmount = 0;
     private EnemyFOV enemyFOV;
     private Transform target;
     private Rigidbody2D myRigidbody;
     private bool facingRight = true;
-    void Start()
+    void Awake()
     {
         enemyFOV = GetComponent<EnemyFOV>();
         myRigidbody = GetComponent<Rigidbody2D>();
+    }
+    private void OnEnable() 
+    {
         enemyFOV.OnSeeingTarget += EnemyFOV_OnSeeingTarget;
         enemyFOV.OnLosingTarget += EnemyFOV_OnLosingTarget;
     }
@@ -27,16 +30,18 @@ public class EnemyMovement : MonoBehaviour
     {
         enemyFOV.OnSeeingTarget -= EnemyFOV_OnSeeingTarget;
         enemyFOV.OnLosingTarget -= EnemyFOV_OnLosingTarget;
+        myRigidbody.velocity = Vector3.zero;
     }
 
     private void EnemyFOV_OnSeeingTarget(object sender, Transform target)
     {
+        Debug.Log("Found target: "+target.gameObject);
         this.target = target;
     }
     
     private void EnemyFOV_OnLosingTarget(object sender, EventArgs e)
     {
-        
+        Debug.Log("Lost target!");
         target = null;
     }
 
@@ -55,13 +60,13 @@ public class EnemyMovement : MonoBehaviour
                 if (this.transform.position.x <= targetPosition.x && !facingRight)
                 {
                     //Olhar para a direita
-                    sprite.gameObject.transform.Rotate(new Vector3 (0, 180, 0));
+                    mySpriteRenderer.gameObject.transform.Rotate(new Vector3 (0, 180, 0));
                     facingRight = true;
                 }
                 else if (this.transform.position.x > targetPosition.x && facingRight)
                 {
                     //Olhar para a esquerda
-                    sprite.gameObject.transform.Rotate(new Vector3 (0, 180, 0));
+                    mySpriteRenderer.gameObject.transform.Rotate(new Vector3 (0, 180, 0));
                     facingRight = false;
                 }
             }
@@ -80,4 +85,28 @@ public class EnemyMovement : MonoBehaviour
             myRigidbody.velocity = Vector3.zero;
         }
     }
+    public void SetMovementSpeed(float movementSpeed)
+    {
+        this.movementSpeed = movementSpeed;
+    }
+    public void SetDamageAmount(float damageAmount)
+    {
+        this.damageAmount = damageAmount;
+    }
+    public void SetSprite(Sprite sprite)
+    {
+        this.mySpriteRenderer.sprite = sprite;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            if (other.gameObject.TryGetComponent<HealthSystem>(out HealthSystem healthSystem))
+            {
+                healthSystem.Damage(damageAmount, this.transform);
+            }
+        }
+    }
+
 }

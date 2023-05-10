@@ -33,12 +33,16 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.tag != this.tag)
         {
-            Debug.Log(this.tag+", "+gameObject.name+", "+gameObject.layer+" + "+other.gameObject.tag+", "+other.gameObject.name+", "+other.gameObject.layer);
             if (other.gameObject.TryGetComponent<HealthSystem>(out HealthSystem healthSystem))
             {
-                healthSystem.Damage(damageAmount);
+                healthSystem.Damage(damageAmount, this.transform);
             }
             Destroy(gameObject);
         }
+    }
+
+    public float GetDamageAmount()
+    {
+        return damageAmount;
     }
 }
