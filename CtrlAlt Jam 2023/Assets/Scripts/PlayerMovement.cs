@@ -29,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
         //Inicializando os componentes
         myRigidbody = GetComponent<Rigidbody2D>();
     }
+    private void OnDisable() 
+    {
+        myRigidbody.velocity = Vector3.zero;
+    }
+
     
     public void OnMovement(InputValue value) 
     {

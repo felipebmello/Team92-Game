@@ -6,6 +6,8 @@ public class BaseSkill : ScriptableObject
 {
     [Header("Skill Settings")]
     [SerializeField] private new string name;
+    [SerializeField] private string effect;
+    [TextArea(14,10)] [SerializeField] private string description;
     [SerializeField] private PlayerSkillset.PlayerState state;
     [Header("Movement Settings")]
     [SerializeField] private Sprite newSprite;
@@ -23,6 +25,8 @@ public class BaseSkill : ScriptableObject
     public Transform NewBulletPrefab { get => newBulletPrefab; set => newBulletPrefab = value; }
     public bool NewHoldToShoot { get => newHoldToShoot; set => newHoldToShoot = value; }
     public float NewFireRate { get => newFireRate; set => newFireRate = value; }
+    public string Description { get => description; set => description = value; }
+    public string Effect { get => effect; set => effect = value; }
 
     public virtual void Use() 
     {

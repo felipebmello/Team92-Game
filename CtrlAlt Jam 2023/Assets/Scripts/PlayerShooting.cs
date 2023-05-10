@@ -8,6 +8,11 @@ public class PlayerShooting : ShootProjectile
     [SerializeField] private bool holdToShoot = false;
     private bool buttonPressed = false;
 
+    private void OnDisable() 
+    {
+        buttonPressed = false;
+    }
+
     //Bug detectado, 
     protected void OnFire(InputValue value)
     {

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ef5992960b31d44b01d856d6d680de, type: 3}
   m_Name: GoodSkill
   m_EditorClassIdentifier: 
-  name: Good Skill
+  name: "Altru\xEDsmo"
+  effect: Tiro triplo
+  description: "O triplo* de proj\xE9teis s\xE3o lan\xE7ados com um dano menor."
   state: 3
   newSprite: {fileID: 21300000, guid: 6ac3d7cd15fe86b439e0adf72cf719e9, type: 3}
   newMovementSpeed: 10

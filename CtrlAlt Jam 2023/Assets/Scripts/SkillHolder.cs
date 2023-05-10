@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class SkillHolder : BaseCollectable
 {
-    [SerializeField] protected BaseSkill skill;
+    [SerializeField] protected BaseSkill[] skills;
     public override string GetName()
     {
-        return skill.name;
+        return "Skill List";
     }
 
     protected override void PickUp(GameObject player)
     {
-        player.gameObject.GetComponent<PlayerSkillset>().LearnNewSkill(skill);
+        LevelSystem.Instance.SkillHolderActivated(skills);
+        //player.gameObject.GetComponent<PlayerSkillset>().LearnNewSkill(skill);
     }
 }
