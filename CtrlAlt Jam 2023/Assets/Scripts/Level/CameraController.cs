@@ -34,6 +34,11 @@ public class CameraController : MonoBehaviour
         Instance = this;
     }
 
+    private void OnDisable() 
+    {
+        cinemachineVirtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = Vector3.zero;
+    }
+
     private void Start()
     {
     }
