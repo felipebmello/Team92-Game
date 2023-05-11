@@ -38,16 +38,16 @@ public class SkillChoiceOverlayUI : MonoBehaviour
 
     public void OnSkillButton1Clicked()
     {        
+        gameObject.SetActive(false);
         LevelSystem.Instance.ChoosedSkill(skills[0]);
         LevelSystem.Instance.SkillNotChosen(skills[1]);
-        gameObject.SetActive(false);
     }
     
     public void OnSkillButton2Clicked()
     {
+        gameObject.SetActive(false);
         LevelSystem.Instance.SkillNotChosen(skills[0]);
         LevelSystem.Instance.ChoosedSkill(skills[1]);
-        gameObject.SetActive(false);
     }
 
 }

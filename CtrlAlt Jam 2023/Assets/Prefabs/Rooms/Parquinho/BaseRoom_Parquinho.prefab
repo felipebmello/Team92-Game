@@ -51,6 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a92a55bdcc1b28429ac10f16344d840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomExitSFX: {fileID: 8300000, guid: 0bbc8d3191412a74f829b134f97c347f, type: 3}
+  roomExitSFXVolume: 0.75
   cinemachineVirtualCamera: {fileID: 8990175239296494790}
 --- !u!60 &1625815772927213083
 PolygonCollider2D:
@@ -295,7 +297,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2186654182359278995, guid: 120adc9830aa3d3468b364d3eea32aed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.11
+      value: -9.97
       objectReference: {fileID: 0}
     - target: {fileID: 2186654182359279020, guid: 120adc9830aa3d3468b364d3eea32aed, type: 3}
       propertyPath: m_SortingLayer
@@ -375,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2186654183281931068, guid: 120adc9830aa3d3468b364d3eea32aed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.11
+      value: -9.97
       objectReference: {fileID: 0}
     - target: {fileID: 2186654183281931068, guid: 120adc9830aa3d3468b364d3eea32aed, type: 3}
       propertyPath: m_LocalPosition.y

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5173126287437070718}
   - component: {fileID: 6804204024323978904}
   - component: {fileID: 5216321369100769282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyBase
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -55,6 +55,8 @@ MonoBehaviour:
   currentState: 2
   currentSkill: {fileID: 0}
   allStates: 
+  objectHitSFX: {fileID: 8300000, guid: 09fdd447789004b4d825f71d518ae47f, type: 3}
+  controllerSFXVolume: 0.4
   isAffectedByPlayerChoice: 0
 --- !u!114 &8530881241662087552
 MonoBehaviour:
@@ -98,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawnPoint: {fileID: 1535266670134459432}
   bulletPrefab: {fileID: 6301440259512995250, guid: df00fc5ef803d26409ef2d75ec44bd33, type: 3}
+  shootingSFX: {fileID: 8300000, guid: 8118cc7b89f4c164492aea1a0ec9ae0d, type: 3}
+  shootingSFXVolume: 0.75
 --- !u!114 &7290700779012213872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +176,7 @@ GameObject:
   - component: {fileID: 1274075159721608830}
   - component: {fileID: 945187006360491067}
   - component: {fileID: 8637843110616800973}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Corpo
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -272,7 +276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1535266670134459432}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}

@@ -11,6 +11,10 @@ public class ShootProjectile : MonoBehaviour
     protected float fireRate;
     protected Vector3 targetDirection;
     protected float fireTimer = 0f;
+    
+    [Header("Shooting SFX Settings")]
+    [SerializeField] protected AudioClip shootingSFX;
+    [SerializeField] float shootingSFXVolume = 0.75f;
 
     protected virtual void Update() 
     {
@@ -24,8 +28,12 @@ public class ShootProjectile : MonoBehaviour
             float angleInRadians = Mathf.Atan2(targetDirection.y, targetDirection.x);
             float angleInDegrees = angleInRadians * Mathf.Rad2Deg;
             Debug.Log(bulletPrefab);
+            
+            AudioSource.PlayClipAtPoint(shootingSFX, AudioManager.Instance.GetAudioListener().transform.position, shootingSFXVolume);
+
             Transform bulletTransform = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
             bulletTransform.tag = this.tag;
+            bulletTransform.gameObject.layer = this.gameObject.layer;
             bulletTransform.Rotate(0, 0, angleInDegrees);
             Bullet bullet = bulletTransform.GetComponent<Bullet>();
             bullet.SetTarget(targetDirection);

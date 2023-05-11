@@ -17,6 +17,8 @@ public abstract class SkillsetController : MonoBehaviour
     [SerializeField] protected SkillState currentState = SkillState.Innocent;
     [SerializeField] protected BaseSkill currentSkill;
     [SerializeField] protected List<SkillState> allStates = new List<SkillState>();
+    [SerializeField] protected AudioClip objectHitSFX;
+    [SerializeField] protected float controllerSFXVolume = 0.75f;
     protected HealthSystem healthSystem;
     protected HitKnockback hitKnockback;
 
@@ -41,6 +43,7 @@ public abstract class SkillsetController : MonoBehaviour
     
     protected void HealthSystem_OnDamaged(object sender, Transform other)
     {
+        AudioSource.PlayClipAtPoint(objectHitSFX, AudioManager.Instance.GetAudioListener().transform.position, controllerSFXVolume);
         hitKnockback.ObjectHit(other);
     }
 

@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ef5992960b31d44b01d856d6d680de, type: 3}
   m_Name: EvilSkill
   m_EditorClassIdentifier: 
-  name: Evil Skill
-  effect: Evilness
-  description: Placeholder evilish text
-  state: 0
-  newSprite: {fileID: 21300000, guid: 9bf47ab4f254c0049acc3a8f10fef332, type: 3}
+  name: IntrovertidoSkill
+  effect: <i>Invisibilidade</i>
+  description: "<b>Visibilidade dos inimigos reduzida</b> e chande ficar <b>invis\xEDvel</b>."
+  state: 1
+  newSprite: {fileID: 21300000, guid: 0987c7f778e20a7458794bc39e97932f, type: 3}
   newMovementSpeed: 8
   newBulletPrefab: {fileID: 3291505396767566556, guid: d31b9870ca0bfba46aa1ea34118af5f1, type: 3}
   newHoldToShoot: 0
   newFireRate: 0.3
+  healthModifier: 1

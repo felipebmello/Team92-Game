@@ -7,12 +7,19 @@ public class PlayerController : SkillsetController
 {
     private PlayerMovement playerMovement;
     private PlayerShooting playerShooting;
+    private Animator skillUpAnimator;
+    [SerializeField] private float skillUpAnimationTimer;
+    [SerializeField] protected AudioClip playerSkillUpSFX;
+    [SerializeField] protected AudioClip playerDeathSFX;
 
     protected override void Start() 
     {
+        skillUpAnimator = this.gameObject.GetComponentInChildren<Animator>();
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         playerShooting = this.gameObject.GetComponent<PlayerShooting>();
         base.Start();
+        playerMovement.SetSprite(currentSkill.NewSprite);
+        TogglePlayerBehaviour(true);
         LevelSystem.Instance.OnChoosedSkill += LevelSystem_OnChoosedSkill;
     }
     protected override void OnDisable() 
@@ -28,6 +35,8 @@ public class PlayerController : SkillsetController
     protected void LevelSystem_OnChoosedSkill (object sender, BaseSkill skill)
     {
         LearnNewSkill(skill);
+        
+        StartCoroutine(SkillUpEffects(skill));
     }
 
 
@@ -37,6 +46,7 @@ public class PlayerController : SkillsetController
         Debug.Log(gameObject+" is dead!");
         TogglePlayerBehaviour(false);
         LevelSystem.Instance.PlayerKilled();
+        AudioSource.PlayClipAtPoint(playerDeathSFX, AudioManager.Instance.GetAudioListener().transform.position, controllerSFXVolume);
         Destroy(gameObject, 1f);
     }
 
@@ -51,12 +61,8 @@ public class PlayerController : SkillsetController
 
     public override void LearnNewSkill (BaseSkill skill)
     {
-        TogglePlayerBehaviour(true);
-
         base.LearnNewSkill(skill);
-
         playerMovement.SetMovementSpeed(skill.NewMovementSpeed);
-        playerMovement.SetSprite(skill.NewSprite);
         playerShooting.SetBulletPrefab(skill.NewBulletPrefab);
         playerShooting.SetHoldToShoot(skill.NewHoldToShoot);
         playerShooting.SetFireRate(skill.NewFireRate);
@@ -64,5 +70,17 @@ public class PlayerController : SkillsetController
     
     private void OnQuit() {
         Application.Quit();
+    }
+
+    public IEnumerator SkillUpEffects(BaseSkill skill)
+    {
+        int numberOfSkillStates = System.Enum.GetValues(typeof(SkillsetController.SkillState)).Length / 2;
+        if ((int) skill.State >= numberOfSkillStates) skillUpAnimator.SetTrigger("GoodTrigger");
+        else skillUpAnimator.SetTrigger("EvilTrigger");
+        AudioSource.PlayClipAtPoint(playerSkillUpSFX, AudioManager.Instance.GetAudioListener().transform.position, controllerSFXVolume);
+        yield return new WaitForSeconds(1f);
+        playerMovement.SetSprite(skill.NewSprite);
+        TogglePlayerBehaviour(true);
+
     }
 }

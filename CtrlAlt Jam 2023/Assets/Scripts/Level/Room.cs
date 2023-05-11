@@ -6,6 +6,10 @@ using Cinemachine;
 
 public class Room : MonoBehaviour
 {
+    
+    [Header("Room Exit SFX Settings")]
+    [SerializeField] protected AudioClip roomExitSFX;
+    [SerializeField] float roomExitSFXVolume = 0.75f;
     [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
     private PolygonCollider2D myRoomBounds;
 
@@ -20,6 +24,15 @@ public class Room : MonoBehaviour
         {
 
             CameraController.Instance.SetActiveCinemachineCamera(cinemachineVirtualCamera, other.transform);
+            //CameraController.Instance.SetRoomBounds(myRoomBounds);
+        }
+        
+    }
+    private void OnTriggerExit2D(Collider2D other) 
+    {
+        if (other.tag.Equals("Player") && !other.TryGetComponent<Bullet>(out Bullet bullet))
+        {
+            AudioSource.PlayClipAtPoint(roomExitSFX, AudioManager.Instance.GetAudioListener().transform.position, roomExitSFXVolume);
             //CameraController.Instance.SetRoomBounds(myRoomBounds);
         }
         

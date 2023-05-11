@@ -14,6 +14,7 @@ public class EnemyController : SkillsetController
         enemyMovement = this.gameObject.GetComponent<EnemyMovement>();
         enemyShooting = this.gameObject.GetComponent<EnemyShooting>();
         if (currentState == SkillState.Innocent && !isAffectedByPlayerChoice) enemyShooting = null;
+        else ToggleEnemyBehaviour(true);
         base.Start();
         LevelSystem.Instance.OnNotChosenSkill += LevelSystem_OnNotChosenSkill;
     }
@@ -24,18 +25,14 @@ public class EnemyController : SkillsetController
     }
     protected override void LevelSystem_OnSkillsOverlay (object sender, BaseSkill[] skills)
     {
-        if (enemyMovement == null) Debug.Log(this);
-        else ToggleEnemyBehaviour(false);
+        ToggleEnemyBehaviour(false);
     }
     protected void LevelSystem_OnNotChosenSkill (object sender, BaseSkill skill)
     {
-        if (enemyMovement == null) Debug.Log(this);
-        else
-        {   ToggleEnemyBehaviour(true);
-            if (isAffectedByPlayerChoice) 
-            {
-                LearnNewSkill(skill);
-            }
+        ToggleEnemyBehaviour(true);
+        if (isAffectedByPlayerChoice) 
+        {
+            LearnNewSkill(skill);
         }
     }
         

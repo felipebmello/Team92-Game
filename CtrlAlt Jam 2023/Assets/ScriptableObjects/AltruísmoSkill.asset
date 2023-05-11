@@ -22,3 +22,4 @@ MonoBehaviour:
   newBulletPrefab: {fileID: 3291505396767566556, guid: cf5e5da6e502ee147b37df8ca2ba7dce, type: 3}
   newHoldToShoot: 1
   newFireRate: 0.3
+  healthModifier: 1
