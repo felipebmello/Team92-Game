@@ -36,13 +36,14 @@ public class Room : MonoBehaviour
 
     private void PopulateEnemyList()
     {
+        enemyList = new List<Transform>();
         foreach (EnemyController enemyController in enemyContainer.GetComponentsInChildren<EnemyController>())
         {
             enemyList.Add(enemyController.transform);
-            enemyController.GetHealthSystem().OnDead += EnemyController_GetHealthSystem_OnDead;
         }
     }
 
+    
     private void CheckForSkillHolder()
     {
         foreach (SkillHolder skillHolder in collectableContainer.GetComponentsInChildren<SkillHolder>())
@@ -73,24 +74,18 @@ public class Room : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other) 
     {
-
-        if (other.tag.Equals("Player") && !other.TryGetComponent<Bullet>(out Bullet bullet))
+        if (!other.TryGetComponent<Bullet>(out Bullet bullet))
         {
-            playerLeftRoom = true;
-            AudioSource.PlayClipAtPoint(roomExitSFX, AudioManager.Instance.GetAudioListener().transform.position, roomExitSFXVolume);
-            //CameraController.Instance.SetRoomBounds(myRoomBounds);
+            if (other.tag.Equals("Player"))
+            {
+                playerLeftRoom = true;
+                AudioSource.PlayClipAtPoint(roomExitSFX, AudioManager.Instance.GetAudioListener().transform.position, roomExitSFXVolume);
+                //CameraController.Instance.SetRoomBounds(myRoomBounds);
+            }
         }
-        
+        enemyList.Remove(other.gameObject.transform);
+        StartCoroutine(CheckEnemyList());
         enemyList.RemoveAll(enemy => enemy == null);
-    }
-
-    private void EnemyController_GetHealthSystem_OnDead (object sender, EventArgs e)
-    {
-        HealthSystem health = sender as HealthSystem;
-        enemyList.Remove(health.transform);
-        Debug.Log(gameObject+" aware of death of "+health);
-        enemyList.RemoveAll(enemy => enemy == null);
-        if (enemyList.Count == 0) StartCoroutine(OpenAllDoors());
     }
 
     
@@ -109,5 +104,12 @@ public class Room : MonoBehaviour
         yield return new WaitForSeconds(2f);
         OnAllEnemiesDead?.Invoke(this, EventArgs.Empty);
         if (levelExit != null) levelExit.gameObject.SetActive(true);
+    }
+    
+    public IEnumerator CheckEnemyList()
+    {
+        yield return new WaitForSeconds(1.5f);
+        enemyList.RemoveAll(enemy => enemy == null);
+        if (enemyList.Count == 0) StartCoroutine(OpenAllDoors());
     }
 }

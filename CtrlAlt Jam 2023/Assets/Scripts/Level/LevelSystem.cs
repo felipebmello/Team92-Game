@@ -44,7 +44,8 @@ public class LevelSystem : MonoBehaviour
     
     public void EnterNextLevel()
     {
-        RestartScene();
+        if (SceneManager.GetActiveScene().buildIndex == 0) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        else SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
     }
 
     public void RestartScene()
