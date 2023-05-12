@@ -95,6 +95,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5173126287437070718, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
+      propertyPath: thrust
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5216321369100769282, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: m_Offset.y
       value: 0.51

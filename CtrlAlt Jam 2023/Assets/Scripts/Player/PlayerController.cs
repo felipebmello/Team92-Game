@@ -11,6 +11,7 @@ public class PlayerController : SkillsetController
     [SerializeField] private float skillUpAnimationTimer;
     [SerializeField] protected AudioClip playerSkillUpSFX;
     [SerializeField] protected AudioClip playerDeathSFX;
+    public SkillState CurrentState => currentState;
 
     protected override void Start() 
     {
