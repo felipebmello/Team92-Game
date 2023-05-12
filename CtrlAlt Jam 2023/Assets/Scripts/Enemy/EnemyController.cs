@@ -14,7 +14,7 @@ public class EnemyController : SkillsetController
     {
         enemyMovement = this.gameObject.GetComponent<EnemyMovement>();
         enemyShooting = this.gameObject.GetComponent<EnemyShooting>();
-        if (currentState == SkillState.Innocent && !isAffectedByPlayerChoice) enemyShooting = null;
+        if (currentState == KarmaState.Innocent && !isAffectedByPlayerChoice) enemyShooting = null;
         else ToggleEnemyBehaviour(true);
         base.Start();
         LevelSystem.Instance.OnNotChosenSkill += LevelSystem_OnNotChosenSkill;

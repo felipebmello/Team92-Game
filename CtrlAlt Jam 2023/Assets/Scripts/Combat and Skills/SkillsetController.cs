@@ -5,18 +5,22 @@ using UnityEngine;
 
 public abstract class SkillsetController : MonoBehaviour
 {
-    public enum SkillState
+    public enum KarmaState
     {
-        Evil,
-        Corrupt,
-        Innocent,
-        Good,
-        Enlightned
+        Evil,           //0
+        Corrupt,        //1
+        Malicious,      //2
+        TooInnocent,    //3
+        Innocent,       //4
+        Enlightned,     //5
+        Virtuous,       //6
+        Good,           //7
+        Angel         //8
     }
     
-    [SerializeField] protected SkillState currentState = SkillState.Innocent;
+    [SerializeField] protected KarmaState currentState = KarmaState.Innocent;
     [SerializeField] protected BaseSkill currentSkill;
-    [SerializeField] protected List<SkillState> allStates = new List<SkillState>();
+    [SerializeField] protected List<KarmaState> allStates = new List<KarmaState>();
     [SerializeField] protected AudioClip objectHitSFX;
     [SerializeField] protected float controllerSFXVolume = 0.75f;
     protected HealthSystem healthSystem;
@@ -51,39 +55,79 @@ public abstract class SkillsetController : MonoBehaviour
 
     public virtual void LearnNewSkill (BaseSkill skill)
     {
-        //CheckCurrentState(skill);
-        currentState = skill.State;
+        CheckCurrentKarmaState(skill);
         currentSkill = skill;
         healthSystem.ApplyHealthModifier(skill.HealthModifier);
         allStates.Add(currentState);
     }
 
-    private void CheckCurrentState(BaseSkill skill)
+    private void CheckCurrentKarmaState(BaseSkill skill)
     {
         switch (currentState)
         {
-            case SkillState.Evil:
+            case KarmaState.Corrupt:
                 switch (skill.State)
                 {
-                    case SkillState.Evil:
-                        currentState = SkillState.Corrupt;
+                    case BaseSkill.SkillState.BadKarma:
+                        currentState = KarmaState.Evil;
                         return;
-                    case SkillState.Good:
-                        currentState = SkillState.Innocent;
+                    case BaseSkill.SkillState.GoodKarma:
+                        currentState = KarmaState.Innocent;
                         return;
                 }
                 return;
-            case SkillState.Innocent:
-                currentState = skill.State;
-                return;
-            case SkillState.Good:
+            case KarmaState.Malicious:
                 switch (skill.State)
                 {
-                    case SkillState.Evil:
-                        currentState = SkillState.Innocent;
+                    case BaseSkill.SkillState.BadKarma:
+                        currentState = KarmaState.Corrupt;
                         return;
-                    case SkillState.Good:
-                        currentState = SkillState.Enlightned;
+                    case BaseSkill.SkillState.GoodKarma:
+                        currentState = KarmaState.Innocent;
+                        return;
+                }
+                return;
+            case KarmaState.TooInnocent:
+                switch (skill.State)
+                {
+                    case BaseSkill.SkillState.BadKarma:
+                        currentState = KarmaState.Malicious;
+                        return;
+                    case BaseSkill.SkillState.GoodKarma:
+                        currentState = KarmaState.Virtuous;
+                        return;
+                }
+                return;
+            case KarmaState.Innocent:
+                switch (skill.State)
+                {
+                    case BaseSkill.SkillState.BadKarma:
+                        currentState = KarmaState.Corrupt;
+                        return;
+                    case BaseSkill.SkillState.GoodKarma:
+                        currentState = KarmaState.Good;
+                        return;
+                }
+                return;
+            case KarmaState.Virtuous:
+                switch (skill.State)
+                {
+                    case BaseSkill.SkillState.BadKarma:
+                        currentState = KarmaState.Corrupt;
+                        return;
+                    case BaseSkill.SkillState.GoodKarma:
+                        currentState = KarmaState.Good;
+                        return;
+                }
+                return;
+            case KarmaState.Good:
+                switch (skill.State)
+                {
+                    case BaseSkill.SkillState.BadKarma:
+                        currentState = KarmaState.Innocent;
+                        return;
+                    case BaseSkill.SkillState.GoodKarma:
+                        currentState = KarmaState.Angel;
                         return;
                 }
                 return;

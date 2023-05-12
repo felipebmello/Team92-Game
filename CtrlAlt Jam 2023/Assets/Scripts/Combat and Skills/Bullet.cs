@@ -7,9 +7,11 @@ public class Bullet : MonoBehaviour
     [Header("Bullet Settings")]
     [Range(1f, 15f)]
     [SerializeField] private float speed;
-    [SerializeField] private float damageAmount = 100f;
+    private float damageAmount = 100f;
     [Range(1f, 10f)]
     [SerializeField] private float lifetime;
+    [SerializeField] private Transform bulletHitPrefab;
+    [SerializeField] SkillsetController.KarmaState bulletState;
 
     private Vector3 direction;
     private Rigidbody2D myRigidbody;
@@ -37,6 +39,9 @@ public class Bullet : MonoBehaviour
             {
                 healthSystem.Damage(damageAmount, this.transform);
             }
+            Transform bulletHitTransform = Instantiate(bulletHitPrefab, this.transform.position, this.transform.rotation);
+            BulletHit bulletHit = bulletHitTransform.GetComponent<BulletHit>();
+            bulletHit.SetBulletState(bulletState);
             Destroy(gameObject);
         }
     }

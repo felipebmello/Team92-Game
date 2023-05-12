@@ -24,7 +24,7 @@ public class SkillChoiceOverlayUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         this.skills = skills;
-        int numberOfSkillStates = System.Enum.GetValues(typeof(SkillsetController.SkillState)).Length / 2;
+        int numberOfSkillStates = System.Enum.GetValues(typeof(SkillsetController.KarmaState)).Length / 2;
         for (int i = 0; i < skills.Length; i++)
         {
             skillName[i].text = skills[i].Name;

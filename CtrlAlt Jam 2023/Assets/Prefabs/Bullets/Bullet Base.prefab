@@ -132,8 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  damageAmount: 50
   lifetime: 1
+  bulletHitPrefab: {fileID: 5676698320028114425, guid: 335de032491bfb4479b56763649ad8fc, type: 3}
+  bulletState: 3
 --- !u!50 &4211083534142812804
 Rigidbody2D:
   serializedVersion: 4

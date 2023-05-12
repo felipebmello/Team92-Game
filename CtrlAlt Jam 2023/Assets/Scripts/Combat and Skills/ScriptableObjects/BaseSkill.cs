@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class BaseSkill : ScriptableObject
 {
+    public enum SkillState
+    {
+        BadKarma,           //0
+        Enlightment,        //1
+        GoodKarma,      //2
+    }
+
     [Header("Skill Settings")]
     [SerializeField] private new string name;
     [SerializeField] private string effect;
     [TextArea(14,10)] [SerializeField] private string description;
-    [SerializeField] private PlayerController.SkillState state;
+    [SerializeField] private SkillState state;
     [Header("Movement Settings")]
     [SerializeField] private Sprite newSprite;
     [Range(6f, 18f)]
@@ -22,7 +29,7 @@ public class BaseSkill : ScriptableObject
     [SerializeField] private float healthModifier = 1f;
 
     public string Name { get => name; set => name = value; }
-    public PlayerController.SkillState State { get => state; set => state = value; }
+    public SkillState State { get => state; set => state = value; }
     public Sprite NewSprite { get => newSprite; set => newSprite = value; }
     public float NewMovementSpeed { get => newMovementSpeed; set => newMovementSpeed = value; }
     public Transform NewBulletPrefab { get => newBulletPrefab; set => newBulletPrefab = value; }

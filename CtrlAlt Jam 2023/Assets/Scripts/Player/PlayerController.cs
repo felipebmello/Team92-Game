@@ -75,7 +75,7 @@ public class PlayerController : SkillsetController
 
     public IEnumerator SkillUpEffects(BaseSkill skill)
     {
-        int numberOfSkillStates = System.Enum.GetValues(typeof(SkillsetController.SkillState)).Length / 2;
+        int numberOfSkillStates = System.Enum.GetValues(typeof(SkillsetController.KarmaState)).Length / 2;
         if ((int) skill.State >= numberOfSkillStates) skillUpAnimator.SetTrigger("GoodTrigger");
         else skillUpAnimator.SetTrigger("EvilTrigger");
         AudioSource.PlayClipAtPoint(playerSkillUpSFX, AudioManager.Instance.GetAudioListener().transform.position, controllerSFXVolume);
