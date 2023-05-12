@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyController : SkillsetController
 {
     [SerializeField] private bool isAffectedByPlayerChoice = false;
+    [SerializeField] private bool isStrongVariant = false;
     private EnemyMovement enemyMovement;
     private EnemyShooting enemyShooting;
 
@@ -49,20 +50,32 @@ public class EnemyController : SkillsetController
         enemyMovement.enabled = toggle;
         if (enemyShooting != null) enemyShooting.enabled = toggle;
     }
+
     public override void LearnNewSkill (BaseSkill skill)
     {
         base.LearnNewSkill(skill);
-        enemyMovement.SetMovementSpeed(skill.NewMovementSpeed/3);
+        float strongVariantModifier = 1;
+        if (isStrongVariant) 
+        {
+            strongVariantModifier = 3;
+        }
+        healthSystem.ApplyHealthModifier(strongVariantModifier);
+        enemyMovement.SetMovementSpeed(skill.NewMovementSpeed / 3);
         enemyMovement.SetSprite(skill.NewSprite);
         if (enemyShooting != null)
         {
             enemyShooting.SetBulletPrefab(skill.NewBulletPrefab);
-            enemyShooting.SetFireRate(skill.NewFireRate);
+            enemyShooting.SetFireRate(skill.NewFireRate / strongVariantModifier);
         }
         else 
         {
             enemyMovement.SetDamageAmount(skill.NewBulletPrefab.GetComponent<Bullet>().GetDamageAmount());
         }
+    }
+
+    public HealthSystem GetHealthSystem()
+    {
+        return healthSystem;
     }
 
 }

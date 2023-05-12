@@ -42,6 +42,11 @@ public class LevelSystem : MonoBehaviour
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
     }
     
+    public void EnterNextLevel()
+    {
+        RestartScene();
+    }
+
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

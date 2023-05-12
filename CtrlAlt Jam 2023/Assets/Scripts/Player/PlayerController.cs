@@ -31,6 +31,7 @@ public class PlayerController : SkillsetController
     protected override void LevelSystem_OnSkillsOverlay (object sender, BaseSkill[] skills)
     {
         TogglePlayerBehaviour(false);
+        CameraController.Instance.ClearPlayerOffset();
     }
     protected void LevelSystem_OnChoosedSkill (object sender, BaseSkill skill)
     {

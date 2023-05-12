@@ -34,11 +34,6 @@ public class CameraController : MonoBehaviour
         Instance = this;
     }
 
-    private void OnDisable() 
-    {
-        cinemachineVirtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = Vector3.zero;
-    }
-
     private void Start()
     {
     }
@@ -128,6 +123,11 @@ public class CameraController : MonoBehaviour
         cinemachineVirtualCamera.Follow = playerTransform;
         cinemachineVirtualCamera.LookAt = playerTransform;
         cinemachineVirtualCamera.gameObject.SetActive(true);
+    }
+
+    public void ClearPlayerOffset()
+    {
+        cinemachineVirtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = Vector3.zero;
     }
 
 }

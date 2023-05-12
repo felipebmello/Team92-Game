@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7290700779012213872}
   - component: {fileID: 5173126287437070718}
   - component: {fileID: 6804204024323978904}
-  - component: {fileID: 5216321369100769282}
+  - component: {fileID: 8899523711175607550}
   m_Layer: 6
   m_Name: EnemyBase
   m_TagString: Enemy
@@ -58,6 +58,7 @@ MonoBehaviour:
   objectHitSFX: {fileID: 8300000, guid: 09fdd447789004b4d825f71d518ae47f, type: 3}
   controllerSFXVolume: 0.4
   isAffectedByPlayerChoice: 0
+  isStrongVariant: 0
 --- !u!114 &8530881241662087552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sightRange: 15
+  sightCollider: {fileID: 0}
 --- !u!114 &5351937155115815058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +151,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &5216321369100769282
+--- !u!58 &8899523711175607550
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,7 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1274075159721608830}
   - component: {fileID: 945187006360491067}
-  - component: {fileID: 8637843110616800973}
+  - component: {fileID: 7606109200677323577}
   m_Layer: 6
   m_Name: Corpo
   m_TagString: Enemy
@@ -251,7 +253,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!70 &8637843110616800973
+--- !u!70 &7606109200677323577
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

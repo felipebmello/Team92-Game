@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - PowerUp
+  - Exit
   layers:
   - Default
   - TransparentFX
@@ -49,12 +50,15 @@ TagManager:
   - name: Walls
     uniqueID: 2333975971
     locked: 0
-  - name: Doors
-    uniqueID: 4234337433
+  - name: DoorShadow
+    uniqueID: 1177099011
     locked: 0
   - name: Foreground
     uniqueID: 3690975213
     locked: 0
   - name: Effects
     uniqueID: 3667820227
+    locked: 0
+  - name: Doors
+    uniqueID: 4234337433
     locked: 0
