@@ -20,5 +20,5 @@ MonoBehaviour:
     menor</b>."
   newMovementSpeed: 12
   newHoldToShoot: 1
-  newFireRate: 0.3
-  healthModifier: 1
+  newFireRate: 0.6
+  healthModifier: 1.25

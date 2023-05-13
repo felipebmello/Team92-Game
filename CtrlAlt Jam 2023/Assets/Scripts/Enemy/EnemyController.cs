@@ -10,6 +10,7 @@ public class EnemyController : SkillsetController
     private EnemyMovement enemyMovement;
     private EnemyShooting enemyShooting;
 
+    
     protected override void Start() 
     {
         enemyMovement = this.gameObject.GetComponent<EnemyMovement>();
@@ -37,11 +38,9 @@ public class EnemyController : SkillsetController
             LearnNewSkill(skill);
         }
     }
-        
 
     protected override void HealthSystem_OnDead(object sender, EventArgs e)
     {
-        isDead = true;
         //Executar comportamento ao morrer, mover player para trás
         ToggleEnemyBehaviour(false);
         Destroy(this.gameObject, 0.25f);
@@ -58,7 +57,7 @@ public class EnemyController : SkillsetController
         float strongVariantModifier = 1f;
         if (isStrongVariant) 
         {
-            strongVariantModifier = 3;
+            strongVariantModifier = 1.5f;
         }
         if (currentState == KarmaScriptableObject.KarmaState.TooInnocent) strongVariantModifier = 0.5f;
         healthSystem.ApplyHealthModifier(strongVariantModifier);
@@ -67,7 +66,8 @@ public class EnemyController : SkillsetController
         if (enemyShooting != null)
         {
             enemyShooting.SetBulletPrefab(currentKarmaScrObj.NewBulletPrefab);
-            enemyShooting.SetFireRate(skill.NewFireRate / strongVariantModifier);
+            enemyShooting.SetFireRate(skill.NewFireRate);
+            enemyShooting.ApplyFireRateModifier(strongVariantModifier);
         }
         else 
         {
@@ -77,10 +77,12 @@ public class EnemyController : SkillsetController
     
     protected override void SaveSkillsetData()
     {
+        Debug.Log(savedData);
         base.SaveSkillsetData();
         savedData.MovementSpeed = enemyMovement.GetMovementSpeed();
         savedData.BulletPrefab = enemyShooting.GetBulletPrefab();
         savedData.FireRate = enemyShooting.GetFireRate();
+        Debug.Log(enemyShooting.GetFireRate());
     }
 
     protected override void LoadSkillsetData()
@@ -88,12 +90,13 @@ public class EnemyController : SkillsetController
         float strongVariantModifier = 1f;
         if (isStrongVariant) 
         {
-            strongVariantModifier = 3;
+            strongVariantModifier = 1.5f;
         }
         base.LoadSkillsetData();
         enemyMovement.SetMovementSpeed(savedData.CurrentSkill.NewMovementSpeed / 2);
         enemyShooting.SetBulletPrefab(savedData.CurrentKarmaScrObj.NewBulletPrefab);
-        enemyShooting.SetFireRate(savedData.CurrentSkill.NewFireRate / strongVariantModifier);
+        enemyShooting.SetFireRate(savedData.CurrentSkill.NewFireRate);
+        enemyShooting.ApplyFireRateModifier(strongVariantModifier);
     }
 
     public HealthSystem GetHealthSystem()

@@ -8,16 +8,21 @@ public class ShootProjectile : MonoBehaviour
     [Header("Shooting Settings")]
     [SerializeField] protected Transform bulletSpawnPoint;
     [SerializeField] protected Transform bulletPrefab;
-    protected float fireRate;
-    protected Vector3 targetDirection;
+    [SerializeField] protected float fireRate = 1f;
+
+    [SerializeField] protected float fireRateModifier = 1f;
+    [SerializeField] protected Vector3 targetDirection;
     protected float fireTimer = 0f;
     
     [Header("Shooting SFX Settings")]
     [SerializeField] protected AudioClip shootingSFX;
     [SerializeField] float shootingSFXVolume = 0.75f;
+    [SerializeField] private float bulletDamage;
+    
 
     protected virtual void Update() 
     {
+        bulletDamage = bulletPrefab.GetComponent<Bullet>().GetDamageAmount();
         fireTimer -= Time.deltaTime;
     }
     protected virtual void FireBullet()
@@ -37,8 +42,13 @@ public class ShootProjectile : MonoBehaviour
             bulletTransform.Rotate(0, 0, angleInDegrees);
             Bullet bullet = bulletTransform.GetComponent<Bullet>();
             bullet.SetTarget(targetDirection);
-            fireTimer = fireRate;
+            fireTimer = (fireRate / fireRateModifier);
         }
+    }
+
+    public void ApplyFireRateModifier (float modifier)
+    {
+        fireRateModifier = modifier;
     }
 
     public void SetBulletPrefab (Transform bulletPrefab)

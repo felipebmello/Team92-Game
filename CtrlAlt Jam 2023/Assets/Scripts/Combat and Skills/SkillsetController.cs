@@ -17,10 +17,14 @@ public abstract class SkillsetController : MonoBehaviour
     [SerializeField] protected float controllerSFXVolume = 0.75f;
     protected HealthSystem healthSystem;
     protected HitKnockback hitKnockback;
-    protected bool isDead = false;
+    protected bool isPlayerDead = false;
 
     protected virtual void OnDestroy() {
-        if (savedData != null && !isDead) SaveSkillsetData();
+        if (savedData != null && !isPlayerDead) 
+        {
+            Debug.Log(savedData);
+            SaveSkillsetData();
+        }
     }
 
     protected virtual void Start() 
@@ -30,6 +34,7 @@ public abstract class SkillsetController : MonoBehaviour
         if (savedData != null) 
         {
             LoadSkillsetData();
+            savedData.SetLastData();
             healthSystem.ApplyHealthModifier(currentSkill.HealthModifier);
             GetKarmaObject();
         }    
@@ -37,6 +42,8 @@ public abstract class SkillsetController : MonoBehaviour
         healthSystem.OnDamaged += HealthSystem_OnDamaged;
         healthSystem.OnDead += HealthSystem_OnDead;
         LevelSystem.Instance.OnSkillsOverlay += LevelSystem_OnSkillsOverlay;
+        LevelSystem.Instance.OnPlayerDeath += LevelSystem_OnPlayerDeath;
+
     }
 
     protected virtual void OnDisable() 
@@ -48,6 +55,11 @@ public abstract class SkillsetController : MonoBehaviour
 
     protected abstract void LevelSystem_OnSkillsOverlay (object sender, SkillScriptableObject[] skills);
     
+    protected void LevelSystem_OnPlayerDeath(object sender, EventArgs e)
+    {
+        isPlayerDead = true;
+        if (savedData != null) savedData.ResetData();
+    }
     protected void HealthSystem_OnDamaged(object sender, Transform other)
     {
         AudioSource.PlayClipAtPoint(objectHitSFX, AudioManager.Instance.GetAudioListener().transform.position, controllerSFXVolume);
@@ -106,7 +118,6 @@ public abstract class SkillsetController : MonoBehaviour
                         currentState = KarmaScriptableObject.KarmaState.Malicious;
                         return;
                     case SkillScriptableObject.SkillState.GoodKarma:
-                        Debug.Log("Just checked for good karma");
                         currentState = KarmaScriptableObject.KarmaState.Virtuous;
                         return;
                 }
@@ -155,6 +166,8 @@ public abstract class SkillsetController : MonoBehaviour
         savedData.CurrentState = currentState;
         savedData.CurrentKarmaScrObj = currentKarmaScrObj;
         savedData.CurrentSkill = currentSkill;
+        savedData.AllStates = new List<KarmaScriptableObject.KarmaState>();
+        savedData.AllSkills = new List<SkillScriptableObject>();
         savedData.AllStates = allStates;
         savedData.AllSkills = allSkills;
         savedData.numberOfSaves++;

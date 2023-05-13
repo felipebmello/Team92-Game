@@ -1588,11 +1588,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3499901365419546188, guid: 68f7f9f22786c4346b286637da5808d6, type: 3}
       propertyPath: m_TrackedObjectOffset.x
-      value: 0.4255342
+      value: 3.519983
       objectReference: {fileID: 0}
     - target: {fileID: 3499901365419546188, guid: 68f7f9f22786c4346b286637da5808d6, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: 0.01202081
+      value: -1.652044
       objectReference: {fileID: 0}
     - target: {fileID: 4169522506938111288, guid: 68f7f9f22786c4346b286637da5808d6, type: 3}
       propertyPath: m_TrackedObjectOffset.x

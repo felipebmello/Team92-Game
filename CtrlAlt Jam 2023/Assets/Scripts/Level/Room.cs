@@ -112,8 +112,6 @@ public class Room : MonoBehaviour
     public IEnumerator CheckSkillHolderActive()
     {
         yield return new WaitForSeconds(0.5f);
-        Debug.Log("Checking skill holder for opening doors");
-        Debug.Log(skillHolder.isActive);
         if (!skillHolder.isActive)
         {
             StartCoroutine(OpenAllDoors());

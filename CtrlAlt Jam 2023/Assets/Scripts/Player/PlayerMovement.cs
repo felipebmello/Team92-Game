@@ -8,12 +8,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer mySpriteRenderer;
     [Header("Movement Settings")]
-    private float movementSpeed;
+    [SerializeField] private float movementSpeed;
     [Range(0.05f, 0.2f)]
-    [SerializeField] private float smoothTime = 0.1f;
-    [SerializeField] private bool canControl = true;
-    [SerializeField] private int numberOfDoorColliders = 0;
-    [SerializeField] private Vector2 lastKnownVelocity = Vector2.zero;
+    private float smoothTime = 0.1f;
+    private bool canControl = true;
+    private int numberOfDoorColliders = 0;
+    private Vector2 lastKnownVelocity = Vector2.zero;
 
 
     /*[Header("Looking Settings")]

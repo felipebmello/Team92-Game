@@ -11,7 +11,7 @@ public class PlayerController : SkillsetController
     [SerializeField] private float skillUpAnimationTimer;
     [SerializeField] protected AudioClip playerSkillUpSFX;
     [SerializeField] protected AudioClip playerDeathSFX;
-
+    
     protected override void Start() 
     {
         skillUpAnimator = this.gameObject.GetComponentInChildren<Animator>();
@@ -46,7 +46,6 @@ public class PlayerController : SkillsetController
     protected override void HealthSystem_OnDead(object sender, EventArgs e)
     {
         //Executar comportamento ao morrer, mover player para trás
-        isDead = true;
         TogglePlayerBehaviour(false);
         LevelSystem.Instance.PlayerKilled();
         AudioSource.PlayClipAtPoint(playerDeathSFX, AudioManager.Instance.GetAudioListener().transform.position, controllerSFXVolume);
