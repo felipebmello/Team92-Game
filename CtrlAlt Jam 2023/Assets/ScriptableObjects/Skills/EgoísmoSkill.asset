@@ -20,5 +20,5 @@ MonoBehaviour:
     e \xE1rea maior</b>."
   newMovementSpeed: 8
   newHoldToShoot: 1
-  newFireRate: 1
+  newFireRate: 0.8
   healthModifier: 2

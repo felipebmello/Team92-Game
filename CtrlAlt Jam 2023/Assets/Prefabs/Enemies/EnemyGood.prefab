@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 165236706698964531, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
+      propertyPath: sightRange
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 945187006360491067, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -75,5 +79,9 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 3291505396767566556, guid: cf5e5da6e502ee147b37df8ca2ba7dce, type: 3}
+    - target: {fileID: 8899523711175607550, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
+      propertyPath: m_Radius
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}

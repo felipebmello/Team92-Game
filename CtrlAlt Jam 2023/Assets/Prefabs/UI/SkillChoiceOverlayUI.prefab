@@ -205,7 +205,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 28.815035}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -888,8 +888,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 60.912, y: -52.3}
-  m_SizeDelta: {x: -121.82, y: -105.4051}
+  m_AnchoredPosition: {x: 60.912, y: -42.353725}
+  m_SizeDelta: {x: -121.82, y: -85.51255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7630005711479985631
 CanvasRenderer:
@@ -995,6 +995,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7630005711023834237}
     m_Modifications:
+    - target: {fileID: 7095194112706239603, guid: 547d7a6368f7512468a09fd95f241dac, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -85.51255
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095194112706239603, guid: 547d7a6368f7512468a09fd95f241dac, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -42.353725
+      objectReference: {fileID: 0}
+    - target: {fileID: 7095194113421956321, guid: 547d7a6368f7512468a09fd95f241dac, type: 3}
+      propertyPath: m_margin.w
+      value: 29.387207
+      objectReference: {fileID: 0}
     - target: {fileID: 7095194113627468082, guid: 547d7a6368f7512468a09fd95f241dac, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

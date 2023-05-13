@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1650923694148435167, guid: df00fc5ef803d26409ef2d75ec44bd33, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4312159474548839168, guid: df00fc5ef803d26409ef2d75ec44bd33, type: 3}
       propertyPath: lifetime
       value: 1.25
@@ -94,6 +98,10 @@ PrefabInstance:
     - target: {fileID: 7099974008602622100, guid: df00fc5ef803d26409ef2d75ec44bd33, type: 3}
       propertyPath: m_Name
       value: Bullet Good
+      objectReference: {fileID: 0}
+    - target: {fileID: 7099974008602622100, guid: df00fc5ef803d26409ef2d75ec44bd33, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df00fc5ef803d26409ef2d75ec44bd33, type: 3}

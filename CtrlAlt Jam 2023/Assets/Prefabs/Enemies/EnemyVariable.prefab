@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 165236706698964531, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
+      propertyPath: sightRange
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 945187006360491067, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -90,6 +94,10 @@ PrefabInstance:
     - target: {fileID: 8530881241662087552, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8899523711175607550, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
+      propertyPath: m_Radius
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}

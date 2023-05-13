@@ -763,6 +763,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 566124227}
     m_Modifications:
+    - target: {fileID: 831204532384071370, guid: a5dcd7988d119bd47a7aa102698131cf, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4763259464610128645, guid: a5dcd7988d119bd47a7aa102698131cf, type: 3}
       propertyPath: m_Name
       value: EnemyInnocent
@@ -1174,6 +1178,10 @@ PrefabInstance:
     - target: {fileID: 1875610018271948281, guid: 1244b7fc374facc4a898be94e2f7763d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022709625095958582, guid: 1244b7fc374facc4a898be94e2f7763d, type: 3}
+      propertyPath: health
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1244b7fc374facc4a898be94e2f7763d, type: 3}
@@ -2189,6 +2197,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3487053834638212549, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
+      propertyPath: health
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 6191748754788262644, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
       propertyPath: currentKarmaScrObj
       value: 
@@ -2388,6 +2400,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6949063197370281996, guid: 2a920fe003a7be843b150abe8158366d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6949063197800947417, guid: 2a920fe003a7be843b150abe8158366d, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -2399,6 +2415,22 @@ PrefabInstance:
     - target: {fileID: 6949063197800947417, guid: 2a920fe003a7be843b150abe8158366d, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949063197978868341, guid: 2a920fe003a7be843b150abe8158366d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -92.747086
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949063197978868341, guid: 2a920fe003a7be843b150abe8158366d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -38.736454
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949063198315482043, guid: 2a920fe003a7be843b150abe8158366d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -93.651405
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949063198315482043, guid: 2a920fe003a7be843b150abe8158366d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -38.284294
       objectReference: {fileID: 0}
     - target: {fileID: 6949063199206118859, guid: 2a920fe003a7be843b150abe8158366d, type: 3}
       propertyPath: m_Name
