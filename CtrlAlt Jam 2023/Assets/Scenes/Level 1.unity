@@ -945,15 +945,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6318231588287501612, guid: 267fd7f66f1d9f547bf0fb94a1b5cb23, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: -3.999325
+      value: 0.000002188577
       objectReference: {fileID: 0}
     - target: {fileID: 6836997745844229720, guid: 267fd7f66f1d9f547bf0fb94a1b5cb23, type: 3}
       propertyPath: m_TrackedObjectOffset.x
-      value: -1.862993
+      value: 0.5875208
       objectReference: {fileID: 0}
     - target: {fileID: 6836997745844229720, guid: 267fd7f66f1d9f547bf0fb94a1b5cb23, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: 0.5569817
+      value: 3.638772
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 267fd7f66f1d9f547bf0fb94a1b5cb23, type: 3}
@@ -1026,11 +1026,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6836997745844229720, guid: 4fb7ea2308b486a42a84e9b6ea4a9a99, type: 3}
       propertyPath: m_TrackedObjectOffset.x
-      value: 3.963711
+      value: -3.999998
       objectReference: {fileID: 0}
     - target: {fileID: 6836997745844229720, guid: 4fb7ea2308b486a42a84e9b6ea4a9a99, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: 1.576089
+      value: -3.999998
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fb7ea2308b486a42a84e9b6ea4a9a99, type: 3}
@@ -1052,19 +1052,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5849308846253783877, guid: cb54360689a344a429f0b170e97fb2fb, type: 3}
       propertyPath: m_TrackedObjectOffset.x
-      value: 0.01313389
+      value: 0.1170767
       objectReference: {fileID: 0}
     - target: {fileID: 5849308846253783877, guid: cb54360689a344a429f0b170e97fb2fb, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: 3.963684
+      value: 3.34951
       objectReference: {fileID: 0}
     - target: {fileID: 6369163517168711729, guid: cb54360689a344a429f0b170e97fb2fb, type: 3}
       propertyPath: m_TrackedObjectOffset.x
-      value: 1.108651
+      value: 0.8782766
       objectReference: {fileID: 0}
     - target: {fileID: 6369163517168711729, guid: cb54360689a344a429f0b170e97fb2fb, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: -1.751272
+      value: 3.90954
       objectReference: {fileID: 0}
     - target: {fileID: 6369163517874574497, guid: cb54360689a344a429f0b170e97fb2fb, type: 3}
       propertyPath: m_RootOrder
@@ -1476,11 +1476,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6505770143754045562, guid: 3cfd937d01d344c48afe2060674e35f5, type: 3}
       propertyPath: m_TrackedObjectOffset.x
-      value: 0.7985616
+      value: 0.6649171
       objectReference: {fileID: 0}
     - target: {fileID: 6505770143754045562, guid: 3cfd937d01d344c48afe2060674e35f5, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: 0
+      value: 3.952309
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cfd937d01d344c48afe2060674e35f5, type: 3}
@@ -1497,19 +1497,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5849308846253783877, guid: e9794da1b3f926f4a9003c7d498a8869, type: 3}
       propertyPath: m_TrackedObjectOffset.x
-      value: -3.999998
+      value: 1.141693
       objectReference: {fileID: 0}
     - target: {fileID: 5849308846253783877, guid: e9794da1b3f926f4a9003c7d498a8869, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: -2.838924e-15
+      value: -1.843368
       objectReference: {fileID: 0}
     - target: {fileID: 6369163517168711729, guid: e9794da1b3f926f4a9003c7d498a8869, type: 3}
       propertyPath: m_TrackedObjectOffset.x
-      value: 0.04916473
+      value: 0.4784994
       objectReference: {fileID: 0}
     - target: {fileID: 6369163517168711729, guid: e9794da1b3f926f4a9003c7d498a8869, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: -3.965215
+      value: -3.517714
       objectReference: {fileID: 0}
     - target: {fileID: 6369163517874574497, guid: e9794da1b3f926f4a9003c7d498a8869, type: 3}
       propertyPath: m_RootOrder
@@ -2189,29 +2189,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5188651116251165657, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
-      propertyPath: m_Controller
+    - target: {fileID: 6191748754788262644, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
+      propertyPath: currentKarmaScrObj
       value: 
-      objectReference: {fileID: 9100000, guid: 36df18fa1473ae644b0a4a82f289cd2c, type: 2}
-    - target: {fileID: 5747454150655949859, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5751986997891405681, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
-      propertyPath: holdToShoot
+      objectReference: {fileID: 11400000, guid: b7452b0c70345c94c9b5e718088a67c3, type: 2}
+    - target: {fileID: 6191748754788262644, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
+      propertyPath: allSkills.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5815274799741078504, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
-      propertyPath: m_RootOrder
+    - target: {fileID: 6191748754788262644, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
+      propertyPath: allStates.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5815274799741078504, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6668976720497429425, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
-      propertyPath: thrust
-      value: 30
+    - target: {fileID: 6191748754788262644, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
+      propertyPath: allSkills.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f0e53ed995c9b184896c898c36653c37, type: 2}
+    - target: {fileID: 6191748754788262644, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
+      propertyPath: allStates.Array.data[0]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7483515285896351670, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
       propertyPath: m_RootOrder
@@ -2255,22 +2251,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7483515285896351670, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7887753502535954732, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7887753502535954732, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
-      propertyPath: m_SortingLayer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7887753502535954732, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -627147069
-      objectReference: {fileID: 0}
-    - target: {fileID: 7887753502535954732, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}
-      propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8274186843921918946, guid: d799151a5eab0e544a3ecdc3a2376ae0, type: 3}

@@ -16,7 +16,7 @@ MonoBehaviour:
   imageSprite: {fileID: 0}
   name: TooInnocent
   effect: TooInnocent Effect
-  description: Innocent description
+  description: TooInnocent description
   newMovementSpeed: 10
   newHoldToShoot: 1
   newFireRate: 0.9

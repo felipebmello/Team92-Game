@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 5414240876701828725}
   m_Father: {fileID: 7483515285896351670}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &716548965
 SpriteRenderer:
@@ -147,7 +147,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7483515285896351670}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5188651116251165657
 Animator:
@@ -159,7 +159,7 @@ Animator:
   m_GameObject: {fileID: 7544752392934930153}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 36df18fa1473ae644b0a4a82f289cd2c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -207,10 +207,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -627147069
+  m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0a088f039fdbb3640840e39af054a32d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -218,7 +218,7 @@ SpriteRenderer:
   m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8274186843921918946
@@ -257,8 +257,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5815274799741078504}
   - {fileID: 5747454150655949859}
+  - {fileID: 5815274799741078504}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -276,6 +276,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySpriteRenderer: {fileID: 716548965}
   smoothTime: 0.1
+  canControl: 1
+  numberOfDoorColliders: 0
+  lastKnownVelocity: {x: 0, y: 0}
   speedModifier: 1
 --- !u!114 &5751986997891405681
 MonoBehaviour:
@@ -293,7 +296,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3291505396767566556, guid: ac781869f443e4d4aaef13d89b7f3450, type: 3}
   shootingSFX: {fileID: 8300000, guid: 8118cc7b89f4c164492aea1a0ec9ae0d, type: 3}
   shootingSFXVolume: 0.75
-  holdToShoot: 0
+  holdToShoot: 1
 --- !u!114 &6191748754788262644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63424d1ea2f219d4cbefd45095a64bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  savedData: {fileID: 11400000, guid: 893e03fd04e07e04c93e2805a6d7f106, type: 2}
   currentState: 3
   karmaList:
   - {fileID: 11400000, guid: b3686fcb9445b5b49a2c8b8291940089, type: 2}
@@ -337,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48434e72335fdb64db9c9c014ffa235c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 100
+  thrust: 30
 --- !u!114 &3487053834638212549
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,30 +6,43 @@ using UnityEngine;
 public abstract class SkillsetController : MonoBehaviour
 {
 
+    [SerializeField] protected DataScriptableObject savedData;
     [SerializeField] protected KarmaScriptableObject.KarmaState currentState = KarmaScriptableObject.KarmaState.TooInnocent;
     [SerializeField] protected List<KarmaScriptableObject> karmaList;
     [SerializeField] protected KarmaScriptableObject currentKarmaScrObj;
     [SerializeField] protected SkillScriptableObject currentSkill;
+    [SerializeField] protected List<SkillScriptableObject> allSkills;
     [SerializeField] protected List<KarmaScriptableObject.KarmaState> allStates = new List<KarmaScriptableObject.KarmaState>();
     [SerializeField] protected AudioClip objectHitSFX;
     [SerializeField] protected float controllerSFXVolume = 0.75f;
     protected HealthSystem healthSystem;
     protected HitKnockback hitKnockback;
+    protected bool isDead = false;
+
+    protected virtual void OnDestroy() {
+        if (savedData != null && !isDead) SaveSkillsetData();
+    }
 
     protected virtual void Start() 
     {
         healthSystem = this.gameObject.GetComponent<HealthSystem>();
         hitKnockback = this.gameObject.GetComponent<HitKnockback>();
-        LearnNewSkill(currentSkill);
+        if (savedData != null) 
+        {
+            LoadSkillsetData();
+            healthSystem.ApplyHealthModifier(currentSkill.HealthModifier);
+            GetKarmaObject();
+        }    
+        else LearnNewSkill(currentSkill);
         healthSystem.OnDamaged += HealthSystem_OnDamaged;
         healthSystem.OnDead += HealthSystem_OnDead;
         LevelSystem.Instance.OnSkillsOverlay += LevelSystem_OnSkillsOverlay;
     }
-    
+
     protected virtual void OnDisable() 
     {
-        healthSystem.OnDamaged += HealthSystem_OnDamaged;
-        healthSystem.OnDead += HealthSystem_OnDead;
+        healthSystem.OnDamaged -= HealthSystem_OnDamaged;
+        healthSystem.OnDead -= HealthSystem_OnDead;
         LevelSystem.Instance.OnSkillsOverlay -= LevelSystem_OnSkillsOverlay;
     }
 
@@ -48,6 +61,7 @@ public abstract class SkillsetController : MonoBehaviour
         currentSkill = skill;
         healthSystem.ApplyHealthModifier(skill.HealthModifier);
         allStates.Add(currentState);
+        allSkills.Add(currentSkill);
         GetKarmaObject();
     }
 
@@ -135,4 +149,22 @@ public abstract class SkillsetController : MonoBehaviour
                 return;
         }
     }
+
+    protected virtual void SaveSkillsetData()
+    {
+        savedData.CurrentState = currentState;
+        savedData.CurrentKarmaScrObj = currentKarmaScrObj;
+        savedData.CurrentSkill = currentSkill;
+        savedData.AllStates = allStates;
+        savedData.AllSkills = allSkills;
+        savedData.numberOfSaves++;
+    }
+    protected virtual void LoadSkillsetData()
+    {
+        currentState = savedData.CurrentState;
+        currentSkill = savedData.CurrentSkill;
+        allStates = savedData.AllStates;
+        allSkills = savedData.AllSkills;
+    }
+
 }

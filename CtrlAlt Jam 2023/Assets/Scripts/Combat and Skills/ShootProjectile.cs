@@ -50,4 +50,14 @@ public class ShootProjectile : MonoBehaviour
     {
         this.fireRate = fireRate;
     }
+    
+    public Transform GetBulletPrefab ()
+    {
+        return this.bulletPrefab;
+    }
+    
+    public float GetFireRate ()
+    {
+        return this.fireRate;
+    }
 }

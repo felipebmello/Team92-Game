@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bdc9fffdefa9b4199ab7ddf9ddc251, type: 3}
   m_Name: GrosseriaSkill
   m_EditorClassIdentifier: 
-  skillState: 0
+  state: 0
   imageSprite: {fileID: 21300000, guid: 3ba96b95bd99f604ba9fc146619cbcab, type: 3}
-  name: Grosseria
-  effect: <i>Invisibilidade</i>
+  name: <i>Invisibilidade</i>
+  effect: Grosseria
   description: "<b>\xC1rea de detec\xE7\xE3o</b> dos inimigos \xE9 <b>reduzida</b>,
     <b>chance de ficar invis\xEDvel</b>"
   newMovementSpeed: 10

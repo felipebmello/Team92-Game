@@ -108,5 +108,9 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }
+    public float GetMovementSpeed()
+    {
+        return this.movementSpeed;
+    }
 
 }

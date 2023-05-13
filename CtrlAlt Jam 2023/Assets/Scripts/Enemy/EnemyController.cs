@@ -41,10 +41,10 @@ public class EnemyController : SkillsetController
 
     protected override void HealthSystem_OnDead(object sender, EventArgs e)
     {
-        Debug.Log(gameObject+" is dead!");
+        isDead = true;
         //Executar comportamento ao morrer, mover player para trás
         ToggleEnemyBehaviour(false);
-        Destroy(this.gameObject, 1f);
+        Destroy(this.gameObject, 0.25f);
     }
     private void ToggleEnemyBehaviour (bool toggle)
     {
@@ -55,13 +55,14 @@ public class EnemyController : SkillsetController
     public override void LearnNewSkill (SkillScriptableObject skill)
     {
         base.LearnNewSkill(skill);
-        float strongVariantModifier = 1;
+        float strongVariantModifier = 1f;
         if (isStrongVariant) 
         {
             strongVariantModifier = 3;
         }
+        if (currentState == KarmaScriptableObject.KarmaState.TooInnocent) strongVariantModifier = 0.5f;
         healthSystem.ApplyHealthModifier(strongVariantModifier);
-        enemyMovement.SetMovementSpeed(skill.NewMovementSpeed / 3);
+        enemyMovement.SetMovementSpeed(skill.NewMovementSpeed / 2);
         enemyMovement.SetSprite(currentKarmaScrObj.NewSprite);
         if (enemyShooting != null)
         {
@@ -72,6 +73,27 @@ public class EnemyController : SkillsetController
         {
             enemyMovement.SetDamageAmount(currentKarmaScrObj.NewBulletPrefab.GetComponent<Bullet>().GetDamageAmount());
         }
+    }
+    
+    protected override void SaveSkillsetData()
+    {
+        base.SaveSkillsetData();
+        savedData.MovementSpeed = enemyMovement.GetMovementSpeed();
+        savedData.BulletPrefab = enemyShooting.GetBulletPrefab();
+        savedData.FireRate = enemyShooting.GetFireRate();
+    }
+
+    protected override void LoadSkillsetData()
+    {
+        float strongVariantModifier = 1f;
+        if (isStrongVariant) 
+        {
+            strongVariantModifier = 3;
+        }
+        base.LoadSkillsetData();
+        enemyMovement.SetMovementSpeed(savedData.CurrentSkill.NewMovementSpeed / 2);
+        enemyShooting.SetBulletPrefab(savedData.CurrentKarmaScrObj.NewBulletPrefab);
+        enemyShooting.SetFireRate(savedData.CurrentSkill.NewFireRate / strongVariantModifier);
     }
 
     public HealthSystem GetHealthSystem()

@@ -11,8 +11,10 @@ public class Room : MonoBehaviour
     [SerializeField] protected AudioClip roomExitSFX;
     [SerializeField] protected AudioClip doorsOpeningClosingSFX;
     [SerializeField] float roomSFXVolume = 0.2f;
+    [Header("Room Camera Settings")]
     [SerializeField] private CinemachineVirtualCamera zoomInVirtualCamera;
     [SerializeField] private CinemachineVirtualCamera zoomOutVirtualCamera;
+    [Header("Room Container Settings")]
     [SerializeField] private Transform enemyContainer;
     [SerializeField] private Transform collectableContainer;
     [Header("Only for Debugging in the Editor")]
@@ -91,7 +93,7 @@ public class Room : MonoBehaviour
     
     public IEnumerator TryCloseAllDoors(Collider2D other)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.6f);
         if (!playerLeftRoom && (enemyList.Count > 0))
         {
             OnRoomEnter?.Invoke(this, EventArgs.Empty);

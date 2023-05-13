@@ -16,6 +16,7 @@ public class PlayerShooting : ShootProjectile
     //Bug detectado, 
     protected void OnFire(InputValue value)
     {
+        Debug.Log("Player Shooting "+gameObject+value.ToString());
         buttonPressed = value.isPressed;
     }
 
@@ -37,5 +38,10 @@ public class PlayerShooting : ShootProjectile
     public void SetHoldToShoot (bool holdToShoot)
     {
         this.holdToShoot = holdToShoot;
+    }
+    
+    public bool GetHoldToShoot ()
+    {
+        return this.holdToShoot;
     }
 }

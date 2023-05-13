@@ -19,6 +19,7 @@ public class PlayerController : SkillsetController
         playerShooting = this.gameObject.GetComponent<PlayerShooting>();
         Debug.Log("Player starting, current skill: "+currentSkill);
         base.Start();
+        if (currentState == KarmaScriptableObject.KarmaState.TooInnocent) healthSystem.ApplyHealthModifier(2);
         playerMovement.SetSprite(currentKarmaScrObj.NewSprite);
         TogglePlayerBehaviour(true);
         LevelSystem.Instance.OnChoosedSkill += LevelSystem_OnChoosedSkill;
@@ -45,7 +46,7 @@ public class PlayerController : SkillsetController
     protected override void HealthSystem_OnDead(object sender, EventArgs e)
     {
         //Executar comportamento ao morrer, mover player para trás
-        Debug.Log(gameObject+" is dead!");
+        isDead = true;
         TogglePlayerBehaviour(false);
         LevelSystem.Instance.PlayerKilled();
         AudioSource.PlayClipAtPoint(playerDeathSFX, AudioManager.Instance.GetAudioListener().transform.position, controllerSFXVolume);
@@ -71,6 +72,24 @@ public class PlayerController : SkillsetController
         playerShooting.SetFireRate(skill.NewFireRate);
     }
     
+    protected override void SaveSkillsetData()
+    {
+        base.SaveSkillsetData();
+        savedData.MovementSpeed = playerMovement.GetMovementSpeed();
+        savedData.BulletPrefab = playerShooting.GetBulletPrefab();
+        savedData.HoldToShoot = playerShooting.GetHoldToShoot();
+        savedData.FireRate = playerShooting.GetFireRate();
+    }
+
+    protected override void LoadSkillsetData()
+    {
+        base.LoadSkillsetData();
+        playerMovement.SetMovementSpeed(savedData.CurrentSkill.NewMovementSpeed);
+        playerShooting.SetBulletPrefab(savedData.CurrentKarmaScrObj.NewBulletPrefab);
+        playerShooting.SetHoldToShoot(savedData.CurrentSkill.NewHoldToShoot);
+        playerShooting.SetFireRate(savedData.CurrentSkill.NewFireRate);
+    }
+
     private void OnQuit() {
         Application.Quit();
     }

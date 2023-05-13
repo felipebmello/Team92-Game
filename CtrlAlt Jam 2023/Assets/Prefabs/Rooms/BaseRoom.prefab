@@ -135,10 +135,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -32.4887, y: 8.603858}
-      - {x: -32.492943, y: -20.902899}
-      - {x: 10.373407, y: -20.899616}
-      - {x: 10.365447, y: 8.608107}
+    - - {x: -32.46628, y: 8.596386}
+      - {x: -32.48448, y: -20.83523}
+      - {x: 10.362632, y: -20.856512}
+      - {x: 10.342906, y: 8.619377}
 --- !u!1 &8556127999446820052
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,8 +599,12 @@ PrefabInstance:
       value: CenarioParede
       objectReference: {fileID: 0}
     - target: {fileID: 1709999524454192343, guid: abc0a49c1ffcdff4a8aa5b81f6dfcfc6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: db3a999d06a40db4ab53f7d4eafc25c7, type: 3}
+    - target: {fileID: 1709999524454192343, guid: abc0a49c1ffcdff4a8aa5b81f6dfcfc6, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1709999524454192360, guid: abc0a49c1ffcdff4a8aa5b81f6dfcfc6, type: 3}
       propertyPath: m_LocalPosition.y

@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnMovement(InputValue value) 
     {
+        Debug.Log("Player Shooting");
         movementInput = value.Get<Vector2>();
         if (movementInput != Vector2.zero && canControl) 
         {
@@ -108,6 +109,19 @@ public class PlayerMovement : MonoBehaviour
     public void SetSprite(Sprite sprite)
     {
         this.mySpriteRenderer.sprite = sprite;
+    }
+    
+    public float GetSpeedModifier()
+    {
+        return this.speedModifier;
+    }
+    public float GetMovementSpeed()
+    {
+        return this.movementSpeed;
+    }
+    public Sprite GetSprite()
+    {
+        return this.mySpriteRenderer.sprite;
     }
 
     public void ForceMoveOutOfRoom() 

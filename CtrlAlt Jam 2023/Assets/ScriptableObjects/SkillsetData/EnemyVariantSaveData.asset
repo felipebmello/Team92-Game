@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b145bcab2a7adcd46a9e2bcb67182dc1, type: 3}
+  m_Name: EnemyVariantSaveData
+  m_EditorClassIdentifier: 
+  baseCurrentState: 3
+  baseCurrentKarmaScrObj: {fileID: 11400000, guid: b7452b0c70345c94c9b5e718088a67c3, type: 2}
+  baseCurrentSkill: {fileID: 11400000, guid: f0e53ed995c9b184896c898c36653c37, type: 2}
+  baseAllStates: 
+  baseAllSkills: []
+  baseNumberOfSaves: 0
+  baseMovementSpeed: 0
+  baseBulletPrefab: {fileID: 0}
+  baseHoldToShoot: 0
+  baseFireRate: 0
+  currentState: 2
+  currentKarmaScrObj: {fileID: 11400000, guid: 15715a7b735c27a49b5b0877ea16d332, type: 2}
+  currentSkill: {fileID: 11400000, guid: 7a1dd0d5f30bce84994c7d524beab325, type: 2}
+  allStates: 020000000200000002000000
+  allSkills:
+  - {fileID: 11400000, guid: 7a1dd0d5f30bce84994c7d524beab325, type: 2}
+  - {fileID: 11400000, guid: 7a1dd0d5f30bce84994c7d524beab325, type: 2}
+  - {fileID: 11400000, guid: 7a1dd0d5f30bce84994c7d524beab325, type: 2}
+  numberOfSaves: 3
+  movementSpeed: 5
+  bulletPrefab: {fileID: 3291505396767566556, guid: 2f716f89f5fca264d96851f36e13976b, type: 3}
+  holdToShoot: 0
+  fireRate: 0.29999998

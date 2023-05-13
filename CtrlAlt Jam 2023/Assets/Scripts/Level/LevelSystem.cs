@@ -19,6 +19,7 @@ public class LevelSystem : MonoBehaviour
             Destroy(gameObject);
         }
         Instance = this;
+
     }
 
     public void SkillHolderActivated(SkillScriptableObject[] skills)

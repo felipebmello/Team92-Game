@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     [Header("Bullet Settings")]
     [Range(1f, 15f)]
     [SerializeField] private float speed;
-    private float damageAmount = 100f;
+    [SerializeField] private float damageAmount = 100f;
     [Range(1f, 10f)]
     [SerializeField] private float lifetime;
     [SerializeField] private Transform bulletHitPrefab;

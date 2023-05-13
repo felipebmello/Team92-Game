@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bdc9fffdefa9b4199ab7ddf9ddc251, type: 3}
   m_Name: "Ego\xEDsmoSkill"
   m_EditorClassIdentifier: 
-  skillState: 0
+  state: 0
   imageSprite: {fileID: 21300000, guid: 3ba96b95bd99f604ba9fc146619cbcab, type: 3}
-  name: "Ego\xEDsmo"
-  effect: "<i>Proj\xE9til \xDAnico</i>"
+  name: "<i>Proj\xE9til \xDAnico</i>"
+  effect: "Ego\xEDsmo"
   description: "<b>Um proj\xE9til</b> \xE9 lan\xE7ado <b>por vez</b>, com <b>dano
     e \xE1rea maior</b>."
   newMovementSpeed: 8
