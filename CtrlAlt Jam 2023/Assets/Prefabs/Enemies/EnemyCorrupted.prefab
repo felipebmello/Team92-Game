@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 165236706698964531, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: sightRange
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 945187006360491067, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: m_Sprite
