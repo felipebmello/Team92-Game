@@ -18,10 +18,10 @@ PrefabInstance:
     - target: {fileID: 2625827711563887949, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: currentSkill
       value: 
-      objectReference: {fileID: 11400000, guid: b1d307a62914de941aa28589afa0e0e5, type: 2}
+      objectReference: {fileID: 11400000, guid: 5c99ef5d756db4941b13f5b95e0bbdc0, type: 2}
     - target: {fileID: 2625827711563887949, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: currentState
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3224210759110562239, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: m_Name

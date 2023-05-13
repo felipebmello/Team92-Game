@@ -17,8 +17,9 @@ public class PlayerController : SkillsetController
         skillUpAnimator = this.gameObject.GetComponentInChildren<Animator>();
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         playerShooting = this.gameObject.GetComponent<PlayerShooting>();
+        Debug.Log("Player starting, current skill: "+currentSkill);
         base.Start();
-        playerMovement.SetSprite(currentSkill.NewSprite);
+        playerMovement.SetSprite(currentKarmaScrObj.NewSprite);
         TogglePlayerBehaviour(true);
         LevelSystem.Instance.OnChoosedSkill += LevelSystem_OnChoosedSkill;
     }
@@ -28,12 +29,12 @@ public class PlayerController : SkillsetController
         LevelSystem.Instance.OnChoosedSkill -= LevelSystem_OnChoosedSkill;
     }
 
-    protected override void LevelSystem_OnSkillsOverlay (object sender, BaseSkill[] skills)
+    protected override void LevelSystem_OnSkillsOverlay (object sender, SkillScriptableObject[] skills)
     {
         TogglePlayerBehaviour(false);
         CameraController.Instance.ClearPlayerOffset();
     }
-    protected void LevelSystem_OnChoosedSkill (object sender, BaseSkill skill)
+    protected void LevelSystem_OnChoosedSkill (object sender, SkillScriptableObject skill)
     {
         LearnNewSkill(skill);
         
@@ -60,11 +61,12 @@ public class PlayerController : SkillsetController
     }
 
 
-    public override void LearnNewSkill (BaseSkill skill)
+    public override void LearnNewSkill (SkillScriptableObject skill)
     {
+        CheckCurrentKarmaState(skill);
         base.LearnNewSkill(skill);
         playerMovement.SetMovementSpeed(skill.NewMovementSpeed);
-        playerShooting.SetBulletPrefab(skill.NewBulletPrefab);
+        playerShooting.SetBulletPrefab(currentKarmaScrObj.NewBulletPrefab);
         playerShooting.SetHoldToShoot(skill.NewHoldToShoot);
         playerShooting.SetFireRate(skill.NewFireRate);
     }
@@ -73,14 +75,13 @@ public class PlayerController : SkillsetController
         Application.Quit();
     }
 
-    public IEnumerator SkillUpEffects(BaseSkill skill)
+    public IEnumerator SkillUpEffects(SkillScriptableObject skill)
     {
-        int numberOfSkillStates = System.Enum.GetValues(typeof(SkillsetController.KarmaState)).Length / 2;
-        if ((int) skill.State >= numberOfSkillStates) skillUpAnimator.SetTrigger("GoodTrigger");
+        if (skill.State == SkillScriptableObject.SkillState.GoodKarma) skillUpAnimator.SetTrigger("GoodTrigger");
         else skillUpAnimator.SetTrigger("EvilTrigger");
         AudioSource.PlayClipAtPoint(playerSkillUpSFX, AudioManager.Instance.GetAudioListener().transform.position, controllerSFXVolume);
         yield return new WaitForSeconds(1f);
-        playerMovement.SetSprite(skill.NewSprite);
+        playerMovement.SetSprite(currentKarmaScrObj.NewSprite);
         TogglePlayerBehaviour(true);
 
     }

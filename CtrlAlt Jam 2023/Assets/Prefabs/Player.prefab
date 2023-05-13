@@ -306,8 +306,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63424d1ea2f219d4cbefd45095a64bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 2
-  currentSkill: {fileID: 11400000, guid: d53ddfbf60aa2554ba1b492b276bb9f8, type: 2}
+  currentState: 3
+  karmaList:
+  - {fileID: 11400000, guid: b3686fcb9445b5b49a2c8b8291940089, type: 2}
+  - {fileID: 11400000, guid: 07496dd5df49c354fb2ec39df8f13447, type: 2}
+  - {fileID: 11400000, guid: d8026130a37a8af4b82c2aafcc0bafd6, type: 2}
+  - {fileID: 11400000, guid: 962a42373ab9c5d43ad00ee841478502, type: 2}
+  - {fileID: 11400000, guid: 16594f49504400c45801a1e62ec98cb2, type: 2}
+  - {fileID: 11400000, guid: e5d20aeb15583d6429af499c581858b4, type: 2}
+  - {fileID: 11400000, guid: 15715a7b735c27a49b5b0877ea16d332, type: 2}
+  - {fileID: 11400000, guid: b7452b0c70345c94c9b5e718088a67c3, type: 2}
+  - {fileID: 11400000, guid: 8e8510a56f9637042b5a0f92b9ac90a4, type: 2}
+  currentKarmaScrObj: {fileID: 0}
+  currentSkill: {fileID: 11400000, guid: f0e53ed995c9b184896c898c36653c37, type: 2}
   allStates: 
   objectHitSFX: {fileID: 8300000, guid: 09fdd447789004b4d825f71d518ae47f, type: 3}
   controllerSFXVolume: 0.4

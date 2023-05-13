@@ -12,7 +12,7 @@ public class SkillChoiceOverlayUI : MonoBehaviour
     [SerializeField] private Image[] skillImage;
     [SerializeField] private Outline[] skillOutline;
 
-    private BaseSkill[] skills;
+    private SkillScriptableObject[] skills;
 
     private void Awake() 
     {
@@ -20,19 +20,21 @@ public class SkillChoiceOverlayUI : MonoBehaviour
         LevelSystem.Instance.OnSkillsOverlay += LevelSystem_OnSkillsOverlay;
     }
 
-    private void LevelSystem_OnSkillsOverlay (object sender, BaseSkill[] skills)
+    private void LevelSystem_OnSkillsOverlay (object sender, SkillScriptableObject[] skills)
     {
         gameObject.SetActive(true);
         this.skills = skills;
-        int numberOfSkillStates = System.Enum.GetValues(typeof(SkillsetController.KarmaState)).Length / 2;
+        int numberOfSkillStates = System.Enum.GetValues(typeof(SkillScriptableObject.SkillState)).Length / 2;
         for (int i = 0; i < skills.Length; i++)
         {
             skillName[i].text = skills[i].Name;
             skillEffect[i].text = skills[i].Effect;
             skillDescription[i].text = skills[i].Description;
-            skillImage[i].sprite = skills[i].NewSprite;
-            if ((int) skills[i].State >=  numberOfSkillStates) skillOutline[i].effectColor = Color.blue;
-            else skillOutline[i].effectColor = Color.red;
+            skillImage[i].sprite = skills[i].ImageSprite;
+
+            if ((int) skills[i].State == 2) skillOutline[i].effectColor = Color.blue;
+            else if ((int) skills[i].State == 0) skillOutline[i].effectColor = Color.red;
+            else skillOutline[i].effectColor = Color.yellow;
         }
     }
 

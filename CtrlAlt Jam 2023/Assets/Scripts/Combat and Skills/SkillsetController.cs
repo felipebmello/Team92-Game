@@ -5,22 +5,12 @@ using UnityEngine;
 
 public abstract class SkillsetController : MonoBehaviour
 {
-    public enum KarmaState
-    {
-        Evil,           //0
-        Corrupt,        //1
-        Malicious,      //2
-        TooInnocent,    //3
-        Innocent,       //4
-        Enlightned,     //5
-        Virtuous,       //6
-        Good,           //7
-        Angel         //8
-    }
-    
-    [SerializeField] protected KarmaState currentState = KarmaState.Innocent;
-    [SerializeField] protected BaseSkill currentSkill;
-    [SerializeField] protected List<KarmaState> allStates = new List<KarmaState>();
+
+    [SerializeField] protected KarmaScriptableObject.KarmaState currentState = KarmaScriptableObject.KarmaState.TooInnocent;
+    [SerializeField] protected List<KarmaScriptableObject> karmaList;
+    [SerializeField] protected KarmaScriptableObject currentKarmaScrObj;
+    [SerializeField] protected SkillScriptableObject currentSkill;
+    [SerializeField] protected List<KarmaScriptableObject.KarmaState> allStates = new List<KarmaScriptableObject.KarmaState>();
     [SerializeField] protected AudioClip objectHitSFX;
     [SerializeField] protected float controllerSFXVolume = 0.75f;
     protected HealthSystem healthSystem;
@@ -43,7 +33,7 @@ public abstract class SkillsetController : MonoBehaviour
         LevelSystem.Instance.OnSkillsOverlay -= LevelSystem_OnSkillsOverlay;
     }
 
-    protected abstract void LevelSystem_OnSkillsOverlay (object sender, BaseSkill[] skills);
+    protected abstract void LevelSystem_OnSkillsOverlay (object sender, SkillScriptableObject[] skills);
     
     protected void HealthSystem_OnDamaged(object sender, Transform other)
     {
@@ -53,81 +43,93 @@ public abstract class SkillsetController : MonoBehaviour
 
     protected abstract void HealthSystem_OnDead (object sender, EventArgs e);
 
-    public virtual void LearnNewSkill (BaseSkill skill)
+    public virtual void LearnNewSkill (SkillScriptableObject skill)
     {
-        CheckCurrentKarmaState(skill);
         currentSkill = skill;
         healthSystem.ApplyHealthModifier(skill.HealthModifier);
         allStates.Add(currentState);
+        GetKarmaObject();
     }
 
-    private void CheckCurrentKarmaState(BaseSkill skill)
+    protected void GetKarmaObject()
+    {
+        foreach (KarmaScriptableObject karmaObject in karmaList) 
+        {
+            if (karmaObject.State == currentState) currentKarmaScrObj = karmaObject;
+        }
+    }
+
+    protected void CheckCurrentKarmaState(SkillScriptableObject skill)
     {
         switch (currentState)
         {
-            case KarmaState.Corrupt:
+            case KarmaScriptableObject.KarmaState.Corrupt:
                 switch (skill.State)
                 {
-                    case BaseSkill.SkillState.BadKarma:
-                        currentState = KarmaState.Evil;
+                    case SkillScriptableObject.SkillState.BadKarma:
+                        currentState = KarmaScriptableObject.KarmaState.Evil;
                         return;
-                    case BaseSkill.SkillState.GoodKarma:
-                        currentState = KarmaState.Innocent;
+                    case SkillScriptableObject.SkillState.GoodKarma:
+                        currentState = KarmaScriptableObject.KarmaState.Innocent;
                         return;
                 }
                 return;
-            case KarmaState.Malicious:
+            case KarmaScriptableObject.KarmaState.Malicious:
                 switch (skill.State)
                 {
-                    case BaseSkill.SkillState.BadKarma:
-                        currentState = KarmaState.Corrupt;
+                    case SkillScriptableObject.SkillState.BadKarma:
+                        currentState = KarmaScriptableObject.KarmaState.Corrupt;
                         return;
-                    case BaseSkill.SkillState.GoodKarma:
-                        currentState = KarmaState.Innocent;
+                    case SkillScriptableObject.SkillState.GoodKarma:
+                        currentState = KarmaScriptableObject.KarmaState.Innocent;
                         return;
                 }
                 return;
-            case KarmaState.TooInnocent:
+            case KarmaScriptableObject.KarmaState.TooInnocent:
                 switch (skill.State)
                 {
-                    case BaseSkill.SkillState.BadKarma:
-                        currentState = KarmaState.Malicious;
+                    case SkillScriptableObject.SkillState.BadKarma:
+                        currentState = KarmaScriptableObject.KarmaState.Malicious;
                         return;
-                    case BaseSkill.SkillState.GoodKarma:
-                        currentState = KarmaState.Virtuous;
+                    case SkillScriptableObject.SkillState.GoodKarma:
+                        Debug.Log("Just checked for good karma");
+                        currentState = KarmaScriptableObject.KarmaState.Virtuous;
                         return;
                 }
                 return;
-            case KarmaState.Innocent:
+            case KarmaScriptableObject.KarmaState.Innocent:
                 switch (skill.State)
                 {
-                    case BaseSkill.SkillState.BadKarma:
-                        currentState = KarmaState.Corrupt;
+                    case SkillScriptableObject.SkillState.BadKarma:
+                        currentState = KarmaScriptableObject.KarmaState.Corrupt;
                         return;
-                    case BaseSkill.SkillState.GoodKarma:
-                        currentState = KarmaState.Good;
+                    case SkillScriptableObject.SkillState.Neutral:
+                        currentState = KarmaScriptableObject.KarmaState.Enlightned;
+                        return;
+                    case SkillScriptableObject.SkillState.GoodKarma:
+                        currentState = KarmaScriptableObject.KarmaState.Good;
                         return;
                 }
                 return;
-            case KarmaState.Virtuous:
+            case KarmaScriptableObject.KarmaState.Virtuous:
                 switch (skill.State)
                 {
-                    case BaseSkill.SkillState.BadKarma:
-                        currentState = KarmaState.Corrupt;
+                    case SkillScriptableObject.SkillState.BadKarma:
+                        currentState = KarmaScriptableObject.KarmaState.Innocent;
                         return;
-                    case BaseSkill.SkillState.GoodKarma:
-                        currentState = KarmaState.Good;
+                    case SkillScriptableObject.SkillState.GoodKarma:
+                        currentState = KarmaScriptableObject.KarmaState.Good;
                         return;
                 }
                 return;
-            case KarmaState.Good:
+            case KarmaScriptableObject.KarmaState.Good:
                 switch (skill.State)
                 {
-                    case BaseSkill.SkillState.BadKarma:
-                        currentState = KarmaState.Innocent;
+                    case SkillScriptableObject.SkillState.BadKarma:
+                        currentState = KarmaScriptableObject.KarmaState.Innocent;
                         return;
-                    case BaseSkill.SkillState.GoodKarma:
-                        currentState = KarmaState.Angel;
+                    case SkillScriptableObject.SkillState.GoodKarma:
+                        currentState = KarmaScriptableObject.KarmaState.Angel;
                         return;
                 }
                 return;

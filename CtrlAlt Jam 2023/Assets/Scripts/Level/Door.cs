@@ -33,4 +33,26 @@ public class Door : MonoBehaviour
         fullWallCollider.enabled = false;
     }
 
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (!other.TryGetComponent<Bullet>(out Bullet bullet))
+        {
+            if (other.tag.Equals("Player"))
+            {
+                other.gameObject.GetComponent<PlayerMovement>().ForceMoveOutOfRoom();
+            }
+        }
+    }
+    
+    private void OnTriggerExit2D(Collider2D other) 
+    {
+        if (!other.TryGetComponent<Bullet>(out Bullet bullet))
+        {
+            if (other.tag.Equals("Player"))
+            {
+                other.gameObject.GetComponent<PlayerMovement>().ReturnControl();
+            }
+        }
+    }
+
 }

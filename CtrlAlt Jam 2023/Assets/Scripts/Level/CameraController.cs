@@ -20,7 +20,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Vector2 offsetRadius;
     [SerializeField] private float smoothTime;
     [SerializeField] private float threshold;
-
     private Transform playerTransform;
     
     private void Awake() 
@@ -55,10 +54,7 @@ public class CameraController : MonoBehaviour
                 default:
                     break;
             }
-
         }
-        
-
     }
 
     private void FollowPlayerOffset()
@@ -106,12 +102,6 @@ public class CameraController : MonoBehaviour
 
     }
 
-    public void SetRoomBounds(PolygonCollider2D roomBounds)
-    {
-        cinemachineConfiner2D.m_BoundingShape2D = roomBounds;
-        cinemachineConfiner2D.InvalidateCache();
-    }
-
     public void SetActiveCinemachineCamera (CinemachineVirtualCamera newCinemachineVirtualCamera, Transform transform)
     {
         if (cinemachineVirtualCamera != null)
@@ -128,6 +118,11 @@ public class CameraController : MonoBehaviour
     public void ClearPlayerOffset()
     {
         cinemachineVirtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>().m_TrackedObjectOffset = Vector3.zero;
+    }
+
+    public void ZoomOut(CinemachineVirtualCamera zoomOutVirtualCamera)
+    {
+        SetActiveCinemachineCamera(zoomOutVirtualCamera, playerTransform);
     }
 
 }

@@ -14,7 +14,7 @@ public class EnemyController : SkillsetController
     {
         enemyMovement = this.gameObject.GetComponent<EnemyMovement>();
         enemyShooting = this.gameObject.GetComponent<EnemyShooting>();
-        if (currentState == KarmaState.Innocent && !isAffectedByPlayerChoice) enemyShooting = null;
+        if (currentState == KarmaScriptableObject.KarmaState.TooInnocent && !isAffectedByPlayerChoice) enemyShooting = null;
         else ToggleEnemyBehaviour(true);
         base.Start();
         LevelSystem.Instance.OnNotChosenSkill += LevelSystem_OnNotChosenSkill;
@@ -24,15 +24,16 @@ public class EnemyController : SkillsetController
         base.OnDisable();
         LevelSystem.Instance.OnNotChosenSkill -= LevelSystem_OnNotChosenSkill;
     }
-    protected override void LevelSystem_OnSkillsOverlay (object sender, BaseSkill[] skills)
+    protected override void LevelSystem_OnSkillsOverlay (object sender, SkillScriptableObject[] skills)
     {
         ToggleEnemyBehaviour(false);
     }
-    protected void LevelSystem_OnNotChosenSkill (object sender, BaseSkill skill)
+    protected void LevelSystem_OnNotChosenSkill (object sender, SkillScriptableObject skill)
     {
         ToggleEnemyBehaviour(true);
         if (isAffectedByPlayerChoice) 
         {
+            CheckCurrentKarmaState(skill);
             LearnNewSkill(skill);
         }
     }
@@ -51,7 +52,7 @@ public class EnemyController : SkillsetController
         if (enemyShooting != null) enemyShooting.enabled = toggle;
     }
 
-    public override void LearnNewSkill (BaseSkill skill)
+    public override void LearnNewSkill (SkillScriptableObject skill)
     {
         base.LearnNewSkill(skill);
         float strongVariantModifier = 1;
@@ -61,15 +62,15 @@ public class EnemyController : SkillsetController
         }
         healthSystem.ApplyHealthModifier(strongVariantModifier);
         enemyMovement.SetMovementSpeed(skill.NewMovementSpeed / 3);
-        enemyMovement.SetSprite(skill.NewSprite);
+        enemyMovement.SetSprite(currentKarmaScrObj.NewSprite);
         if (enemyShooting != null)
         {
-            enemyShooting.SetBulletPrefab(skill.NewBulletPrefab);
+            enemyShooting.SetBulletPrefab(currentKarmaScrObj.NewBulletPrefab);
             enemyShooting.SetFireRate(skill.NewFireRate / strongVariantModifier);
         }
         else 
         {
-            enemyMovement.SetDamageAmount(skill.NewBulletPrefab.GetComponent<Bullet>().GetDamageAmount());
+            enemyMovement.SetDamageAmount(currentKarmaScrObj.NewBulletPrefab.GetComponent<Bullet>().GetDamageAmount());
         }
     }
 

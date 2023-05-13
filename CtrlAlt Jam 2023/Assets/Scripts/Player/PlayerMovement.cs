@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     private float movementSpeed;
     [Range(0.05f, 0.2f)]
     [SerializeField] private float smoothTime = 0.1f;
+    [SerializeField] private bool canControl = true;
+    [SerializeField] private int numberOfDoorColliders = 0;
+    [SerializeField] private Vector2 lastKnownVelocity = Vector2.zero;
 
 
     /*[Header("Looking Settings")]
@@ -19,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
     private Vector2 movementInputCurrentVelocity;
+    private Vector2 lastKnownCurrentVelocity;
     private Rigidbody2D myRigidbody;
     private bool facingRight = true;
     [SerializeField] private float speedModifier = 1f;
@@ -37,6 +41,10 @@ public class PlayerMovement : MonoBehaviour
     public void OnMovement(InputValue value) 
     {
         movementInput = value.Get<Vector2>();
+        if (movementInput != Vector2.zero && canControl) 
+        {
+            if (movementInput.x == 1 || movementInput.y == 1 || movementInput.x == -1 || movementInput.y == -1) lastKnownVelocity = movementInput;
+        }
     }
 
     private void FixedUpdate()
@@ -68,12 +76,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        smoothedMovementInput = Vector2.SmoothDamp(
+        if (canControl) 
+        {
+            smoothedMovementInput = Vector2.SmoothDamp(
             smoothedMovementInput,
             movementInput,
             ref movementInputCurrentVelocity,
             smoothTime);
-        myRigidbody.velocity = smoothedMovementInput * movementSpeed * speedModifier;
+                myRigidbody.velocity = smoothedMovementInput * movementSpeed * speedModifier;
+        }
+        else
+        {
+            smoothedMovementInput = Vector2.SmoothDamp(
+            lastKnownVelocity,
+            movementInput,
+            ref lastKnownCurrentVelocity,
+            smoothTime);
+                myRigidbody.velocity = smoothedMovementInput * movementSpeed * speedModifier;
+        }
+        
     }
 
     public void SetSpeedModifier(float speedPowerUpValue)
@@ -87,5 +108,20 @@ public class PlayerMovement : MonoBehaviour
     public void SetSprite(Sprite sprite)
     {
         this.mySpriteRenderer.sprite = sprite;
+    }
+
+    public void ForceMoveOutOfRoom() 
+    {
+        canControl = false;
+        numberOfDoorColliders++;
+    }
+
+    public void ReturnControl() 
+    {
+        numberOfDoorColliders--;
+        if (numberOfDoorColliders == 0) 
+        {
+            canControl = true;
+        }
     }
 }

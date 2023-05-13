@@ -7,25 +7,22 @@ using Cinemachine;
 public class Room : MonoBehaviour
 {
     
-    [Header("Room Exit SFX Settings")]
+    [Header("Room SFX Settings")]
     [SerializeField] protected AudioClip roomExitSFX;
-    [SerializeField] float roomExitSFXVolume = 0.75f;
-    [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
+    [SerializeField] protected AudioClip doorsOpeningClosingSFX;
+    [SerializeField] float roomSFXVolume = 0.2f;
+    [SerializeField] private CinemachineVirtualCamera zoomInVirtualCamera;
+    [SerializeField] private CinemachineVirtualCamera zoomOutVirtualCamera;
     [SerializeField] private Transform enemyContainer;
     [SerializeField] private Transform collectableContainer;
     [Header("Only for Debugging in the Editor")]
     [SerializeField] private List<Transform> enemyList;
     [SerializeField] private Transform levelExit = null;
     [SerializeField] private bool hasSkillHolder;
-    private PolygonCollider2D myRoomBounds;
     public event EventHandler OnRoomEnter;
     public event EventHandler OnAllEnemiesDead;
-    private bool playerLeftRoom = true;
-
-    private void Awake() 
-    {
-        myRoomBounds = GetComponent<PolygonCollider2D>();
-    }
+    [SerializeField] private bool playerLeftRoom = true;
+    [SerializeField] private bool doorsClosed = false;
 
     private void Start() 
     {
@@ -66,8 +63,8 @@ public class Room : MonoBehaviour
         if (other.tag.Equals("Player") && !other.TryGetComponent<Bullet>(out Bullet bullet))
         {
             playerLeftRoom = false;
-            CameraController.Instance.SetActiveCinemachineCamera(cinemachineVirtualCamera, other.transform);
-            StartCoroutine(TryCloseAllDoors());
+            CameraController.Instance.SetActiveCinemachineCamera(zoomOutVirtualCamera, other.transform);
+            if (!doorsClosed) StartCoroutine(TryCloseAllDoors(other));
             //CameraController.Instance.SetRoomBounds(myRoomBounds);
         }
         
@@ -79,29 +76,37 @@ public class Room : MonoBehaviour
             if (other.tag.Equals("Player"))
             {
                 playerLeftRoom = true;
-                AudioSource.PlayClipAtPoint(roomExitSFX, AudioManager.Instance.GetAudioListener().transform.position, roomExitSFXVolume);
-                //CameraController.Instance.SetRoomBounds(myRoomBounds);
+                AudioSource.PlayClipAtPoint(roomExitSFX, AudioManager.Instance.GetAudioListener().transform.position, roomSFXVolume);
+                return;
             }
         }
-        enemyList.Remove(other.gameObject.transform);
-        StartCoroutine(CheckEnemyList());
-        enemyList.RemoveAll(enemy => enemy == null);
+        if (enemyList.Count != 0)
+        {
+            enemyList.Remove(other.gameObject.transform);
+            StartCoroutine(CheckEnemyList());
+            enemyList.RemoveAll(enemy => enemy == null);
+        }
     }
 
     
-    public IEnumerator TryCloseAllDoors()
+    public IEnumerator TryCloseAllDoors(Collider2D other)
     {
-        
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         if (!playerLeftRoom && (enemyList.Count > 0))
         {
             OnRoomEnter?.Invoke(this, EventArgs.Empty);
+            AudioSource.PlayClipAtPoint(doorsOpeningClosingSFX, AudioManager.Instance.GetAudioListener().transform.position, roomSFXVolume);
+            CameraController.Instance.SetActiveCinemachineCamera(zoomInVirtualCamera, other.transform);
+            doorsClosed = true;
         }
     }
 
     public IEnumerator OpenAllDoors()
-    {
-        yield return new WaitForSeconds(2f);
+    {        
+        CameraController.Instance.ZoomOut(zoomOutVirtualCamera);
+        yield return new WaitForSeconds(0.5f);
+        AudioSource.PlayClipAtPoint(doorsOpeningClosingSFX, AudioManager.Instance.GetAudioListener().transform.position, roomSFXVolume);
+        doorsClosed = false;
         OnAllEnemiesDead?.Invoke(this, EventArgs.Empty);
         if (levelExit != null) levelExit.gameObject.SetActive(true);
     }
@@ -110,6 +115,6 @@ public class Room : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         enemyList.RemoveAll(enemy => enemy == null);
-        if (enemyList.Count == 0) StartCoroutine(OpenAllDoors());
+        if (enemyList.Count == 0 && doorsClosed) StartCoroutine(OpenAllDoors());
     }
 }

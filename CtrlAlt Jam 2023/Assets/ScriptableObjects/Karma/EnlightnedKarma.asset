@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18775f8d2c03d7a4083ef1b732dfce18, type: 3}
+  m_Name: EnlightnedKarma
+  m_EditorClassIdentifier: 
+  state: 5
+  newSprite: {fileID: 21300000, guid: 2e708dfcb6e37b841a6794892e870688, type: 3}
+  newBulletPrefab: {fileID: 3291505396767566556, guid: 8c31e1470a7617948b4fb4b83249e3a7, type: 3}

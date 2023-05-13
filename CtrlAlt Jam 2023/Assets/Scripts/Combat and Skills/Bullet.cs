@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     [Range(1f, 10f)]
     [SerializeField] private float lifetime;
     [SerializeField] private Transform bulletHitPrefab;
-    [SerializeField] SkillsetController.KarmaState bulletState;
+    [SerializeField] KarmaScriptableObject.KarmaState bulletState;
 
     private Vector3 direction;
     private Rigidbody2D myRigidbody;
@@ -39,9 +39,7 @@ public class Bullet : MonoBehaviour
             {
                 healthSystem.Damage(damageAmount, this.transform);
             }
-            Transform bulletHitTransform = Instantiate(bulletHitPrefab, this.transform.position, this.transform.rotation);
-            BulletHit bulletHit = bulletHitTransform.GetComponent<BulletHit>();
-            bulletHit.SetBulletState(bulletState);
+            Instantiate(bulletHitPrefab, this.transform.position, this.transform.rotation).GetComponent<BulletHit>().SetBulletState(bulletState);
             Destroy(gameObject);
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillHolder : BaseCollectable
 {
-    [SerializeField] protected BaseSkill[] skills;
+    [SerializeField] protected SkillScriptableObject[] skills;
     public override string GetName()
     {
         return "Skill List";

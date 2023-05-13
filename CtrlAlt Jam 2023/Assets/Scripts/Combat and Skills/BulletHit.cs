@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class BulletHit : MonoBehaviour
 {
-    private SkillsetController.KarmaState bulletState;
+    private KarmaScriptableObject.KarmaState bulletState;
     private Animator myAnimator;
 
-    private void Start() {
+    private void Awake() {
         myAnimator = GetComponent<Animator>();
     }
 
-    public void SetBulletState(SkillsetController.KarmaState skillState)
+    public void SetBulletState(KarmaScriptableObject.KarmaState karmaState)
     {
-        myAnimator.SetInteger("State", (int) skillState);
-        Destroy(gameObject, 0.0175f);
+        int karmaStateValue = (int) karmaState;
+        /*Debug.Log(karmaState + karmaStateValue);
+        Debug.Log(myAnimator);*/
+        myAnimator.SetInteger("State", karmaStateValue);
+        Destroy(gameObject, 0.025f);
 
     }
 }

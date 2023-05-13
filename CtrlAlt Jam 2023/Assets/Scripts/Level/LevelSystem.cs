@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class LevelSystem : MonoBehaviour
 {
     public static LevelSystem Instance { get; private set; }
-    public event EventHandler<BaseSkill[]> OnSkillsOverlay;
-    public event EventHandler<BaseSkill> OnChoosedSkill;
-    public event EventHandler<BaseSkill> OnNotChosenSkill;
+    public event EventHandler<SkillScriptableObject[]> OnSkillsOverlay;
+    public event EventHandler<SkillScriptableObject> OnChoosedSkill;
+    public event EventHandler<SkillScriptableObject> OnNotChosenSkill;
     public event EventHandler OnPlayerDeath;
     private void Awake() 
     {
@@ -21,18 +21,18 @@ public class LevelSystem : MonoBehaviour
         Instance = this;
     }
 
-    public void SkillHolderActivated(BaseSkill[] skills)
+    public void SkillHolderActivated(SkillScriptableObject[] skills)
     {
         if (skills == null) Debug.Log("No skills received.");
         OnSkillsOverlay?.Invoke(this, skills);
     } 
 
-    public void ChoosedSkill(BaseSkill skill)
+    public void ChoosedSkill(SkillScriptableObject skill)
     {
         OnChoosedSkill?.Invoke(this, skill);
     }
     
-    public void SkillNotChosen(BaseSkill skill)
+    public void SkillNotChosen(SkillScriptableObject skill)
     {
         OnNotChosenSkill?.Invoke(this, skill);
     }
@@ -41,6 +41,7 @@ public class LevelSystem : MonoBehaviour
     {
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
     }
+
     
     public void EnterNextLevel()
     {

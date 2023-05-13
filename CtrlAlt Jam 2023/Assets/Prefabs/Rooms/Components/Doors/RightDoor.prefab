@@ -63,5 +63,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 8660033864648370411, guid: 3f23d04bcbb21a64b837ab4ab8ff6b7c, type: 3}
+      propertyPath: m_Size.x
+      value: 5.023274
+      objectReference: {fileID: 0}
+    - target: {fileID: 8660033864648370411, guid: 3f23d04bcbb21a64b837ab4ab8ff6b7c, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.4955752
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f23d04bcbb21a64b837ab4ab8ff6b7c, type: 3}

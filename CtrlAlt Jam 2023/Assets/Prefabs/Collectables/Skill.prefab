@@ -322,8 +322,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills:
-  - {fileID: 11400000, guid: b1d307a62914de941aa28589afa0e0e5, type: 2}
-  - {fileID: 11400000, guid: 6a8a97359bb547741a715c3f1637f664, type: 2}
+  - {fileID: 11400000, guid: 5c99ef5d756db4941b13f5b95e0bbdc0, type: 2}
+  - {fileID: 11400000, guid: 7a1dd0d5f30bce84994c7d524beab325, type: 2}
 --- !u!1 &7241423523353185936
 GameObject:
   m_ObjectHideFlags: 0

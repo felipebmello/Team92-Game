@@ -26,7 +26,7 @@ PrefabInstance:
     - target: {fileID: 2625827711563887949, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: currentSkill
       value: 
-      objectReference: {fileID: 11400000, guid: 6a8a97359bb547741a715c3f1637f664, type: 2}
+      objectReference: {fileID: 11400000, guid: 3383dae6e7ef95c449ca6b3f174cfeff, type: 2}
     - target: {fileID: 2625827711563887949, guid: ebcd4fedd216e464abdffba3e97e6662, type: 3}
       propertyPath: currentState
       value: 1

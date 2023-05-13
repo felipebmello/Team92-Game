@@ -27,7 +27,7 @@ public class ShootProjectile : MonoBehaviour
             
             float angleInRadians = Mathf.Atan2(targetDirection.y, targetDirection.x);
             float angleInDegrees = angleInRadians * Mathf.Rad2Deg;
-            Debug.Log(bulletPrefab);
+            //Debug.Log(bulletPrefab);
             
             AudioSource.PlayClipAtPoint(shootingSFX, AudioManager.Instance.GetAudioListener().transform.position, shootingSFXVolume);
 
