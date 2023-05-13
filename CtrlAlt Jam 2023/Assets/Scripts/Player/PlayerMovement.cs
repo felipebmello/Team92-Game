@@ -40,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnMovement(InputValue value) 
     {
-        Debug.Log("Player Shooting");
         movementInput = value.Get<Vector2>();
         if (movementInput != Vector2.zero && canControl) 
         {

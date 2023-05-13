@@ -16,7 +16,6 @@ public class PlayerShooting : ShootProjectile
     //Bug detectado, 
     protected void OnFire(InputValue value)
     {
-        Debug.Log("Player Shooting "+gameObject+value.ToString());
         buttonPressed = value.isPressed;
     }
 
