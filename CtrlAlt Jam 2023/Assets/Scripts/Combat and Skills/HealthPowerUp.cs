@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class DamagePowerUp : BasePowerUp
+public class HealthPowerUp : BasePowerUp
 {
     
     public event EventHandler<float> OnPoweUpPickUp;
-    [SerializeField] private float speedModifier = 1.25f;
     public override string GetName()
     {
-        return "Damage";
+        return "Health";
     }
 
     protected override void PickUp(GameObject player)
     {
-        player.gameObject.GetComponent<PlayerMovement>().SetSpeedModifier(speedModifier);
+        var healthSystem = player.gameObject.GetComponent<HealthSystem>();
+        if(healthSystem.health < healthSystem.healthMax)
+        {
+            healthSystem.health += 50;
+        }
     }
 }

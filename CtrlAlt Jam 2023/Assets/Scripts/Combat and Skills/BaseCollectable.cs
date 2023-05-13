@@ -5,10 +5,15 @@ using UnityEngine;
 public abstract class BaseCollectable : MonoBehaviour
 {
     protected CircleCollider2D collectableCollider;
+    protected PowerUpPopUp popUp;
 
     public abstract string GetName();
 
-    protected virtual void Start() 
+    protected void Awake()
+    {
+        popUp = GameObject.Find("PowerUpPopUp").GetComponent<PowerUpPopUp>();
+    }
+    protected virtual void Start()
     {
         collectableCollider = GetComponent<CircleCollider2D>();
     }
@@ -16,8 +21,10 @@ public abstract class BaseCollectable : MonoBehaviour
     {
         if (other.tag.Equals("Player") && !other.TryGetComponent<Bullet>(out Bullet bullet))
         {
-            Debug.Log(other.name);
+            //finds popup
+            string powerUpName = GetName();
             PickUp(other.gameObject);
+            popUp.ShowPowerUp(powerUpName);
             Destroy(gameObject);
         }
     }
