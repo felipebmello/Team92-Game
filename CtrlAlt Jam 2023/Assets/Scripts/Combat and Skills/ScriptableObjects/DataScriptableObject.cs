@@ -15,6 +15,7 @@ public class DataScriptableObject : ScriptableObject
     [SerializeField] private Transform baseBulletPrefab;
     [SerializeField] private bool baseHoldToShoot;
     [SerializeField] private float baseFireRate;
+    [SerializeField] private bool baseBackShot;
 
 
     private KarmaScriptableObject.KarmaState lastState;
@@ -26,6 +27,7 @@ public class DataScriptableObject : ScriptableObject
     private Transform lastBulletPrefab;
     private bool lastHoldToShoot;
     private float lastFireRate;
+    private bool lastBackShot;
 
 
     [SerializeField] private KarmaScriptableObject.KarmaState currentState;
@@ -38,6 +40,7 @@ public class DataScriptableObject : ScriptableObject
     [SerializeField] private Transform bulletPrefab;
     [SerializeField] private bool holdToShoot;
     [SerializeField] private float fireRate;
+    [SerializeField] private bool backShot;
 
     private void OnEnable()
     {
@@ -48,6 +51,7 @@ public class DataScriptableObject : ScriptableObject
         lastBulletPrefab = baseBulletPrefab;
         lastHoldToShoot = baseHoldToShoot;
         lastFireRate = baseFireRate;
+        lastBackShot = baseBackShot;
         lastAllStates = new List<KarmaScriptableObject.KarmaState>();
         lastAllSkills = new List<SkillScriptableObject>();
         ResetData();
@@ -63,6 +67,7 @@ public class DataScriptableObject : ScriptableObject
         BulletPrefab = lastBulletPrefab;
         HoldToShoot = lastHoldToShoot;
         FireRate = lastFireRate;
+        BackShot = lastBackShot;
         allStates = lastAllStates;
         allSkills = lastAllSkills;
     }
@@ -76,6 +81,7 @@ public class DataScriptableObject : ScriptableObject
         lastBulletPrefab = BulletPrefab;
         lastHoldToShoot = HoldToShoot;
         lastFireRate = FireRate;
+        lastBackShot = BackShot;
         lastAllStates = allStates;
         lastAllSkills = allSkills;
     }
@@ -91,4 +97,5 @@ public class DataScriptableObject : ScriptableObject
     public Transform BulletPrefab { get => bulletPrefab; set => bulletPrefab = value; }
     public bool HoldToShoot { get => holdToShoot; set => holdToShoot = value; }
     public float FireRate { get => fireRate; set => fireRate = value; }
+    public bool BackShot { get => backShot; set => backShot = value; }
 }

@@ -296,6 +296,8 @@ MonoBehaviour:
   targetDirection: {x: 0, y: 0, z: 0}
   shootingSFX: {fileID: 8300000, guid: 8118cc7b89f4c164492aea1a0ec9ae0d, type: 3}
   shootingSFXVolume: 0.75
+  bulletDamage: 0
+  backShot: 0
   holdToShoot: 1
 --- !u!114 &3487053834638212549
 MonoBehaviour:

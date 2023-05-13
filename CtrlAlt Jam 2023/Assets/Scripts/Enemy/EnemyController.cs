@@ -68,6 +68,7 @@ public class EnemyController : SkillsetController
             enemyShooting.SetBulletPrefab(currentKarmaScrObj.NewBulletPrefab);
             enemyShooting.SetFireRate(skill.NewFireRate);
             enemyShooting.ApplyFireRateModifier(strongVariantModifier);
+            if (currentSkill.BackShot) enemyShooting.SetBackShot(true);
         }
         else 
         {
@@ -82,6 +83,7 @@ public class EnemyController : SkillsetController
         savedData.MovementSpeed = enemyMovement.GetMovementSpeed();
         savedData.BulletPrefab = enemyShooting.GetBulletPrefab();
         savedData.FireRate = enemyShooting.GetFireRate();
+        savedData.BackShot = enemyShooting.GetBackShot();
         Debug.Log(enemyShooting.GetFireRate());
     }
 
@@ -96,6 +98,7 @@ public class EnemyController : SkillsetController
         enemyMovement.SetMovementSpeed(savedData.CurrentSkill.NewMovementSpeed / 2);
         enemyShooting.SetBulletPrefab(savedData.CurrentKarmaScrObj.NewBulletPrefab);
         enemyShooting.SetFireRate(savedData.CurrentSkill.NewFireRate);
+        enemyShooting.SetBackShot(savedData.BackShot);
         enemyShooting.ApplyFireRateModifier(strongVariantModifier);
     }
 

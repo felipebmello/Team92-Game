@@ -22,6 +22,7 @@ public class SkillScriptableObject : ScriptableObject
     [SerializeField] private float newMovementSpeed;
     [Header("Shooting Settings")]
     [SerializeField] private bool newHoldToShoot;
+    [SerializeField] private bool backShot;
     [Range(0.1f, 1f)]
     [SerializeField] private float newFireRate;
     [Header("Modifier Settings")]
@@ -36,4 +37,5 @@ public class SkillScriptableObject : ScriptableObject
     public bool NewHoldToShoot { get => newHoldToShoot; set => newHoldToShoot = value; }
     public float NewFireRate { get => newFireRate; set => newFireRate = value; }
     public float HealthModifier { get => healthModifier; set => healthModifier = value; }
+    public bool BackShot { get => backShot; set => backShot = value; }
 }

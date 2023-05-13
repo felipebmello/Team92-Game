@@ -69,6 +69,7 @@ public class PlayerController : SkillsetController
         playerShooting.SetBulletPrefab(currentKarmaScrObj.NewBulletPrefab);
         playerShooting.SetHoldToShoot(skill.NewHoldToShoot);
         playerShooting.SetFireRate(skill.NewFireRate);
+        if (currentSkill.BackShot) playerShooting.SetBackShot(true);
     }
     
     protected override void SaveSkillsetData()
@@ -78,6 +79,7 @@ public class PlayerController : SkillsetController
         savedData.BulletPrefab = playerShooting.GetBulletPrefab();
         savedData.HoldToShoot = playerShooting.GetHoldToShoot();
         savedData.FireRate = playerShooting.GetFireRate();
+        savedData.BackShot = playerShooting.GetBackShot();
     }
 
     protected override void LoadSkillsetData()
@@ -87,6 +89,7 @@ public class PlayerController : SkillsetController
         playerShooting.SetBulletPrefab(savedData.CurrentKarmaScrObj.NewBulletPrefab);
         playerShooting.SetHoldToShoot(savedData.CurrentSkill.NewHoldToShoot);
         playerShooting.SetFireRate(savedData.CurrentSkill.NewFireRate);
+        playerShooting.SetBackShot(savedData.BackShot);
     }
 
     private void OnQuit() {
