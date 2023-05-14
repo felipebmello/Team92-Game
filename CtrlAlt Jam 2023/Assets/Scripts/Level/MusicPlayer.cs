@@ -5,6 +5,11 @@ using UnityEngine;
 public class MusicPlayer : MonoBehaviour
 {
     AudioSource audioSource;
+    [SerializeField] private AudioClip mainMenuClip;
+    [SerializeField] private AudioClip level1Clip;
+    [SerializeField] private AudioClip level2Clip;
+    [SerializeField]private AudioClip level3Clip;
+
     [SerializeField] [Range(0f, 1f)] float musicVolume = 0.6f;
     public static MusicPlayer Instance { get; private set; }
     private void Awake() 

@@ -40,7 +40,7 @@ public class ShootProjectile : MonoBehaviour
             if (backShot) 
             {
                 Vector2 newPosition = new Vector2 (transform.position.x-bulletSpawnPoint.localPosition.x, bulletSpawnPoint.position.y);
-                CreateBulletWithDirection(newPosition, angleInDegrees, -targetDirection);
+                CreateBulletWithDirection(newPosition, angleInDegrees+180, -targetDirection);
             }
             fireTimer = (fireRate / fireRateModifier);
         }

@@ -35,7 +35,7 @@ public abstract class SkillsetController : MonoBehaviour
         {
             LoadSkillsetData();
             savedData.SetLastData();
-            healthSystem.ApplyHealthModifier(currentSkill.HealthModifier);
+            ModifyHealthSystem(currentSkill.HealthModifier);
             GetKarmaObject();
         }    
         else LearnNewSkill(currentSkill);
@@ -60,7 +60,7 @@ public abstract class SkillsetController : MonoBehaviour
         isPlayerDead = true;
         if (savedData != null) savedData.ResetData();
     }
-    protected void HealthSystem_OnDamaged(object sender, Transform other)
+    protected virtual void HealthSystem_OnDamaged(object sender, Transform other)
     {
         AudioSource.PlayClipAtPoint(objectHitSFX, AudioManager.Instance.GetAudioListener().transform.position, controllerSFXVolume);
         hitKnockback.ObjectHit(other);
@@ -71,10 +71,15 @@ public abstract class SkillsetController : MonoBehaviour
     public virtual void LearnNewSkill (SkillScriptableObject skill)
     {
         currentSkill = skill;
-        healthSystem.ApplyHealthModifier(skill.HealthModifier);
+        ModifyHealthSystem(skill.HealthModifier);
         allStates.Add(currentState);
         allSkills.Add(currentSkill);
         GetKarmaObject();
+    }
+
+    protected virtual void ModifyHealthSystem(float healthModifier)
+    {
+        healthSystem.ApplyHealthModifier(healthModifier);
     }
 
     protected void GetKarmaObject()

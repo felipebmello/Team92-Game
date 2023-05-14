@@ -19,7 +19,7 @@ public class PlayerController : SkillsetController
         playerShooting = this.gameObject.GetComponent<PlayerShooting>();
         Debug.Log("Player starting, current skill: "+currentSkill);
         base.Start();
-        if (currentState == KarmaScriptableObject.KarmaState.TooInnocent) healthSystem.ApplyHealthModifier(2);
+        if (currentState == KarmaScriptableObject.KarmaState.TooInnocent) ModifyHealthSystem(2f);
         playerMovement.SetSprite(currentKarmaScrObj.NewSprite);
         TogglePlayerBehaviour(true);
         LevelSystem.Instance.OnChoosedSkill += LevelSystem_OnChoosedSkill;
@@ -45,6 +45,7 @@ public class PlayerController : SkillsetController
 
     protected override void HealthSystem_OnDead(object sender, EventArgs e)
     {
+        LevelSystem.Instance.PlayerDamaged(0);
         //Executar comportamento ao morrer, mover player para trás
         TogglePlayerBehaviour(false);
         LevelSystem.Instance.PlayerKilled();
@@ -52,6 +53,11 @@ public class PlayerController : SkillsetController
         Destroy(gameObject, 1f);
     }
 
+    protected override void HealthSystem_OnDamaged(object sender, Transform other)
+    {
+        LevelSystem.Instance.PlayerDamaged(healthSystem.GetHealth());
+        base.HealthSystem_OnDamaged(sender, other);
+    }
 
     private void TogglePlayerBehaviour (bool toggle)
     {
@@ -90,6 +96,12 @@ public class PlayerController : SkillsetController
         playerShooting.SetHoldToShoot(savedData.CurrentSkill.NewHoldToShoot);
         playerShooting.SetFireRate(savedData.CurrentSkill.NewFireRate);
         playerShooting.SetBackShot(savedData.BackShot);
+    }
+
+    protected override void ModifyHealthSystem(float healthModifier)
+    {
+        base.ModifyHealthSystem(healthModifier);
+        LevelSystem.Instance.PlayerHealthChanged(healthSystem);
     }
 
     private void OnQuit() {
