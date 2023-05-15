@@ -99,6 +99,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8541236042622818417, guid: dedd4adbf9c9bfe46b136386507e036a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.17
+      objectReference: {fileID: 0}
     - target: {fileID: 8541236042627441685, guid: dedd4adbf9c9bfe46b136386507e036a, type: 3}
       propertyPath: m_Name
       value: BaseRoom_Parquinho

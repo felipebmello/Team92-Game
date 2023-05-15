@@ -142,11 +142,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2439723821200117083, guid: ce4568d3e3080054f9225e3d49cd9413, type: 3}
       propertyPath: m_TrackedObjectOffset.x
-      value: 1.160251
+      value: 0.0001770029
       objectReference: {fileID: 0}
     - target: {fileID: 2439723821200117083, guid: ce4568d3e3080054f9225e3d49cd9413, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: 3.999999
+      value: 3.999991
       objectReference: {fileID: 0}
     - target: {fileID: 2924130272032727740, guid: ce4568d3e3080054f9225e3d49cd9413, type: 3}
       propertyPath: m_Name
@@ -308,11 +308,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2439723821200117083, guid: c34c18c873c9ca44b90dad9a0f82e80a, type: 3}
       propertyPath: m_TrackedObjectOffset.x
-      value: 1.090725
+      value: 0.5521088
       objectReference: {fileID: 0}
     - target: {fileID: 2439723821200117083, guid: c34c18c873c9ca44b90dad9a0f82e80a, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: 3.890671
+      value: 0.00009882973
       objectReference: {fileID: 0}
     - target: {fileID: 2924130270582361647, guid: c34c18c873c9ca44b90dad9a0f82e80a, type: 3}
       propertyPath: m_TrackedObjectOffset.x
@@ -658,11 +658,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2439723821200117083, guid: b78b8981d5d1ed244a26a6f1dc446675, type: 3}
       propertyPath: m_TrackedObjectOffset.x
-      value: 0.05594719
+      value: 0.009087297
       objectReference: {fileID: 0}
     - target: {fileID: 2439723821200117083, guid: b78b8981d5d1ed244a26a6f1dc446675, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: 1.311392
+      value: -0.001094239
       objectReference: {fileID: 0}
     - target: {fileID: 2924130272032727740, guid: b78b8981d5d1ed244a26a6f1dc446675, type: 3}
       propertyPath: m_Name
