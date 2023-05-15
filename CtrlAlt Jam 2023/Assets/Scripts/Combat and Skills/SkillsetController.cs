@@ -101,7 +101,7 @@ public abstract class SkillsetController : MonoBehaviour
                         currentState = KarmaScriptableObject.KarmaState.Evil;
                         return;
                     case SkillScriptableObject.SkillState.GoodKarma:
-                        currentState = KarmaScriptableObject.KarmaState.Innocent;
+                        currentState = KarmaScriptableObject.KarmaState.Enlightned;
                         return;
                 }
                 return;
@@ -131,13 +131,13 @@ public abstract class SkillsetController : MonoBehaviour
                 switch (skill.State)
                 {
                     case SkillScriptableObject.SkillState.BadKarma:
-                        currentState = KarmaScriptableObject.KarmaState.Corrupt;
+                        currentState = KarmaScriptableObject.KarmaState.Enlightned;
                         return;
                     case SkillScriptableObject.SkillState.Neutral:
                         currentState = KarmaScriptableObject.KarmaState.Enlightned;
                         return;
                     case SkillScriptableObject.SkillState.GoodKarma:
-                        currentState = KarmaScriptableObject.KarmaState.Good;
+                        currentState = KarmaScriptableObject.KarmaState.Enlightned;
                         return;
                 }
                 return;
@@ -156,7 +156,7 @@ public abstract class SkillsetController : MonoBehaviour
                 switch (skill.State)
                 {
                     case SkillScriptableObject.SkillState.BadKarma:
-                        currentState = KarmaScriptableObject.KarmaState.Innocent;
+                        currentState = KarmaScriptableObject.KarmaState.Enlightned;
                         return;
                     case SkillScriptableObject.SkillState.GoodKarma:
                         currentState = KarmaScriptableObject.KarmaState.Angel;

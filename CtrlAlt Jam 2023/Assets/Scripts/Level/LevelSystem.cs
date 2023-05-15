@@ -58,8 +58,16 @@ public class LevelSystem : MonoBehaviour
     
     public void EnterNextLevel()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
-        else SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
+        if (SceneManager.GetActiveScene().buildIndex == 1) 
+        {
+            //MusicPlayer.Instance.PlayLevel2Music();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            //MusicPlayer.Instance.PlayLevel1Music();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
+        }
     }
 
     public void RestartScene()
