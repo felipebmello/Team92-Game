@@ -10,6 +10,7 @@ public class MouseWorld : MonoBehaviour
     void Awake()
     {
         instance = this;
+        Cursor.visible = false;
     }
 
     void Update()

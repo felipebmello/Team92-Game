@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  damageAmount: 100
   lifetime: 1
   bulletHitPrefab: {fileID: 5676698320028114425, guid: 335de032491bfb4479b56763649ad8fc, type: 3}
   bulletState: 3
@@ -169,6 +170,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0037761927, y: 0.24}
+  m_Offset: {x: 0.0037761927, y: 0}
   serializedVersion: 2
   m_Radius: 0.45869106
