@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7174137479155490499
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 444258986563869312, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938532772162754674, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121425665789334418, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666948755956026366, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520502165302926611, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700801374105958513, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409908509195914162, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234154707718, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234543283956, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234761116170, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234824002684, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234824002684, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234824002684, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234824002684, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234824002684, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234824002684, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234824002684, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234824002684, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234824002684, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234824002684, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234824002684, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411973234824002687, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_Name
+      value: L_BaseRoom_Hospital
+      objectReference: {fileID: 0}
+    - target: {fileID: 7692357923985675875, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540856603321196952, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620860602287534438, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8692992486985054150, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 525d8681053ac5d4e8881a3a905983cc, type: 3}

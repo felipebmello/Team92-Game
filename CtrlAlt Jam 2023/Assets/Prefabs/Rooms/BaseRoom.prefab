@@ -108,6 +108,7 @@ MonoBehaviour:
   enemyList: []
   levelExit: {fileID: 0}
   hasSkillHolder: 0
+  skillHolder: {fileID: 0}
   playerLeftRoom: 1
   doorsClosed: 0
 --- !u!60 &3099513117001180785
@@ -778,7 +779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2184357691194290601, guid: 120adc9830aa3d3468b364d3eea32aed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.333
+      value: -13.31
       objectReference: {fileID: 0}
     - target: {fileID: 2186654182359278994, guid: 120adc9830aa3d3468b364d3eea32aed, type: 3}
       propertyPath: m_IsActive
@@ -878,7 +879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738909558723420777, guid: 120adc9830aa3d3468b364d3eea32aed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -30.505
+      value: -30.489
       objectReference: {fileID: 0}
     - target: {fileID: 6055320259277041087, guid: 120adc9830aa3d3468b364d3eea32aed, type: 3}
       propertyPath: room
