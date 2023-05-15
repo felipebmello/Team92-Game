@@ -232,9 +232,9 @@ GameObject:
   - component: {fileID: 7483515285896351670}
   - component: {fileID: 4411767637979528351}
   - component: {fileID: 5751986997891405681}
+  - component: {fileID: 3487053834638212549}
   - component: {fileID: 6191748754788262644}
   - component: {fileID: 6668976720497429425}
-  - component: {fileID: 3487053834638212549}
   - component: {fileID: 1308036293}
   - component: {fileID: 1308036294}
   - component: {fileID: 3863119695161831459}
@@ -275,10 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySpriteRenderer: {fileID: 716548965}
-  smoothTime: 0.1
-  canControl: 1
-  numberOfDoorColliders: 0
-  lastKnownVelocity: {x: 0, y: 0}
+  movementSpeed: 0
   speedModifier: 1
 --- !u!114 &5751986997891405681
 MonoBehaviour:
@@ -294,9 +291,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawnPoint: {fileID: 5414240876701828725}
   bulletPrefab: {fileID: 3291505396767566556, guid: ac781869f443e4d4aaef13d89b7f3450, type: 3}
+  fireRate: 0
+  fireRateModifier: 1
+  targetDirection: {x: 0, y: 0, z: 0}
   shootingSFX: {fileID: 8300000, guid: 8118cc7b89f4c164492aea1a0ec9ae0d, type: 3}
   shootingSFXVolume: 0.75
+  bulletDamage: 0
+  backShot: 0
   holdToShoot: 1
+--- !u!114 &3487053834638212549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8274186843921918946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a30a97d8d43232c408539225b71651bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!114 &6191748754788262644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +338,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8e8510a56f9637042b5a0f92b9ac90a4, type: 2}
   currentKarmaScrObj: {fileID: 0}
   currentSkill: {fileID: 11400000, guid: f0e53ed995c9b184896c898c36653c37, type: 2}
+  allSkills: []
   allStates: 
   objectHitSFX: {fileID: 8300000, guid: 09fdd447789004b4d825f71d518ae47f, type: 3}
   controllerSFXVolume: 0.4
@@ -342,19 +358,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 30
---- !u!114 &3487053834638212549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8274186843921918946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a30a97d8d43232c408539225b71651bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
 --- !u!50 &1308036293
 Rigidbody2D:
   serializedVersion: 4

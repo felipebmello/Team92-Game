@@ -15,6 +15,20 @@ public class DataScriptableObject : ScriptableObject
     [SerializeField] private Transform baseBulletPrefab;
     [SerializeField] private bool baseHoldToShoot;
     [SerializeField] private float baseFireRate;
+    [SerializeField] private bool baseBackShot;
+
+
+    private KarmaScriptableObject.KarmaState lastState;
+    private KarmaScriptableObject lastKarmaScrObj;
+    private SkillScriptableObject lastSkill;
+    private List<KarmaScriptableObject.KarmaState> lastAllStates = new List<KarmaScriptableObject.KarmaState>();
+    private List<SkillScriptableObject> lastAllSkills = new List<SkillScriptableObject>();
+    private float lastMovementSpeed;
+    private Transform lastBulletPrefab;
+    private bool lastHoldToShoot;
+    private float lastFireRate;
+    private bool lastBackShot;
+
 
     [SerializeField] private KarmaScriptableObject.KarmaState currentState;
     [SerializeField] private KarmaScriptableObject currentKarmaScrObj;
@@ -26,20 +40,52 @@ public class DataScriptableObject : ScriptableObject
     [SerializeField] private Transform bulletPrefab;
     [SerializeField] private bool holdToShoot;
     [SerializeField] private float fireRate;
+    [SerializeField] private bool backShot;
 
-    private void OnEnable() 
+    private void OnEnable()
     {
-        currentState = baseCurrentState;
-        currentKarmaScrObj = baseCurrentKarmaScrObj;
-        currentSkill = baseCurrentSkill;
-        numberOfSaves = baseNumberOfSaves;
-        MovementSpeed = baseMovementSpeed;
-        BulletPrefab = baseBulletPrefab;
-        HoldToShoot = baseHoldToShoot;
-        FireRate = baseFireRate;
-        allStates = new List<KarmaScriptableObject.KarmaState>();
-        allSkills = new List<SkillScriptableObject>();
+        lastState = baseCurrentState;
+        lastKarmaScrObj = baseCurrentKarmaScrObj;
+        lastSkill = baseCurrentSkill;
+        lastMovementSpeed = baseMovementSpeed;
+        lastBulletPrefab = baseBulletPrefab;
+        lastHoldToShoot = baseHoldToShoot;
+        lastFireRate = baseFireRate;
+        lastBackShot = baseBackShot;
+        lastAllStates = new List<KarmaScriptableObject.KarmaState>();
+        lastAllSkills = new List<SkillScriptableObject>();
+        ResetData();
     }
+
+    public void ResetData()
+    {
+        currentState = lastState;
+        currentKarmaScrObj = lastKarmaScrObj;
+        currentSkill = lastSkill;
+        numberOfSaves = baseNumberOfSaves;
+        MovementSpeed = lastMovementSpeed;
+        BulletPrefab = lastBulletPrefab;
+        HoldToShoot = lastHoldToShoot;
+        FireRate = lastFireRate;
+        BackShot = lastBackShot;
+        allStates = lastAllStates;
+        allSkills = lastAllSkills;
+    }
+
+    public void SetLastData()
+    {
+        lastState = currentState;
+        lastKarmaScrObj = currentKarmaScrObj;
+        lastSkill = currentSkill;
+        lastMovementSpeed = MovementSpeed;
+        lastBulletPrefab = BulletPrefab;
+        lastHoldToShoot = HoldToShoot;
+        lastFireRate = FireRate;
+        lastBackShot = BackShot;
+        lastAllStates = allStates;
+        lastAllSkills = allSkills;
+    }
+
 
 
     public KarmaScriptableObject.KarmaState CurrentState { get => currentState; set => currentState = value; }
@@ -51,4 +97,5 @@ public class DataScriptableObject : ScriptableObject
     public Transform BulletPrefab { get => bulletPrefab; set => bulletPrefab = value; }
     public bool HoldToShoot { get => holdToShoot; set => holdToShoot = value; }
     public float FireRate { get => fireRate; set => fireRate = value; }
+    public bool BackShot { get => backShot; set => backShot = value; }
 }

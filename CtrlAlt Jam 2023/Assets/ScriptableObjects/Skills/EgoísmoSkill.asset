@@ -18,7 +18,7 @@ MonoBehaviour:
   effect: "Ego\xEDsmo"
   description: "<b>Um proj\xE9til</b> \xE9 lan\xE7ado <b>por vez</b>, com <b>dano
     e \xE1rea maior</b>."
-  newMovementSpeed: 8
+  newMovementSpeed: 10
   newHoldToShoot: 1
   newFireRate: 1
-  healthModifier: 2
+  healthModifier: 1.5

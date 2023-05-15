@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-    AudioSource audioSource;
-    [SerializeField] [Range(0f, 1f)] float musicVolume = 0.6f;
     public static MusicPlayer Instance { get; private set; }
+    private AudioSource audioSource;
+    public float fadeDuration = 1.0f;
+    //[SerializeField] private AudioClip mainMenuClip;
+    [SerializeField] private AudioClip level1Clip;
+    [SerializeField] private AudioClip level2Clip;
+    //[SerializeField]private AudioClip level3Clip;
+
+    [SerializeField] [Range(0f, 1f)] float musicVolume = 0.6f;
     private void Awake() 
     {
-        int numMusicPlayers = FindObjectsOfType<MusicPlayer>().Length;
-        if (numMusicPlayers > 1)
+        if (Instance != null)
         {
+            Debug.LogError("There's more than one LevelSystem! "+ transform + " - " + Instance);
             Destroy(gameObject);
         }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+        Instance = this;
+        DontDestroyOnLoad(this);
+
     }
     // Start is called before the first frame update
     void Start()
@@ -31,5 +36,20 @@ public class MusicPlayer : MonoBehaviour
     internal void SetVolume(float volume)
     {
         musicVolume = volume;
+    }
+
+    public void PlayLevel1Music ()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
+        audioSource.clip = level1Clip;
+        audioSource.Play();
+    }
+    public void PlayLevel2Music ()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
+        audioSource.clip = level2Clip;
+        audioSource.Play();
     }
 }

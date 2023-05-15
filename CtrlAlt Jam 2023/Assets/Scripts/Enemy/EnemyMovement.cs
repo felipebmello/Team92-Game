@@ -35,13 +35,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void EnemyFOV_OnSeeingTarget(object sender, Transform target)
     {
-        Debug.Log("Found target: "+target.gameObject);
         this.target = target;
     }
     
     private void EnemyFOV_OnLosingTarget(object sender, EventArgs e)
     {
-        Debug.Log("Lost target!");
         target = null;
     }
 

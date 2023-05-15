@@ -9,6 +9,8 @@ public class HealthSystem : MonoBehaviour
     public event EventHandler<Transform> OnDamaged;
     [SerializeField] private float health = 100;
     private float healthMax;
+
+    private float lastDamageSuffered;
     
     private void Awake() 
     {
@@ -23,6 +25,7 @@ public class HealthSystem : MonoBehaviour
 
     public void Damage (float damageAmount, Transform other)
     {
+        lastDamageSuffered = damageAmount;
         health -= damageAmount;
         if (health < 0)
         {
@@ -39,5 +42,19 @@ public class HealthSystem : MonoBehaviour
     private void Die() 
     {
         OnDead?.Invoke(this, EventArgs.Empty);
+    }
+
+    public float GetHealthMax()
+    {
+        return healthMax;
+    }
+    
+    public float GetHealth()
+    {
+        return health;
+    }
+    public float GetLastDamageSuffered()
+    {
+        return lastDamageSuffered;
     }
 }

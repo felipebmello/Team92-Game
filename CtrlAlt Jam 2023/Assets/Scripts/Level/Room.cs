@@ -21,6 +21,7 @@ public class Room : MonoBehaviour
     [SerializeField] private List<Transform> enemyList;
     [SerializeField] private Transform levelExit = null;
     [SerializeField] private bool hasSkillHolder;
+    [SerializeField] private SkillHolder skillHolder;
     public event EventHandler OnRoomEnter;
     public event EventHandler OnAllEnemiesDead;
     [SerializeField] private bool playerLeftRoom = true;
@@ -45,9 +46,10 @@ public class Room : MonoBehaviour
     
     private void CheckForSkillHolder()
     {
-        foreach (SkillHolder skillHolder in collectableContainer.GetComponentsInChildren<SkillHolder>())
+        foreach (SkillHolder sHolder in collectableContainer.GetComponentsInChildren<SkillHolder>())
         {
             hasSkillHolder = true;
+            skillHolder = sHolder;
         }
     }
 
@@ -87,6 +89,7 @@ public class Room : MonoBehaviour
             enemyList.Remove(other.gameObject.transform);
             StartCoroutine(CheckEnemyList());
             enemyList.RemoveAll(enemy => enemy == null);
+            return;
         }
     }
 
@@ -94,13 +97,37 @@ public class Room : MonoBehaviour
     public IEnumerator TryCloseAllDoors(Collider2D other)
     {
         yield return new WaitForSeconds(0.6f);
+        if (!playerLeftRoom && hasSkillHolder)
+        {
+            CloseAllDoors(other);
+            StartCoroutine(CheckSkillHolderActive());
+
+        }
         if (!playerLeftRoom && (enemyList.Count > 0))
         {
-            OnRoomEnter?.Invoke(this, EventArgs.Empty);
-            AudioSource.PlayClipAtPoint(doorsOpeningClosingSFX, AudioManager.Instance.GetAudioListener().transform.position, roomSFXVolume);
-            CameraController.Instance.SetActiveCinemachineCamera(zoomInVirtualCamera, other.transform);
-            doorsClosed = true;
+            CloseAllDoors(other);
         }
+    }
+
+    public IEnumerator CheckSkillHolderActive()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (!skillHolder.isActive)
+        {
+            StartCoroutine(OpenAllDoors());
+        }
+        else
+        {
+            StartCoroutine(CheckSkillHolderActive());
+        }
+    }
+
+    private void CloseAllDoors(Collider2D other)
+    {
+        OnRoomEnter?.Invoke(this, EventArgs.Empty);
+        AudioSource.PlayClipAtPoint(doorsOpeningClosingSFX, AudioManager.Instance.GetAudioListener().transform.position, roomSFXVolume);
+        CameraController.Instance.SetActiveCinemachineCamera(zoomInVirtualCamera, other.transform);
+        doorsClosed = true;
     }
 
     public IEnumerator OpenAllDoors()
