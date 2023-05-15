@@ -658,11 +658,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2439723821200117083, guid: b78b8981d5d1ed244a26a6f1dc446675, type: 3}
       propertyPath: m_TrackedObjectOffset.x
-      value: 0.2409193
+      value: 3.998793
       objectReference: {fileID: 0}
     - target: {fileID: 2439723821200117083, guid: b78b8981d5d1ed244a26a6f1dc446675, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: -0.2407898
+      value: 3.997616
       objectReference: {fileID: 0}
     - target: {fileID: 2924130272032727740, guid: b78b8981d5d1ed244a26a6f1dc446675, type: 3}
       propertyPath: m_Name
@@ -1801,15 +1801,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8994661314785769862, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8994661314785769862, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8994661314785769862, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8994661314785769863, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}
       propertyPath: m_Name

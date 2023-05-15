@@ -12,12 +12,14 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float lifetime;
     [SerializeField] private Transform bulletHitPrefab;
     [SerializeField] KarmaScriptableObject.KarmaState bulletState;
+    private CircleCollider2D bulletCollider;
 
     private Vector3 direction;
     private Rigidbody2D myRigidbody;
     public void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        bulletCollider = GetComponent<CircleCollider2D>();
         Destroy(gameObject, lifetime);
     }
 
@@ -31,8 +33,18 @@ public class Bullet : MonoBehaviour
         this.direction = targetDirection;
     }
 
+    public CircleCollider2D GetBulletCollider()
+    {
+        return bulletCollider;
+    }
+
     private void OnCollisionEnter2D(Collision2D other) 
     {
+        if (other.gameObject.TryGetComponent<Bullet>(out Bullet bullet))
+        {
+           Physics2D.IgnoreCollision(this.bulletCollider, bullet.GetBulletCollider());
+           return;
+        }
         if (other.gameObject.tag != this.tag)
         {
             if (other.gameObject.TryGetComponent<HealthSystem>(out HealthSystem healthSystem))
