@@ -15,6 +15,7 @@ public abstract class SkillsetController : MonoBehaviour
     [SerializeField] protected List<KarmaScriptableObject.KarmaState> allStates = new List<KarmaScriptableObject.KarmaState>();
     [SerializeField] protected AudioClip objectHitSFX;
     [SerializeField] protected float controllerSFXVolume = 0.75f;
+    [SerializeField] protected Animator myAnimator;
     protected HealthSystem healthSystem;
     protected HitKnockback hitKnockback;
     protected bool isPlayerDead = false;
@@ -37,6 +38,7 @@ public abstract class SkillsetController : MonoBehaviour
             savedData.SetLastData();
             ModifyHealthSystem(currentSkill.HealthModifier);
             GetKarmaObject();
+            SetAnimationOverride();
         }    
         else LearnNewSkill(currentSkill);
         healthSystem.OnDamaged += HealthSystem_OnDamaged;
@@ -75,6 +77,7 @@ public abstract class SkillsetController : MonoBehaviour
         allStates.Add(currentState);
         allSkills.Add(currentSkill);
         GetKarmaObject();
+        SetAnimationOverride();
     }
 
     protected virtual void ModifyHealthSystem(float healthModifier)
@@ -88,6 +91,11 @@ public abstract class SkillsetController : MonoBehaviour
         {
             if (karmaObject.State == currentState) currentKarmaScrObj = karmaObject;
         }
+    }
+
+    protected void SetAnimationOverride()
+    {
+        myAnimator.runtimeAnimatorController = currentKarmaScrObj.NewAOC;
     }
 
     protected void CheckCurrentKarmaState(SkillScriptableObject skill)

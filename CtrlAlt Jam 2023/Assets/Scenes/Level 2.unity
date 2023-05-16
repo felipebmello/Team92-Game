@@ -1474,11 +1474,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3499901365419546188, guid: 68f7f9f22786c4346b286637da5808d6, type: 3}
       propertyPath: m_TrackedObjectOffset.x
-      value: 0.5318803
+      value: 3.961395
       objectReference: {fileID: 0}
     - target: {fileID: 3499901365419546188, guid: 68f7f9f22786c4346b286637da5808d6, type: 3}
       propertyPath: m_TrackedObjectOffset.y
-      value: 0.000000001880033
+      value: 3.965466
       objectReference: {fileID: 0}
     - target: {fileID: 4169522506938111288, guid: 68f7f9f22786c4346b286637da5808d6, type: 3}
       propertyPath: m_TrackedObjectOffset.x
@@ -3428,38 +3428,6 @@ PrefabInstance:
     - target: {fileID: 8994661314296977613, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}
       propertyPath: m_Name
       value: MouseWorld
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994661314785769857, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-    - target: {fileID: 8994661314785769857, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}
-      propertyPath: m_Color.a
-      value: 0.29803923
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994661314785769857, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994661314785769857, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994661314785769857, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}
-      propertyPath: m_Color.r
-      value: 0.13207841
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994661314785769857, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994661314785769857, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -603992083
-      objectReference: {fileID: 0}
-    - target: {fileID: 8994661314785769863, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}
-      propertyPath: m_Name
-      value: Aim
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ff72b5d42014cc4ebb1896b162921d2, type: 3}

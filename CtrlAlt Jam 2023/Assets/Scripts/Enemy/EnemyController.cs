@@ -43,6 +43,7 @@ public class EnemyController : SkillsetController
     {
         //Executar comportamento ao morrer, mover player para trás
         ToggleEnemyBehaviour(false);
+        LevelSystem.Instance.EnemyKilled();
         Destroy(this.gameObject, 0.25f);
     }
     private void ToggleEnemyBehaviour (bool toggle)
@@ -69,6 +70,8 @@ public class EnemyController : SkillsetController
             enemyShooting.SetFireRate(skill.NewFireRate);
             enemyShooting.ApplyFireRateModifier(strongVariantModifier);
             if (currentSkill.BackShot) enemyShooting.SetBackShot(true);
+            if (currentSkill.TripleShot) enemyShooting.SetTripleShot(true);
+            if (currentSkill.HealingShot) enemyShooting.SetHealingShot(true);
         }
         else 
         {
@@ -84,6 +87,8 @@ public class EnemyController : SkillsetController
         savedData.BulletPrefab = enemyShooting.GetBulletPrefab();
         savedData.FireRate = enemyShooting.GetFireRate();
         savedData.BackShot = enemyShooting.GetBackShot();
+        savedData.TripleShot = enemyShooting.GetTripleShot();
+        savedData.HealingShot = enemyShooting.GetHealingShot();
         Debug.Log(enemyShooting.GetFireRate());
     }
 
@@ -99,6 +104,8 @@ public class EnemyController : SkillsetController
         enemyShooting.SetBulletPrefab(savedData.CurrentKarmaScrObj.NewBulletPrefab);
         enemyShooting.SetFireRate(savedData.CurrentSkill.NewFireRate);
         enemyShooting.SetBackShot(savedData.BackShot);
+        enemyShooting.SetTripleShot(savedData.TripleShot);
+        enemyShooting.SetHealingShot(savedData.HealingShot);
         enemyShooting.ApplyFireRateModifier(strongVariantModifier);
     }
 

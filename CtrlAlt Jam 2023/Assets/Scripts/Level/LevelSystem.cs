@@ -13,6 +13,7 @@ public class LevelSystem : MonoBehaviour
     public event EventHandler<float> OnPlayerMaxHealthChanged;
     public event EventHandler<float> OnPlayerDamaged;
     public event EventHandler OnPlayerDeath;
+    public event EventHandler OnEnemyDeath;
     private void Awake() 
     {
         if (Instance != null)
@@ -54,19 +55,23 @@ public class LevelSystem : MonoBehaviour
     {
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
     }
-
+    
+    public void EnemyKilled()
+    {
+        OnEnemyDeath?.Invoke(this, EventArgs.Empty);
+    }
     
     public void EnterNextLevel()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1) 
+        if (SceneManager.GetActiveScene().buildIndex > 0 && SceneManager.GetActiveScene().buildIndex < 3) 
         {
             //MusicPlayer.Instance.PlayLevel2Music();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
-        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             //MusicPlayer.Instance.PlayLevel1Music();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
+            SceneManager.LoadScene(1);
         }
     }
 

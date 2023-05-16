@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] KarmaScriptableObject.KarmaState bulletState;
     private CircleCollider2D bulletCollider;
 
-    private Vector3 direction;
+    private Vector2 direction;
     private Rigidbody2D myRigidbody;
     public void Start()
     {
@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
         myRigidbody.velocity = direction * speed;
     }
 
-    public void SetTarget(Vector3 targetDirection)
+    public void SetTarget(Vector2 targetDirection)
     {
         this.direction = targetDirection;
     }
@@ -44,6 +44,11 @@ public class Bullet : MonoBehaviour
         {
            Physics2D.IgnoreCollision(this.bulletCollider, bullet.GetBulletCollider());
            return;
+        }
+        if (other.gameObject.tag == this.tag)
+        {
+           Physics2D.IgnoreCollision(this.bulletCollider, other.gameObject.GetComponent<Collider2D>());
+
         }
         if (other.gameObject.tag != this.tag)
         {

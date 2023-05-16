@@ -16,10 +16,12 @@ public class GameOverOverlayUI : MonoBehaviour
     private void LevelSystem_OnPlayerDeath (object sender, EventArgs e)
     {
         gameObject.SetActive(true);
+        Cursor.visible = true;
     }
 
     public void OnRestartButtonClick()
     {        
         LevelSystem.Instance.RestartScene();
+        Cursor.visible = false;
     }
 }

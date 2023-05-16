@@ -19,5 +19,8 @@ MonoBehaviour:
   description: Chance de <b>regenerar 25% de vida<b> ao <b>derrotar</b> um inimigo
   newMovementSpeed: 10
   newHoldToShoot: 1
+  backShot: 0
+  tripleShot: 0
+  healingShot: 1
   newFireRate: 0.3
   healthModifier: 2

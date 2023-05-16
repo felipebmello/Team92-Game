@@ -16,6 +16,8 @@ public class DataScriptableObject : ScriptableObject
     [SerializeField] private bool baseHoldToShoot;
     [SerializeField] private float baseFireRate;
     [SerializeField] private bool baseBackShot;
+    [SerializeField] private bool baseTripleShot;
+    [SerializeField] private bool baseHealingShot;
 
 
     private KarmaScriptableObject.KarmaState lastState;
@@ -28,6 +30,8 @@ public class DataScriptableObject : ScriptableObject
     private bool lastHoldToShoot;
     private float lastFireRate;
     private bool lastBackShot;
+    private bool lastTripleShot;
+    private bool lastHealingShot;
 
 
     [SerializeField] private KarmaScriptableObject.KarmaState currentState;
@@ -41,6 +45,8 @@ public class DataScriptableObject : ScriptableObject
     [SerializeField] private bool holdToShoot;
     [SerializeField] private float fireRate;
     [SerializeField] private bool backShot;
+    [SerializeField] private bool tripleShot;
+    [SerializeField] private bool healingShot;
 
     private void OnEnable()
     {
@@ -52,6 +58,8 @@ public class DataScriptableObject : ScriptableObject
         lastHoldToShoot = baseHoldToShoot;
         lastFireRate = baseFireRate;
         lastBackShot = baseBackShot;
+        lastTripleShot = baseTripleShot;
+        lastHealingShot = baseHealingShot;
         lastAllStates = new List<KarmaScriptableObject.KarmaState>();
         lastAllSkills = new List<SkillScriptableObject>();
         ResetData();
@@ -68,6 +76,8 @@ public class DataScriptableObject : ScriptableObject
         HoldToShoot = lastHoldToShoot;
         FireRate = lastFireRate;
         BackShot = lastBackShot;
+        TripleShot = lastTripleShot;
+        HealingShot = lastHealingShot;
         allStates = lastAllStates;
         allSkills = lastAllSkills;
     }
@@ -98,4 +108,6 @@ public class DataScriptableObject : ScriptableObject
     public bool HoldToShoot { get => holdToShoot; set => holdToShoot = value; }
     public float FireRate { get => fireRate; set => fireRate = value; }
     public bool BackShot { get => backShot; set => backShot = value; }
+    public bool TripleShot { get => tripleShot; set => tripleShot = value; }
+    public bool HealingShot { get => healingShot; set => healingShot = value; }
 }
