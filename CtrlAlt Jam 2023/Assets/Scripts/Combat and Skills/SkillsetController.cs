@@ -18,6 +18,7 @@ public abstract class SkillsetController : MonoBehaviour
     [SerializeField] protected Animator myAnimator;
     protected HealthSystem healthSystem;
     protected HitKnockback hitKnockback;
+    protected HitFlash hitFlash;
     protected bool isPlayerDead = false;
 
     protected virtual void OnDestroy() {
@@ -32,6 +33,7 @@ public abstract class SkillsetController : MonoBehaviour
     {
         healthSystem = this.gameObject.GetComponent<HealthSystem>();
         hitKnockback = this.gameObject.GetComponent<HitKnockback>();
+        hitFlash = this.gameObject.GetComponentInChildren<HitFlash>();
         if (savedData != null) 
         {
             LoadSkillsetData();
@@ -65,6 +67,7 @@ public abstract class SkillsetController : MonoBehaviour
     protected virtual void HealthSystem_OnDamaged(object sender, Transform other)
     {
         AudioSource.PlayClipAtPoint(objectHitSFX, AudioManager.Instance.GetAudioListener().transform.position, controllerSFXVolume);
+        hitFlash.Flash();
         hitKnockback.ObjectHit(other);
     }
 

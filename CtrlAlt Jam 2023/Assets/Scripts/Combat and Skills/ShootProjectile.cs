@@ -23,10 +23,12 @@ public class ShootProjectile : MonoBehaviour
     [SerializeField] protected float tripleShotAngle = 15f;
     [SerializeField] private bool healingShot = false;
     [SerializeField] protected Animator myAnimator;
+    [SerializeField] protected Rigidbody2D myRigidbody;
     
 
     protected virtual void Update() 
     {
+        myRigidbody = GetComponent<Rigidbody2D>();
         bulletDamage = bulletPrefab.GetComponent<Bullet>().GetDamageAmount();
         fireTimer -= Time.deltaTime;
     }
@@ -36,7 +38,6 @@ public class ShootProjectile : MonoBehaviour
         {
             float angleInRadians = Mathf.Atan2(targetDirection.y, targetDirection.x);
             float angleInDegrees = angleInRadians * Mathf.Rad2Deg;
-            //Debug.Log(bulletPrefab);
             myAnimator.SetTrigger("Attack");
 
             AudioSource.PlayClipAtPoint(shootingSFX, AudioManager.Instance.GetAudioListener().transform.position, shootingSFXVolume);
@@ -59,11 +60,13 @@ public class ShootProjectile : MonoBehaviour
     private void CreateBulletWithDirection(Vector2 position, float angleInDegrees, Vector2 targetDirection)
     {
         Transform bulletTransform = Instantiate(bulletPrefab, position, Quaternion.identity);
-        bulletTransform.tag = this.tag;
-        bulletTransform.gameObject.layer = this.gameObject.layer;
-        bulletTransform.Rotate(0, 0, angleInDegrees);
         Bullet bullet = bulletTransform.GetComponent<Bullet>();
+        Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), bullet.GetBulletCollider());
+        bullet.tag = this.tag;
+        bullet.gameObject.layer = this.gameObject.layer;
+        bullet.transform.Rotate(0, 0, angleInDegrees);
         bullet.SetTarget(targetDirection);
+        bullet.SetShooterVelocity(myRigidbody.velocity);
     }
 
     public void ApplyFireRateModifier (float modifier)

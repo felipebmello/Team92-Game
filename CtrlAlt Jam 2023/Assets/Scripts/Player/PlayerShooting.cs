@@ -31,9 +31,9 @@ public class PlayerShooting : ShootProjectile
 
     protected override void FireBullet()
     {
-        targetDirection = MouseWorld.GetPosition() - this.transform.position;
+        Vector2 playerPosition = this.transform.position;
+        targetDirection = MouseWorld.GetPosition() - playerPosition;
         targetDirection.Normalize();
-        Debug.Log(targetDirection);
         base.FireBullet();
     }
     public void SetHoldToShoot (bool holdToShoot)

@@ -21,5 +21,7 @@ MonoBehaviour:
   newMovementSpeed: 10
   newHoldToShoot: 1
   backShot: 1
-  newFireRate: 0.3
+  tripleShot: 0
+  healingShot: 0
+  newFireRate: 0.6
   healthModifier: 2

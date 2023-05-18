@@ -15,8 +15,9 @@ public class Bullet : MonoBehaviour
     private CircleCollider2D bulletCollider;
 
     private Vector2 direction;
+    private Vector2 shooterRBVelocity = Vector2.zero;
     private Rigidbody2D myRigidbody;
-    public void Start()
+    public void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         bulletCollider = GetComponent<CircleCollider2D>();
@@ -25,12 +26,17 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        myRigidbody.velocity = direction * speed;
+        myRigidbody.velocity = (direction * speed);
     }
 
     public void SetTarget(Vector2 targetDirection)
     {
         this.direction = targetDirection;
+    }
+    
+    public void SetShooterVelocity(Vector2 velocity)
+    {
+        this.shooterRBVelocity = velocity;
     }
 
     public CircleCollider2D GetBulletCollider()

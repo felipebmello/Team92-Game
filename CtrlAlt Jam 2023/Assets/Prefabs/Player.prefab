@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5747454150655949859}
   - component: {fileID: 716548965}
+  - component: {fileID: 1503796586364988380}
   m_Layer: 3
   m_Name: Corpo
   m_TagString: Player
@@ -85,6 +86,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &1503796586364988380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2300664639722898227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1526d2d09c935478096f59265d071a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4370077228468701293
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,12 +308,16 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3291505396767566556, guid: ac781869f443e4d4aaef13d89b7f3450, type: 3}
   fireRate: 0
   fireRateModifier: 1
-  targetDirection: {x: 0, y: 0, z: 0}
+  targetDirection: {x: 0, y: 0}
   shootingSFX: {fileID: 8300000, guid: 8118cc7b89f4c164492aea1a0ec9ae0d, type: 3}
   shootingSFXVolume: 0.75
   bulletDamage: 0
   backShot: 0
+  tripleShot: 0
+  tripleShotAngle: 15
+  healingShot: 0
   myAnimator: {fileID: 5438267573185028076}
+  myRigidbody: {fileID: 0}
   holdToShoot: 1
 --- !u!114 &3487053834638212549
 MonoBehaviour:

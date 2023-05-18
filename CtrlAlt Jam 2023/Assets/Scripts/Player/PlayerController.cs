@@ -45,7 +45,7 @@ public class PlayerController : SkillsetController
     protected void LevelSystem_OnEnemyDeath (object sender, EventArgs e)
     {
         //Incluir lógica da skill "Babão".
-        if (playerShooting.GetTripleShot())
+        if (playerShooting.GetHealingShot())
         {
             int chance = UnityEngine.Random.Range(1, 5);
             if (chance == 1)
