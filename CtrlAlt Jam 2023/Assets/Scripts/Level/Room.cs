@@ -142,7 +142,7 @@ public class Room : MonoBehaviour
     
     public IEnumerator CheckEnemyList()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         enemyList.RemoveAll(enemy => enemy == null);
         if (enemyList.Count == 0 && doorsClosed) StartCoroutine(OpenAllDoors());
     }

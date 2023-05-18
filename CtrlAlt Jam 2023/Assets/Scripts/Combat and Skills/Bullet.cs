@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     [Range(1f, 15f)]
     [SerializeField] private float speed;
     [SerializeField] private float damageAmount = 100f;
+    private float damageModifier = 1f;
     [Range(1f, 10f)]
     [SerializeField] private float lifetime;
     [SerializeField] private Transform bulletHitPrefab;
@@ -60,7 +61,7 @@ public class Bullet : MonoBehaviour
         {
             if (other.gameObject.TryGetComponent<HealthSystem>(out HealthSystem healthSystem))
             {
-                healthSystem.Damage(damageAmount, this.transform);
+                healthSystem.Damage(damageAmount * damageModifier, this.transform);
             }
             Instantiate(bulletHitPrefab, this.transform.position, this.transform.rotation).GetComponent<BulletHit>().SetBulletState(bulletState);
             Destroy(gameObject);
@@ -70,5 +71,9 @@ public class Bullet : MonoBehaviour
     public float GetDamageAmount()
     {
         return damageAmount;
+    }
+    public void SetDamageModifier(float damageModifier)
+    {
+        this.damageModifier = damageModifier;
     }
 }

@@ -10,10 +10,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float movementSpeed;
     [Range(0.05f, 0.2f)]
-    private float smoothTime = 0.1f;
-    private bool canControl = true;
-    private int numberOfDoorColliders = 0;
-    private Vector2 lastKnownVelocity = Vector2.zero;
+    [SerializeField] private float smoothTime = 0.1f;
+    [SerializeField] private bool canControl = true;
+    [SerializeField] private int numberOfDoorColliders = 0;
+    [SerializeField] private Vector2 lastKnownVelocity = Vector2.zero;
 
 
     /*[Header("Looking Settings")]
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
     private Vector2 movementInputCurrentVelocity;
-    private Vector2 lastKnownCurrentVelocity;
+    [SerializeField] private Vector2 lastKnownCurrentVelocity;
     private Rigidbody2D myRigidbody;
     private bool facingRight = true;
     [SerializeField] private float speedModifier = 1f;
@@ -126,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
     public void ForceMoveOutOfRoom() 
     {
         canControl = false;
+        Debug.Log("Player shouldn't move");
         numberOfDoorColliders++;
     }
 

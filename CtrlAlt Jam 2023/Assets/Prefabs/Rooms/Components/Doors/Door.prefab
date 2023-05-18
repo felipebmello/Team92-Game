@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 0}
-  fullWallCollider: {fileID: 0}
+  fullWallCollider: {fileID: 8660033864648370411}
 --- !u!61 &8660033864648370411
 BoxCollider2D:
   m_ObjectHideFlags: 0

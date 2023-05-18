@@ -16,7 +16,7 @@ public class PlayerController : SkillsetController
     {
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         playerShooting = this.gameObject.GetComponent<PlayerShooting>();
-        Debug.Log("Player starting, current skill: "+currentSkill);
+        //Debug.Log("Player starting, current skill: "+currentSkill);
         base.Start();
         if (currentState == KarmaScriptableObject.KarmaState.TooInnocent) ModifyHealthSystem(2f);
         playerMovement.SetSprite(currentKarmaScrObj.NewSprite);
@@ -50,8 +50,7 @@ public class PlayerController : SkillsetController
             int chance = UnityEngine.Random.Range(1, 5);
             if (chance == 1)
             {
-                healthSystem.Heal(25);
-                LevelSystem.Instance.PlayerHealthChanged(healthSystem);
+                HealPlayer(25f);
             }
         }
     }
@@ -121,6 +120,12 @@ public class PlayerController : SkillsetController
     {
         base.ModifyHealthSystem(healthModifier);
         LevelSystem.Instance.PlayerHealthChanged(healthSystem);
+    }
+
+    public void HealPlayer (float healAmount)
+    {
+        healthSystem.Heal(healAmount);
+        LevelSystem.Instance.PlayerHealed(healthSystem.GetHealth());
     }
 
     private void OnQuit() {

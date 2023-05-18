@@ -10,11 +10,12 @@ public class SpeedPowerUp : BasePowerUp
     [SerializeField] private float speedModifier = 1.25f;
     public override string GetName()
     {
-        return "SpeedPowerUp";
+        return "Speed";
     }
 
     protected override void PickUp(GameObject player)
     {
+        base.PickUp(player);
         player.gameObject.GetComponent<PlayerMovement>().SetSpeedModifier(speedModifier);
     }
 }

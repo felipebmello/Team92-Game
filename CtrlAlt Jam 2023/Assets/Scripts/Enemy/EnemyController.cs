@@ -89,7 +89,7 @@ public class EnemyController : SkillsetController
         savedData.BackShot = enemyShooting.GetBackShot();
         savedData.TripleShot = enemyShooting.GetTripleShot();
         savedData.HealingShot = enemyShooting.GetHealingShot();
-        Debug.Log(enemyShooting.GetFireRate());
+        //Debug.Log(enemyShooting.GetFireRate());
     }
 
     protected override void LoadSkillsetData()

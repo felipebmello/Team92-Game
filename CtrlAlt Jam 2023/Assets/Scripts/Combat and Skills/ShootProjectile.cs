@@ -18,13 +18,13 @@ public class ShootProjectile : MonoBehaviour
     [SerializeField] protected AudioClip shootingSFX;
     [SerializeField] protected float shootingSFXVolume = 0.75f;
     [SerializeField] private float bulletDamage;
+    [SerializeField] private float damageModifier = 1f;
     [SerializeField] private bool backShot = false;
     [SerializeField] private bool tripleShot = false;
     [SerializeField] protected float tripleShotAngle = 15f;
     [SerializeField] private bool healingShot = false;
     [SerializeField] protected Animator myAnimator;
     [SerializeField] protected Rigidbody2D myRigidbody;
-    
 
     protected virtual void Update() 
     {
@@ -65,6 +65,7 @@ public class ShootProjectile : MonoBehaviour
         bullet.tag = this.tag;
         bullet.gameObject.layer = this.gameObject.layer;
         bullet.transform.Rotate(0, 0, angleInDegrees);
+        bullet.SetDamageModifier(damageModifier);
         bullet.SetTarget(targetDirection);
         bullet.SetShooterVelocity(myRigidbody.velocity);
     }
@@ -121,6 +122,11 @@ public class ShootProjectile : MonoBehaviour
     public void SetHealingShot (bool hasHealingShot)
     {
         this.healingShot = hasHealingShot;
+    }
+
+    public void SetDamageModifier (float damageModifier)
+    {
+        this.damageModifier = damageModifier;
     }
     
 }

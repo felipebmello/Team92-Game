@@ -12,6 +12,7 @@ public class LevelSystem : MonoBehaviour
     public event EventHandler<SkillScriptableObject> OnNotChosenSkill;
     public event EventHandler<float> OnPlayerMaxHealthChanged;
     public event EventHandler<float> OnPlayerDamaged;
+    public event EventHandler<float> OnPlayerHealed;
     public event EventHandler OnPlayerDeath;
     public event EventHandler OnEnemyDeath;
     private void Awake() 
@@ -50,6 +51,11 @@ public class LevelSystem : MonoBehaviour
     {
         float numberOfFullHearts = currentHealth / 25;
         OnPlayerDamaged?.Invoke(this, numberOfFullHearts);
+    }
+    public void PlayerHealed(float currentHealth)
+    {
+        float numberOfFullHearts = currentHealth / 25;
+        OnPlayerHealed?.Invoke(this, numberOfFullHearts);
     }
     public void PlayerKilled()
     {
