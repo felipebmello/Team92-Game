@@ -80,9 +80,9 @@ public class DataScriptableObject : ScriptableObject
 
     public void ResetData()
     {
-        currentState = lastState;
-        currentKarmaScrObj = lastKarmaScrObj;
-        currentSkill = lastSkill;
+        CurrentState = lastState;
+        CurrentKarmaScrObj = lastKarmaScrObj;
+        CurrentSkill = lastSkill;
         numberOfSaves = baseNumberOfSaves;
         MovementSpeed = lastMovementSpeed;
         BulletPrefab = lastBulletPrefab;

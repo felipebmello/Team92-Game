@@ -78,6 +78,7 @@ public class LevelSystem : MonoBehaviour
             if (buildIndex == 3)
             {
                 OnPlayerVictory?.Invoke(this, EventArgs.Empty);
+                MouseWorld.ShowCursor(true);
             }
             SceneManager.LoadScene(buildIndex+1);
         }
