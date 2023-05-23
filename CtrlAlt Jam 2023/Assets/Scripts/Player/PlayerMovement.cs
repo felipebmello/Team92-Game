@@ -126,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
     public void ForceMoveOutOfRoom() 
     {
         canControl = false;
-        Debug.Log("Player shouldn't move");
+        //Debug.Log("Player shouldn't move");
         numberOfDoorColliders++;
     }
 

@@ -16,9 +16,7 @@ public class PlayerController : SkillsetController
     {
         playerMovement = this.gameObject.GetComponent<PlayerMovement>();
         playerShooting = this.gameObject.GetComponent<PlayerShooting>();
-        //Debug.Log("Player starting, current skill: "+currentSkill);
         base.Start();
-        if (currentState == KarmaScriptableObject.KarmaState.TooInnocent) ModifyHealthSystem(2f);
         playerMovement.SetSprite(currentKarmaScrObj.NewSprite);
         TogglePlayerBehaviour(true);
         LevelSystem.Instance.OnChoosedSkill += LevelSystem_OnChoosedSkill;
@@ -102,6 +100,8 @@ public class PlayerController : SkillsetController
         savedData.BackShot = playerShooting.GetBackShot();
         savedData.TripleShot = playerShooting.GetTripleShot();
         savedData.HealingShot = playerShooting.GetHealingShot();
+        savedData.HealthMax = healthSystem.GetHealthMax() / healthSystem.GetLastHealthModifier();
+        savedData.Health = healthSystem.GetHealth();
     }
 
     protected override void LoadSkillsetData()
@@ -114,12 +114,21 @@ public class PlayerController : SkillsetController
         playerShooting.SetBackShot(savedData.BackShot);
         playerShooting.SetTripleShot(savedData.TripleShot);
         playerShooting.SetHealingShot(savedData.HealingShot);
+        healthSystem.SetHealthMax(savedData.HealthMax);
+        healthSystem.SetHealth(savedData.Health);
     }
 
     protected override void ModifyHealthSystem(float healthModifier)
     {
         base.ModifyHealthSystem(healthModifier);
         LevelSystem.Instance.PlayerHealthChanged(healthSystem);
+        LevelSystem.Instance.PlayerDamaged(healthSystem.GetHealth());
+    }
+
+    protected override void ReplenishHealthSystem()
+    {
+        base.ReplenishHealthSystem();
+        LevelSystem.Instance.PlayerHealed(healthSystem.GetHealth());
     }
 
     public void HealPlayer (float healAmount)

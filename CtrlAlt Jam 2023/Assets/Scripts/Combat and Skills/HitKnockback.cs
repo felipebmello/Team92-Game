@@ -14,7 +14,7 @@ public class HitKnockback : MonoBehaviour
 
     public void ObjectHit(Transform other)
     {
-        StartCoroutine(KnockbackCo(0.25f, thrust, other));
+        StartCoroutine(KnockbackCo(0.5f, thrust, other));
 
     }
 

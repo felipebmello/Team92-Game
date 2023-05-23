@@ -8,8 +8,9 @@ public class HealthSystem : MonoBehaviour
     public event EventHandler OnDead;
     public event EventHandler<Transform> OnDamaged;
     [SerializeField] private float health = 100;
-    private float healthMax;
+    [SerializeField] private float healthMax;
 
+    [SerializeField] private float lastHealthModifier = 1f;
     private float lastDamageSuffered;
     
     private void Awake() 
@@ -20,6 +21,11 @@ public class HealthSystem : MonoBehaviour
     public void ApplyHealthModifier(float healthModifier)
     {
         healthMax *= healthModifier;
+        if (health > healthMax) health = healthMax;
+    }
+
+    public void ReplenishFullHealth()
+    {
         health = healthMax;
     }
 
@@ -42,6 +48,7 @@ public class HealthSystem : MonoBehaviour
     public void Heal (float healAmount)
     {
         if (health + healAmount <= healthMax) health += healAmount;
+        else health = healthMax;
     }
     
     private void Die() 
@@ -58,8 +65,26 @@ public class HealthSystem : MonoBehaviour
     {
         return health;
     }
+    public void SetHealthMax(float healthMax)
+    {
+        this.healthMax = healthMax;
+    }
+    
+    public void SetHealth(float health)
+    {
+        this.health = health;
+    }
     public float GetLastDamageSuffered()
     {
         return lastDamageSuffered;
+    }
+
+    public float GetLastHealthModifier()
+    {
+        return lastHealthModifier;
+    }
+    public void SetLastHealthModifier(float healthModifier)
+    {
+        this.lastHealthModifier = healthModifier;
     }
 }

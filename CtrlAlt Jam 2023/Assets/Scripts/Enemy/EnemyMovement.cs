@@ -103,12 +103,19 @@ public class EnemyMovement : MonoBehaviour
             if (other.gameObject.TryGetComponent<HealthSystem>(out HealthSystem healthSystem))
             {
                 healthSystem.Damage(damageAmount, this.transform);
+                StartCoroutine(StopAfterDamaging());
             }
         }
     }
     public float GetMovementSpeed()
     {
         return this.movementSpeed;
+    }
+
+    IEnumerator StopAfterDamaging() {
+        this.enabled = false;
+        yield return new WaitForSeconds(2f);
+        this.enabled = true;
     }
 
 }

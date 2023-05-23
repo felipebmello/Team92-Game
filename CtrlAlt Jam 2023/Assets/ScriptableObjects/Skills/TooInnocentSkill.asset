@@ -19,5 +19,8 @@ MonoBehaviour:
   description: TooInnocent description
   newMovementSpeed: 10
   newHoldToShoot: 1
+  backShot: 0
+  tripleShot: 0
+  healingShot: 0
   newFireRate: 0.9
-  healthModifier: 0.5
+  healthModifier: 1

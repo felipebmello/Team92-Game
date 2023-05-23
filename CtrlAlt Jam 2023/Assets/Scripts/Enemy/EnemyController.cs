@@ -60,7 +60,7 @@ public class EnemyController : SkillsetController
         {
             strongVariantModifier = 1.5f;
         }
-        if (currentState == KarmaScriptableObject.KarmaState.TooInnocent) strongVariantModifier = 0.5f;
+        if (currentState == KarmaScriptableObject.KarmaState.TooInnocent) strongVariantModifier = 0.25f;
         healthSystem.ApplyHealthModifier(strongVariantModifier);
         enemyMovement.SetMovementSpeed(skill.NewMovementSpeed / 2);
         enemyMovement.SetSprite(currentKarmaScrObj.NewSprite);
@@ -81,7 +81,7 @@ public class EnemyController : SkillsetController
     
     protected override void SaveSkillsetData()
     {
-        Debug.Log(savedData);
+        //Debug.Log(savedData);
         base.SaveSkillsetData();
         savedData.MovementSpeed = enemyMovement.GetMovementSpeed();
         savedData.BulletPrefab = enemyShooting.GetBulletPrefab();
@@ -89,6 +89,8 @@ public class EnemyController : SkillsetController
         savedData.BackShot = enemyShooting.GetBackShot();
         savedData.TripleShot = enemyShooting.GetTripleShot();
         savedData.HealingShot = enemyShooting.GetHealingShot();
+        savedData.HealthMax = healthSystem.GetHealthMax() / healthSystem.GetLastHealthModifier();
+        savedData.Health = savedData.HealthMax;
         //Debug.Log(enemyShooting.GetFireRate());
     }
 
@@ -107,6 +109,8 @@ public class EnemyController : SkillsetController
         enemyShooting.SetTripleShot(savedData.TripleShot);
         enemyShooting.SetHealingShot(savedData.HealingShot);
         enemyShooting.ApplyFireRateModifier(strongVariantModifier);
+        healthSystem.SetHealthMax(savedData.HealthMax);
+        healthSystem.SetHealth(savedData.HealthMax);
     }
 
     public HealthSystem GetHealthSystem()

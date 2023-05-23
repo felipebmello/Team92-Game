@@ -20,33 +20,43 @@ public abstract class SkillsetController : MonoBehaviour
     protected HitKnockback hitKnockback;
     protected HitFlash hitFlash;
     protected bool isPlayerDead = false;
+    protected bool hasPlayerWon = false;
 
     protected virtual void OnDestroy() {
-        if (savedData != null && !isPlayerDead) 
+        if (savedData != null && !isPlayerDead && !hasPlayerWon) 
         {
-            Debug.Log(savedData);
+            //Debug.Log(gameObject + " is saving skillset to " + savedData + ".");
             SaveSkillsetData();
         }
     }
 
     protected virtual void Start() 
     {
+        
+        //Debug.Log(gameObject + " is starting.");
         healthSystem = this.gameObject.GetComponent<HealthSystem>();
         hitKnockback = this.gameObject.GetComponent<HitKnockback>();
         hitFlash = this.gameObject.GetComponentInChildren<HitFlash>();
         if (savedData != null) 
         {
+            //Player e inimigos variantes sempre carregam seu skillset dos dados base salvos no PlayerSaveData Scriptable Object.
+            //Debug.Log(gameObject + " is loading skillset from " + savedData + ".");
             LoadSkillsetData();
             savedData.SetLastData();
             ModifyHealthSystem(currentSkill.HealthModifier);
             GetKarmaObject();
             SetAnimationOverride();
         }    
-        else LearnNewSkill(currentSkill);
+        else 
+        {
+            //Inimigos não variantes não carregam seu skillset, apenas "aprendem" sua skill única/atual.
+            LearnNewSkill(currentSkill);
+        }
         healthSystem.OnDamaged += HealthSystem_OnDamaged;
         healthSystem.OnDead += HealthSystem_OnDead;
         LevelSystem.Instance.OnSkillsOverlay += LevelSystem_OnSkillsOverlay;
         LevelSystem.Instance.OnPlayerDeath += LevelSystem_OnPlayerDeath;
+        LevelSystem.Instance.OnPlayerVictory += LevelSystem_OnPlayerVictory;
 
     }
 
@@ -62,7 +72,22 @@ public abstract class SkillsetController : MonoBehaviour
     protected void LevelSystem_OnPlayerDeath(object sender, EventArgs e)
     {
         isPlayerDead = true;
-        if (savedData != null) savedData.ResetData();
+        if (savedData != null)
+        {
+            savedData.BaseData();
+            savedData.ResetData();
+        }
+    }
+
+    protected void LevelSystem_OnPlayerVictory(object sender, EventArgs e)
+    {
+        hasPlayerWon = true;
+        if (savedData != null)
+        {
+            savedData.BaseData();
+            savedData.ResetData();
+            Debug.Log("Cleaned data");
+        }
     }
     protected virtual void HealthSystem_OnDamaged(object sender, Transform other)
     {
@@ -75,8 +100,10 @@ public abstract class SkillsetController : MonoBehaviour
 
     public virtual void LearnNewSkill (SkillScriptableObject skill)
     {
+        //Debug.Log(gameObject + " is learning new skill " + skill + ".");
         currentSkill = skill;
         ModifyHealthSystem(skill.HealthModifier);
+        ReplenishHealthSystem();
         allStates.Add(currentState);
         allSkills.Add(currentSkill);
         GetKarmaObject();
@@ -86,6 +113,11 @@ public abstract class SkillsetController : MonoBehaviour
     protected virtual void ModifyHealthSystem(float healthModifier)
     {
         healthSystem.ApplyHealthModifier(healthModifier);
+        healthSystem.SetLastHealthModifier(healthModifier);
+    }
+    protected virtual void ReplenishHealthSystem()
+    {
+        healthSystem.ReplenishFullHealth();
     }
 
     protected void GetKarmaObject()

@@ -122,6 +122,7 @@ MonoBehaviour:
   shootingSFX: {fileID: 8300000, guid: 8118cc7b89f4c164492aea1a0ec9ae0d, type: 3}
   shootingSFXVolume: 0.75
   bulletDamage: 0
+  damageModifier: 1
   backShot: 0
   tripleShot: 0
   tripleShotAngle: 15
@@ -141,6 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  healthMax: 0
+  lastHealthModifier: 1
 --- !u!114 &5173126287437070718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48434e72335fdb64db9c9c014ffa235c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 15
+  thrust: 10
 --- !u!50 &6804204024323978904
 Rigidbody2D:
   serializedVersion: 4
@@ -327,6 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 9ff2cf99870044b4480f6b0db97fe8d0, type: 2}
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
   duration: 0.125
 --- !u!1 &7118152066132652592
 GameObject:

@@ -18,6 +18,8 @@ public class DataScriptableObject : ScriptableObject
     [SerializeField] private bool baseBackShot;
     [SerializeField] private bool baseTripleShot;
     [SerializeField] private bool baseHealingShot;
+    [SerializeField] private float baseHealth;
+    [SerializeField] private float baseHealthMax;
 
 
     private KarmaScriptableObject.KarmaState lastState;
@@ -32,6 +34,8 @@ public class DataScriptableObject : ScriptableObject
     private bool lastBackShot;
     private bool lastTripleShot;
     private bool lastHealingShot;
+    private float lastHealth;
+    private float lastHealthMax;
 
 
     [SerializeField] private KarmaScriptableObject.KarmaState currentState;
@@ -47,8 +51,16 @@ public class DataScriptableObject : ScriptableObject
     [SerializeField] private bool backShot;
     [SerializeField] private bool tripleShot;
     [SerializeField] private bool healingShot;
+    [SerializeField] private float health;
+    [SerializeField] private float healthMax;
 
     private void OnEnable()
+    {
+        BaseData();
+        ResetData();
+    }
+
+    public void BaseData()
     {
         lastState = baseCurrentState;
         lastKarmaScrObj = baseCurrentKarmaScrObj;
@@ -60,9 +72,10 @@ public class DataScriptableObject : ScriptableObject
         lastBackShot = baseBackShot;
         lastTripleShot = baseTripleShot;
         lastHealingShot = baseHealingShot;
+        lastHealth = baseHealth;
+        lastHealthMax = baseHealthMax;
         lastAllStates = new List<KarmaScriptableObject.KarmaState>();
         lastAllSkills = new List<SkillScriptableObject>();
-        ResetData();
     }
 
     public void ResetData()
@@ -78,6 +91,8 @@ public class DataScriptableObject : ScriptableObject
         BackShot = lastBackShot;
         TripleShot = lastTripleShot;
         HealingShot = lastHealingShot;
+        Health = lastHealth;
+        HealthMax = lastHealthMax;
         allStates = lastAllStates;
         allSkills = lastAllSkills;
     }
@@ -92,6 +107,10 @@ public class DataScriptableObject : ScriptableObject
         lastHoldToShoot = HoldToShoot;
         lastFireRate = FireRate;
         lastBackShot = BackShot;
+        lastTripleShot = TripleShot;
+        lastHealingShot = HealingShot;
+        lastHealth = Health;
+        lastHealthMax = HealthMax;
         lastAllStates = allStates;
         lastAllSkills = allSkills;
     }
@@ -110,4 +129,6 @@ public class DataScriptableObject : ScriptableObject
     public bool BackShot { get => backShot; set => backShot = value; }
     public bool TripleShot { get => tripleShot; set => tripleShot = value; }
     public bool HealingShot { get => healingShot; set => healingShot = value; }
+    public float Health { get => health; set => health = value; }
+    public float HealthMax { get => healthMax; set => healthMax = value; }
 }
