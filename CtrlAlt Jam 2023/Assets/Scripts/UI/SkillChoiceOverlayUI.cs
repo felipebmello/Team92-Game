@@ -23,6 +23,7 @@ public class SkillChoiceOverlayUI : MonoBehaviour
     private void LevelSystem_OnSkillsOverlay (object sender, SkillScriptableObject[] skills)
     {
         gameObject.SetActive(true);
+        Cursor.visible = true;
         this.skills = skills;
         int numberOfSkillStates = System.Enum.GetValues(typeof(SkillScriptableObject.SkillState)).Length / 2;
         for (int i = 0; i < skills.Length; i++)
@@ -41,6 +42,7 @@ public class SkillChoiceOverlayUI : MonoBehaviour
     public void OnSkillButton1Clicked()
     {        
         gameObject.SetActive(false);
+        Cursor.visible = false;
         LevelSystem.Instance.ChoosedSkill(skills[0]);
         LevelSystem.Instance.SkillNotChosen(skills[1]);
     }
@@ -48,6 +50,7 @@ public class SkillChoiceOverlayUI : MonoBehaviour
     public void OnSkillButton2Clicked()
     {
         gameObject.SetActive(false);
+        Cursor.visible = false;
         LevelSystem.Instance.SkillNotChosen(skills[0]);
         LevelSystem.Instance.ChoosedSkill(skills[1]);
     }

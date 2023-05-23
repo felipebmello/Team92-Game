@@ -16,7 +16,6 @@ public abstract class BaseCollectable : MonoBehaviour
     {
         if (other.tag.Equals("Player") && !other.TryGetComponent<Bullet>(out Bullet bullet))
         {
-            Debug.Log(other.name);
             PickUp(other.gameObject);
             Destroy(gameObject);
         }

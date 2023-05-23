@@ -36,6 +36,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4312159474548839168, guid: df00fc5ef803d26409ef2d75ec44bd33, type: 3}
+      propertyPath: lifetime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4312159474548839168, guid: df00fc5ef803d26409ef2d75ec44bd33, type: 3}
       propertyPath: bulletState
       value: 2
       objectReference: {fileID: 0}

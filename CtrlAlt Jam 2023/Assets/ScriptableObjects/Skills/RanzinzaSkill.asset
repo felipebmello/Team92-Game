@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   imageSprite: {fileID: 21300000, guid: 3ba96b95bd99f604ba9fc146619cbcab, type: 3}
-  name: <i>Agressividade</i>
+  name: Agressividade
   effect: Grosseria
   description: "<b>Velocidade de ataque e movimento \xE9 aumentada</b>"
   newMovementSpeed: 12
   newHoldToShoot: 1
+  backShot: 0
+  tripleShot: 0
+  healingShot: 0
   newFireRate: 0.3
   healthModifier: 1

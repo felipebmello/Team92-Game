@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 6
   newSprite: {fileID: 21300000, guid: 65893c6b6d1b022498e67b676f4abf12, type: 3}
+  animatorOverrideController: {fileID: 22100000, guid: 33529541b7a6e624288c0748394c7f9c, type: 2}
   newBulletPrefab: {fileID: 3291505396767566556, guid: 625b4d16ed832ce4697e1e6f93d6af9e, type: 3}

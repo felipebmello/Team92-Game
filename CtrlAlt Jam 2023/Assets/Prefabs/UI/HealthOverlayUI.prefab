@@ -54,9 +54,9 @@ MonoBehaviour:
   heartPrefab: {fileID: 1987513387226525319, guid: 1799337d0141bcd46905bc0c2aa99715, type: 3}
   heartArray: []
   fullHeart: {fileID: 0}
+  halfHeart: {fileID: 21300000, guid: ac0f7543f9ef40942bd3ea7a4de3ae4d, type: 3}
   emptyHeart: {fileID: 0}
   imageContainer: {fileID: 3257544879252531641}
-  healthSystem: {fileID: 0}
 --- !u!1001 &966391111267920839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2331827039558255230, guid: 511e378e5a0288c4086608adceaee3a3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2331827039558255230, guid: 511e378e5a0288c4086608adceaee3a3, type: 3}
       propertyPath: m_AnchorMin.x
@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2331827039558255230, guid: 511e378e5a0288c4086608adceaee3a3, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2331827039558255230, guid: 511e378e5a0288c4086608adceaee3a3, type: 3}
       propertyPath: m_SizeDelta.x
@@ -134,11 +134,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2331827039558255230, guid: 511e378e5a0288c4086608adceaee3a3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -590.24
+      value: -12.549194
       objectReference: {fileID: 0}
     - target: {fileID: 2331827039558255230, guid: 511e378e5a0288c4086608adceaee3a3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 310
+      value: -45.687866
       objectReference: {fileID: 0}
     - target: {fileID: 2331827039558255230, guid: 511e378e5a0288c4086608adceaee3a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -151,6 +151,14 @@ PrefabInstance:
     - target: {fileID: 2331827039558255230, guid: 511e378e5a0288c4086608adceaee3a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331827039558255231, guid: 511e378e5a0288c4086608adceaee3a3, type: 3}
+      propertyPath: m_CellSize.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2331827039558255231, guid: 511e378e5a0288c4086608adceaee3a3, type: 3}
+      propertyPath: m_CellSize.y
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 511e378e5a0288c4086608adceaee3a3, type: 3}

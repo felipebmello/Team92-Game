@@ -17,7 +17,7 @@ public class MusicPlayer : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.LogError("There's more than one LevelSystem! "+ transform + " - " + Instance);
+            Debug.Log("There's more than one Music Player! "+ transform + " - " + Instance);
             Destroy(gameObject);
         }
         Instance = this;

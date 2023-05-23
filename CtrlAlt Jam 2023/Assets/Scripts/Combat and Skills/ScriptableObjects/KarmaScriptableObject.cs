@@ -22,11 +22,13 @@ public class KarmaScriptableObject : ScriptableObject
     [SerializeField] private KarmaState state;
 
     [SerializeField] private Sprite newSprite;
-    
+    [SerializeField] private AnimatorOverrideController animatorOverrideController;
+
     [Header("Shooting Settings")]
     [SerializeField] private Transform newBulletPrefab;
 
     public KarmaState State { get => state; set => state = value; }
     public Sprite NewSprite { get => newSprite; set => newSprite = value; }
     public Transform NewBulletPrefab { get => newBulletPrefab; set => newBulletPrefab = value; }
+    public AnimatorOverrideController NewAOC { get => animatorOverrideController; set => animatorOverrideController = value; }
 }

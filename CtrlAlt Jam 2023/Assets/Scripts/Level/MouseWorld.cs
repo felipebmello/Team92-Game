@@ -10,6 +10,7 @@ public class MouseWorld : MonoBehaviour
     void Awake()
     {
         instance = this;
+        Cursor.visible = false;
     }
 
     void Update()
@@ -18,10 +19,10 @@ public class MouseWorld : MonoBehaviour
         this.transform.position = MouseWorld.GetPosition();
     }
 
-    public static Vector3 GetPosition()
+    public static Vector2 GetPosition()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        return new Vector3(mousePosition.x, mousePosition.y, -2f);
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        return mousePosition;
     }
 
 }

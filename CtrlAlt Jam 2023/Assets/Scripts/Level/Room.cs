@@ -133,7 +133,7 @@ public class Room : MonoBehaviour
     public IEnumerator OpenAllDoors()
     {        
         CameraController.Instance.ZoomOut(zoomOutVirtualCamera);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         AudioSource.PlayClipAtPoint(doorsOpeningClosingSFX, AudioManager.Instance.GetAudioListener().transform.position, roomSFXVolume);
         doorsClosed = false;
         OnAllEnemiesDead?.Invoke(this, EventArgs.Empty);
@@ -142,7 +142,7 @@ public class Room : MonoBehaviour
     
     public IEnumerator CheckEnemyList()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         enemyList.RemoveAll(enemy => enemy == null);
         if (enemyList.Count == 0 && doorsClosed) StartCoroutine(OpenAllDoors());
     }

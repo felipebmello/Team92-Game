@@ -15,11 +15,13 @@ MonoBehaviour:
   state: 2
   imageSprite: {fileID: 21300000, guid: 3721b254abeaa80478af5aa8c7b5e143, type: 3}
   name: Tiro Triplo
-  effect: "<i>Altru\xEDsmo</i>"
+  effect: "Altru\xEDsmo"
   description: "O <b>triplo de proj\xE9teis</b> s\xE3o lan\xE7ados, <b>com um dano
     menor</b>."
   newMovementSpeed: 12
   newHoldToShoot: 1
   backShot: 0
+  tripleShot: 1
+  healingShot: 0
   newFireRate: 0.6
   healthModifier: 1.25

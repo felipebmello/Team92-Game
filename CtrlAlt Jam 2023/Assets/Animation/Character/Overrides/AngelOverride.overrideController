@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AngelOverride
+  m_Controller: {fileID: 9100000, guid: a2cb433b4ec7e744c842c5709745a578, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: f40052e3ae8d1f8419a8eda66ac6925e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3eae28c3559ea484b99f3d3d1b639cb1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 91ec1d9e3f58d764487c6dfb71c4c16e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c1dfcfc7e5cefba4caa3f32f7bb1039f, type: 2}

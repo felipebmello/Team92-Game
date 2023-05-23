@@ -22,15 +22,24 @@ MonoBehaviour:
   baseBulletPrefab: {fileID: 0}
   baseHoldToShoot: 0
   baseFireRate: 0
-  currentState: 3
-  currentKarmaScrObj: {fileID: 11400000, guid: b7452b0c70345c94c9b5e718088a67c3, type: 2}
-  currentSkill: {fileID: 11400000, guid: f0e53ed995c9b184896c898c36653c37, type: 2}
-  allStates: 0600000007000000
+  baseBackShot: 0
+  baseTripleShot: 0
+  baseHealingShot: 0
+  baseHealth: 100
+  baseHealthMax: 100
+  currentState: 6
+  currentKarmaScrObj: {fileID: 11400000, guid: 8e8510a56f9637042b5a0f92b9ac90a4, type: 2}
+  currentSkill: {fileID: 11400000, guid: 5c99ef5d756db4941b13f5b95e0bbdc0, type: 2}
+  allStates: 06000000
   allSkills:
   - {fileID: 11400000, guid: 5c99ef5d756db4941b13f5b95e0bbdc0, type: 2}
-  - {fileID: 11400000, guid: 5c99ef5d756db4941b13f5b95e0bbdc0, type: 2}
-  numberOfSaves: 1
-  movementSpeed: 10
-  bulletPrefab: {fileID: 3291505396767566556, guid: 1d3444b5dc5c48d4d9c372c319ec7fa7, type: 3}
+  numberOfSaves: 2
+  movementSpeed: 12
+  bulletPrefab: {fileID: 3291505396767566556, guid: 625b4d16ed832ce4697e1e6f93d6af9e, type: 3}
   holdToShoot: 1
-  fireRate: 0.9
+  fireRate: 0.6
+  backShot: 0
+  tripleShot: 1
+  healingShot: 0
+  health: 125
+  healthMax: 100

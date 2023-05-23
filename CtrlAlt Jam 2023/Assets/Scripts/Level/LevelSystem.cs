@@ -12,7 +12,10 @@ public class LevelSystem : MonoBehaviour
     public event EventHandler<SkillScriptableObject> OnNotChosenSkill;
     public event EventHandler<float> OnPlayerMaxHealthChanged;
     public event EventHandler<float> OnPlayerDamaged;
+    public event EventHandler<float> OnPlayerHealed;
     public event EventHandler OnPlayerDeath;
+    public event EventHandler OnPlayerVictory;
+    public event EventHandler OnEnemyDeath;
     private void Awake() 
     {
         if (Instance != null)
@@ -48,30 +51,40 @@ public class LevelSystem : MonoBehaviour
     public void PlayerDamaged(float currentHealth)
     {
         float numberOfFullHearts = currentHealth / 25;
+        //Debug.Log(currentHealth+ " " + numberOfFullHearts);
         OnPlayerDamaged?.Invoke(this, numberOfFullHearts);
+    }
+    public void PlayerHealed(float currentHealth)
+    {
+        float numberOfFullHearts = currentHealth / 25;
+        OnPlayerHealed?.Invoke(this, numberOfFullHearts);
     }
     public void PlayerKilled()
     {
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
     }
-
+    
+    public void EnemyKilled()
+    {
+        OnEnemyDeath?.Invoke(this, EventArgs.Empty);
+    }
     
     public void EnterNextLevel()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1) 
+        int buildIndex = SceneManager.GetActiveScene().buildIndex;
+        if (buildIndex > 0 && buildIndex < 4) 
         {
             //MusicPlayer.Instance.PlayLevel2Music();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
-        }
-        else if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            //MusicPlayer.Instance.PlayLevel1Music();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
+            if (buildIndex == 3)
+            {
+                OnPlayerVictory?.Invoke(this, EventArgs.Empty);
+            }
+            SceneManager.LoadScene(buildIndex+1);
         }
     }
 
     public void RestartScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(1);
     }
 }
